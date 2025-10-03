@@ -1,0 +1,46 @@
+{
+  "id": "project_listing",
+  "type": "SharedSlice",
+  "name": "ProjectListing",
+  "description": "ProjectListing",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "feature_projects": {
+          "type": "Group",
+          "config": {
+            "label": "Feature Projects",
+            "repeat": true,
+            "fields": {
+              "project": {
+                "type": "Link",
+                "config": {
+                  "label": "Project",
+                  "select": "document",
+                  "repeat": false,
+                  "customtypes": [
+                    {
+                      "id": "project",
+                      "fields": [
+                        "title",
+                        "thumbnail",
+                        "feature_media"
+                      ]
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

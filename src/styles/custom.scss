@@ -1,0 +1,36 @@
+@use './mixins' as *;
+
+.split {
+    &-line, &-word, &-char {
+        --splitTxt-gap: 0.25em;
+
+        contain: paint;
+
+        margin: calc(var(--splitTxt-gap) * -1);
+        padding: var(--splitTxt-gap);
+    }
+
+    &-line:not(:last-child) {
+        margin-bottom: calc(var(--splitTxt-gap) * -2);
+    }
+}
+
+@layer customs {
+    html {
+        --borderStyle: 1px solid var(--black-20);
+    }
+
+    html, body {
+        background-color: var(--background);
+        color: var(--white-100);
+    }
+
+    html {
+        @include hide-scrollbar;
+
+        &:not(.lenis) {
+            height: 100vh;
+            overflow: hidden;
+        }
+    }
+}

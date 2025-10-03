@@ -1,0 +1,25 @@
+@use './mixins.scss' as *;
+@use './breakpoints' as *;
+
+@use 'sass:math';
+
+@layer text {
+	html {
+		font-size: min(
+			calc(10 / math.div($desktopWidth, 1px) * 100vw),
+			calc(math.div($maxFontWidth, $desktopWidth) * 10px)
+		);
+	
+		@include md {
+			font-size: calc(10 / math.div($tabletWidth, 1px) * 100vw);
+		}
+	
+		@include sm {
+			font-size: calc(10 / math.div($mobileWidth, 1px) * 100vw);
+		}
+	}
+	
+	body {
+		font-size: 1.6rem;
+	}
+}

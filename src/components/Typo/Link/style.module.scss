@@ -1,0 +1,16 @@
+
+
+@layer typo {
+    .link {
+        // display: inline-block;
+    
+        &_14 {
+            font-size: max(1.4rem, 12px);
+            line-height: 1;
+            letter-spacing: 0.12em;
+            
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+    }
+}

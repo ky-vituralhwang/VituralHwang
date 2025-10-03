@@ -1,0 +1,34 @@
+@use 'sass:color';
+
+$cl-black: #0A0A0A !default;
+$cl-white: #fff !default;
+
+$cl-background: rgb(10, 10, 10) !default;
+
+// $cl-primary: #E64926 !default;
+// $cl-clay: #A43209 !default;
+
+
+// $text-color: (
+//     '100': #1D1D1D,
+//     '200': #3B3B3B,
+//     '300': #7F7F7F,
+//     '400': #BABABA,
+//     '500': color.change( #ffffff, $alpha: .5 ),
+//     '600': color.change( #ffffff, $alpha: .7 ),
+//     '700': #FFFFFF,
+// );
+
+// $background-color: (
+//     'dark': #111111,
+//     'light': #EBEBEB,
+//     'main': #F5F5F5,
+//     'white': #FFFFFF,
+// );
+
+// $border-color: (
+//     'dark': #333333,
+//     'light': #CCCCCC,
+//     'white-1': color.change( #ffffff, $alpha: .5 ),
+//     'white-2': color.change( #ffffff, $alpha: .3 ),
+// );

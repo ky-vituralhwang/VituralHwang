@@ -1,0 +1,112 @@
+{
+  "id": "text_block",
+  "type": "SharedSlice",
+  "name": "TextBlock",
+  "description": "TextBlock",
+  "variations": [
+    {
+      "id": "default",
+      "name": "RichText",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "richtext": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Richtext",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink,image,embed,list-item,o-list-item"
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "resume",
+      "name": "Resume",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "preamble": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Preamble",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,heading1,heading5,heading6,strong,em,hyperlink,image,list-item,o-list-item"
+          }
+        },
+        "label_skill": {
+          "type": "Text",
+          "config": {
+            "label": "Label Skill",
+            "placeholder": "Skill"
+          }
+        },
+        "list_skill": {
+          "type": "Group",
+          "config": {
+            "label": "List Skill",
+            "repeat": true,
+            "fields": {
+              "title": {
+                "type": "Text",
+                "config": {
+                  "label": "Title",
+                  "placeholder": ""
+                }
+              },
+              "description": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Description",
+                  "placeholder": "",
+                  "allowTargetBlank": false,
+                  "single": "paragraph"
+                }
+              }
+            }
+          }
+        },
+        "label_contact": {
+          "type": "Text",
+          "config": {
+            "label": "Label Contact",
+            "placeholder": "Contact"
+          }
+        },
+        "list_contact": {
+          "type": "Group",
+          "config": {
+            "label": "List Contact",
+            "repeat": true,
+            "fields": {
+              "label": {
+                "type": "Text",
+                "config": {
+                  "label": "Label",
+                  "placeholder": ""
+                }
+              },
+              "content": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Content",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "single": "paragraph,hyperlink"
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

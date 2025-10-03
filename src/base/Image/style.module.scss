@@ -1,0 +1,22 @@
+
+.img {
+    position: relative;
+    @include size(100%);
+
+    overflow: hidden;
+
+    &__main {
+        @include size(100%);
+    }
+
+    &__placeholder {
+        transform: scale(1.1);
+
+        transition: transform;
+        transition-timing-function: cubic-bezier(0, 0.55, 0.45, 1);
+
+        &.loaded {
+            transform: none;
+        }
+    }
+}

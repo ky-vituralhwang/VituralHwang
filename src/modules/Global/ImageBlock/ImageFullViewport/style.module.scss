@@ -1,0 +1,14 @@
+
+
+.imageFVP {
+    position: relative;
+
+    contain: paint;
+
+    height: 100lvh;
+
+
+    &__img {
+        @include size(100%);
+    }
+}

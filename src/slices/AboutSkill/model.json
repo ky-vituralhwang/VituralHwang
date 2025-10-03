@@ -1,0 +1,92 @@
+{
+  "id": "about_skill",
+  "type": "SharedSlice",
+  "name": "AboutSkill",
+  "description": "AboutSkill",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "skill_list": {
+          "type": "Group",
+          "config": {
+            "label": "Skill List",
+            "repeat": true,
+            "fields": {
+              "skill": {
+                "type": "Text",
+                "config": {
+                  "label": "Skill",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "2Columns",
+      "name": "2 Columns",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "skill_list_left": {
+          "type": "Group",
+          "config": {
+            "label": "Skill List Left",
+            "repeat": true,
+            "fields": {
+              "skill": {
+                "type": "Text",
+                "config": {
+                  "label": "Skill",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        },
+        "skill_list_right": {
+          "type": "Group",
+          "config": {
+            "label": "Skill List Right",
+            "repeat": true,
+            "fields": {
+              "skill": {
+                "type": "Text",
+                "config": {
+                  "label": "Skill",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

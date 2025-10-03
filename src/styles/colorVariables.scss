@@ -1,0 +1,51 @@
+@use 'sass:color';
+
+@use './colors.scss' as *;
+
+@layer colors {
+    :root {
+        @for $i from 1 through 10 {
+            --black-#{$i * 10}: #{color.change( $cl-black, $alpha: .1 * $i )};
+        }
+    
+        @for $i from 1 through 10 {
+            --white-#{$i * 10}: #{color.change( $cl-white, $alpha: .1 * $i )};
+        }
+    
+        // @for $i from 1 through 10 {
+        //     --primary-#{$i * 10}: #{color.change( $cl-primary, $alpha: .1 * $i )};
+        // }
+    
+        // @each $key, $value in $text-color {
+        //     --text-#{$key}: #{$value};
+        // }
+    
+        // @each $key, $value in $background-color {
+        //     --background-#{$key}: #{$value};
+        // }
+    
+        // @each $key, $value in $border-color {
+        //     --border-#{$key}: #{$value};
+        // }
+    
+        --background: #{$cl-background};
+    }
+    
+    @for $i from 1 through 10 {
+        .b-#{$i * 10} {
+            color: var(--black-#{$i * 10});
+        }
+    }
+    
+    @for $i from 1 through 10 {
+        .w-#{$i * 10} {
+            color: var(--white-#{$i * 10});
+        }
+    }
+    
+    // @each $key, $value in $text-color {
+    //     .text-#{$key} {
+    //         color: var(--text-#{$key});
+    //     }
+    // }
+}

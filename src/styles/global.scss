@@ -1,0 +1,35 @@
+@use './mixins.scss' as *;
+
+@layer global {
+    *,
+    *::after,
+    *::before {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    
+    body {
+        font-kerning: none;
+        font-feature-settings: 'kern' off;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-size-adjust: none;
+        // -webkit-text-size-adjust: none;
+        -webkit-tap-highlight-color: transparent;
+        -webkit-text-rendering: optimizeSpeed;
+        text-rendering: optimizeSpeed;
+    
+        font-variant-numeric: tabular-nums;
+    }
+    
+    button,
+    input,
+    textarea {
+        appearance: none;
+        -webkit-appearance: none;
+        outline: none;
+        border: none;
+        font-family: inherit;
+    }
+}

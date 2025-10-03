@@ -1,0 +1,62 @@
+@use './breakpoints' as *;
+
+@mixin lg {
+	@media screen and (min-width: $huge_screen) {
+		@content;
+	}
+}
+
+@mixin md {
+	@media screen and (max-width: $tablet) {
+		@content;
+	}
+}
+
+@mixin sm {
+	@media screen and (max-width: $mobile) {
+		@content;
+	}
+}
+
+@mixin size($w, $h: $w) {
+	width: $w;
+	height: $h;
+}
+
+@mixin text($fontSize) {
+	font-size: var(--fs-#{$fontSize}) !important;
+	line-height: var(--lh-#{$fontSize}) !important;
+	letter-spacing: var(--ls-#{$fontSize}) !important;
+}
+
+@mixin hover {
+	&:hover {
+		@content;
+	}
+	// @media (hover: hover) {
+	// }
+}
+
+@mixin custom-scroll($width: 0.7rem, $bgTrack: #ddd, $bgThumb: #1D1D1D) {
+	&::-webkit-scrollbar {
+		width: $width;
+	}
+
+	&::-webkit-scrollbar-track {
+		background: $bgTrack;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background: $bgThumb;
+	}
+}
+
+@mixin hide-scrollbar {
+	& {
+		-ms-overflow-style: none;  /* Internet Explorer 10+ */
+		scrollbar-width: none;  /* Firefox */
+	}
+	&::-webkit-scrollbar { 
+		display: none;  /* Safari and Chrome */
+	}
+}

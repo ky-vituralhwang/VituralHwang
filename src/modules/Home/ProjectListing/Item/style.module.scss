@@ -1,0 +1,76 @@
+
+
+.projectItem {
+    position: relative;
+    display: block;
+
+    width: 100%;
+    // aspect-ratio: 3.84;
+    aspect-ratio: 3.1;
+
+    @include md {
+        aspect-ratio: 2.5;
+    }
+
+    @include sm {
+        aspect-ratio: 2;
+    }
+
+    &__bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        inset: 0;
+
+        z-index: 1;
+    }
+
+    &__img {
+        position: relative;
+        z-index: 2;
+        @include size(100%);
+
+        opacity: 1;
+    }
+
+
+
+    &__video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        @include size(100%);
+
+        object-fit: cover;
+
+        z-index: 1;
+    }
+
+    &__content {
+        position: relative;
+        z-index: 2;
+
+        @include size(100%);
+
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+
+
+        padding: var(--container-padding);
+
+        &__title {
+            font-weight: 100;
+
+            letter-spacing: -.03em;
+
+            @include md {
+                font-size: 2.8rem;
+            }
+
+            @include sm {
+                font-size: 2rem;
+            }
+        }
+    }
+}

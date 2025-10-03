@@ -1,0 +1,28 @@
+@use "@styles/reset.scss";
+@use "@styles/easing.scss";
+@use "@styles/colorVariables.scss";
+@use "@styles/custom.scss";
+@use "@styles/global.scss";
+@use "@styles/textstyle.scss";
+@use "@styles/fontsize.scss";
+@use "@styles/grid.scss";
+
+@layer reset,
+    global,
+    base,
+    colors,
+    easing,
+    grid,
+    customs,
+    text,
+    typo,
+    button,
+    components;
+
+.san {
+    font-family: 'Matter';
+}
+
+.mono {
+    font-family: 'MatterMono';
+}

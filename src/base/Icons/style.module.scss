@@ -1,0 +1,23 @@
+
+
+.ic {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &.isFormatColor {
+        > svg {
+            fill: currentColor;
+
+            * {
+                fill: currentColor;
+                stroke: currentColor;
+            }    
+        }
+    }
+
+    > svg {
+        width: 100%;
+        height: 100%;
+    }
+}

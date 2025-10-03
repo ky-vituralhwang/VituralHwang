@@ -1,0 +1,84 @@
+@layer typo {
+    .heading {
+        // display: inline-block;
+        
+        &_1 {
+            font-size: 6rem;
+            line-height: 1;
+    
+            font-weight: 400;
+    
+            @include md {
+                font-size: 4.4rem;
+            }
+    
+            @include sm {
+                font-size: 2.5rem;
+            }
+        }
+    
+        &_2 {
+            font-size: 3.6rem;
+            line-height: 1;
+
+            @include md {
+                font-size: 2.8rem;
+            }
+        }
+    
+        &_3 {
+            font-size: 3.2rem;
+            line-height: 1;
+
+            @include md {
+                font-size: 2.6rem;
+            }
+        }
+    
+        &_4 {
+            font-size: 3.2rem;
+            line-height: 1;
+    
+            font-weight: 400;
+    
+            @include md {
+                font-size: 2.4rem;
+            }
+    
+            @include sm {
+                font-size: 2rem;
+                line-height: 1.1;
+            }
+        }
+    
+        &_5 {
+            font-size: 2.4rem;
+            line-height: 1.1;
+    
+            font-weight: 400;
+    
+            @include md {
+                font-size: 2.4rem;
+            }
+    
+            @include sm {
+                font-size: 2rem;
+            }
+        }
+    
+        &_6 {
+            font-size: 2rem;
+            line-height: 1.1;
+    
+            font-weight: 400;
+    
+            @include md {
+                font-size: 2rem;
+            }
+    
+            @include sm {
+                font-size: 1.8rem;
+            }
+        }
+    }
+}

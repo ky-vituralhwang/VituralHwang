@@ -1,0 +1,53 @@
+@use './breakpoints' as *;
+@use './mixins' as *;
+
+@layer grid {
+    html {
+        --container-padding: 6rem; 
+        --grid-column: 12;
+        --grid-gap: 2rem;
+        --max-width: #{$max_width};
+    
+        --column-width:
+            ( 100vw -
+                (var(--container-padding) * 2) -
+                (var(--grid-gap) * (var(--grid-column) - 1))
+            ) / var(--grid-column);
+    
+        @for $i from 1 through 12 {
+            --column-width-#{$i}: calc(
+                (var(--column-width) * #{$i}) + (var(--grid-gap) * (#{$i} - 1))
+            );
+        }
+    
+        @include md {
+            --grid-column: 12;
+            --grid-gap: 1.6rem;
+            
+            --container-padding: 2.4rem;
+        }
+    
+        @include sm {
+            --grid-column: 4;
+            --container-padding: 1.6rem; 
+        }
+    }
+    
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(var(--grid-column), minmax(1px, 1fr));
+        grid-template-rows: auto;
+        grid-column-gap: var(--grid-gap);
+    }
+    
+    .container {
+        width: 100%;
+        margin: 0 auto;
+        padding-inline: var(--container-padding);
+        max-width: var(--max-width);
+    
+        &.fluid {
+            max-width: none;
+        }
+    }
+}

@@ -1,0 +1,85 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "bowl",
+				"type": "Text"
+			},
+			"skill_list": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"skill",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "trip",
+									"type": "Text"
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": []
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "2Columns",
+		"primary": {
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "especially",
+				"type": "Text"
+			},
+			"skill_list_left": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"skill",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "far",
+									"type": "Text"
+								}
+							]
+						]
+					}
+				]
+			},
+			"skill_list_right": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"skill",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "be",
+									"type": "Text"
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
+	}
+]

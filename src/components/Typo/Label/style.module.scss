@@ -1,0 +1,19 @@
+
+@layer typo {
+    .label {
+        // display: inline-block;
+    
+        &_14 {
+            font-size: max(1.4rem, 12px);
+            line-height: 1;
+            letter-spacing: 0.12em;
+            
+            font-weight: 400;
+            text-transform: uppercase;
+    
+            @include md {
+                line-height: 1.2;
+            }
+        }
+    }
+}

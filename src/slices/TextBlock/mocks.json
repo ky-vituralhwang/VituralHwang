@@ -1,0 +1,117 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"richtext": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Laborum nulla sint ullamco culpa ullamco ea velit ut eiusmod."
+						}
+					}
+				]
+			}
+		},
+		"items": []
+	},
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "resume",
+		"primary": {
+			"preamble": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Qui ad anim ad qui duis excepteur eiusmod nulla in ad officia officia nulla aliquip dolore. Occaecat velit elit ipsum ullamco proident ad aute sit tempor reprehenderit aliqua sit enim magna. Officia adipisicing commodo et et excepteur anim cillum ut id excepteur."
+						}
+					}
+				]
+			},
+			"label_skill": {
+				"__TYPE__": "FieldContent",
+				"value": "family",
+				"type": "Text"
+			},
+			"list_skill": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"title",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "to",
+									"type": "Text"
+								}
+							],
+							[
+								"description",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Ea exercitation do irure nisi sit aliqua mollit dolore velit ipsum non nulla laboris non."
+											}
+										}
+									]
+								}
+							]
+						]
+					}
+				]
+			},
+			"label_contact": {
+				"__TYPE__": "FieldContent",
+				"value": "whether",
+				"type": "Text"
+			},
+			"list_contact": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"label",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "cool",
+									"type": "Text"
+								}
+							],
+							[
+								"content",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Ut tempor Lorem exercitation nulla veniam veniam reprehenderit ex est qui nisi ea. Amet id aliquip ex sint Lorem non culpa irure minim. Velit tempor laborum laboris id fugiat ipsum."
+											}
+										}
+									]
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": [
+			{
+				"__TYPE__": "GroupItemContent",
+				"value": []
+			}
+		]
+	}
+]
