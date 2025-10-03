@@ -5,7 +5,7 @@ import style from './style.module.scss'
 import cn from 'clsx';
 import ImagePlaceholder from '@/base/Image';
 import TypoHeading from '@/components/Typo/Heading';
-import { forwardRef, ReactEventHandler, use, useImperativeHandle, useRef, useState, useCallback } from 'react';
+import { forwardRef, ReactEventHandler, useImperativeHandle, useRef, useState, useCallback } from 'react';
 import { useIsomorphicLayoutEffect } from 'react-haiku';
 
 // Video cache to store preloaded videos
@@ -18,7 +18,15 @@ interface ProjectItemRef {
     title: HTMLDivElement| null;
 }
 
-const ProjectItem = forwardRef<ProjectItemRef, { data: any; className?: string, restProps?: any, onMouseEnter?: ReactEventHandler<HTMLAnchorElement>, onMouseLeave?: ReactEventHandler<HTMLAnchorElement> }>((
+interface ProjectItemProps {
+    data: any;
+    className?: string;
+    onMouseEnter?: React.EventHandler<React.MouseEvent<HTMLAnchorElement>>;
+    onMouseLeave?: React.EventHandler<React.MouseEvent<HTMLAnchorElement>>;
+    restProps?: any;
+}
+
+const ProjectItem = forwardRef<ProjectItemRef, ProjectItemProps> ((
     props, ref
 ) => {
     const { data, className, onMouseEnter, onMouseLeave, ...restProps } = props;
@@ -90,6 +98,8 @@ const ProjectItem = forwardRef<ProjectItemRef, { data: any; className?: string, 
             href={url}
             className={cn(style.projectItem, className)}
             ref={itemRef}
+            onMouseEnter={onMouseEnter}
+            onMouseLeave={onMouseLeave}
             {...restProps}
         >
             <div className={style.projectItem__bg} >
