@@ -18,7 +18,6 @@ type LenisProviderProps = {
 
 const LenisProvider = ({ option, ...restProps }: LenisProviderProps) => {
     const lenisRef = useRef<any>(null);
-    const lenis = useLenis();
 
     useTempus((time: number) => {
         if (lenisRef.current?.lenis) {
