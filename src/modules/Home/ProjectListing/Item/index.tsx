@@ -18,10 +18,10 @@ interface ProjectItemRef {
     title: HTMLDivElement| null;
 }
 
-const ProjectItem = forwardRef<ProjectItemRef, { data: any; className?: string, restProps?: any }>((
+const ProjectItem = forwardRef<ProjectItemRef, { data: any; className?: string, restProps?: any, onMouseEnter?: ReactEventHandler<HTMLAnchorElement>, onMouseLeave?: ReactEventHandler<HTMLAnchorElement> }>((
     props, ref
 ) => {
-    const { data, className, ...restProps } = props;
+    const { data, className, onMouseEnter, onMouseLeave, ...restProps } = props;
     const { url } = data?.project || {};
     const { title, feature_media, thumbnail } = data?.project?.data || {};
 
@@ -128,5 +128,7 @@ const ProjectItem = forwardRef<ProjectItemRef, { data: any; className?: string, 
         </Link>
     )
 })
+
+ProjectItem.displayName = 'ProjectItem';
 
 export default ProjectItem;
