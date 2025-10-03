@@ -38,7 +38,14 @@ interface ImagePlaceholderProps extends Omit<ImageProps, 'src' | 'alt'> {
 }
 
 const ImagePlaceholder = forwardRef<HTMLDivElement, ImagePlaceholderProps>((props, ref) => {
-    const { src = "/images/placeholder.svg", alt = "VituralHwang Image", className, dimensions, ...restProps } = props;
+    let { src = "/images/placeholder.svg", alt = "VituralHwang Image", className, dimensions, ...restProps } = props;
+
+    if (!src) {
+        src = '/images/placeholder.svg';
+    }
+    if (!alt) {
+        alt = 'VituralHwang Image';
+    }
 
     const aspectRatio = dimensions ? dimensions.width / dimensions.height : undefined;
 
