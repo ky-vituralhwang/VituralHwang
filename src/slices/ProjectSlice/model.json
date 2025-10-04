@@ -12,14 +12,6 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
-        "thumbnail": {
-          "type": "Image",
-          "config": {
-            "label": "Thumbnail",
-            "constraint": {},
-            "thumbnails": []
-          }
-        },
         "video": {
           "type": "Link",
           "config": {

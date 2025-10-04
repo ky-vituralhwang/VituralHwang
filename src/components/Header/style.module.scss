@@ -9,6 +9,8 @@
 
     background-color: #000000c4;
 
+    backdrop-filter: blur(2rem);
+
     &__container {
         align-items: center;
     }
@@ -35,14 +37,29 @@
 
         column-gap: 5rem;
 
-
         @include sm {
-            display: none;
+            grid-column: 1/-1;
+            grid-row: 2/3;
+            width: 100%;
+
+            flex-direction: column;
+
+            height: 0px;
+            overflow: hidden;
         }
 
         &__link {
             margin: -1rem -2.5rem;
             padding: 1rem 2.5rem;
+
+            @include sm {
+                width: 100%;
+                text-align: center;
+
+                margin: unset;
+                padding-inline: unset;
+                padding-block: 1rem;
+            }
         }
     }
 
