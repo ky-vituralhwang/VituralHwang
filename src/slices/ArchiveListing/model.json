@@ -1,0 +1,37 @@
+{
+  "id": "archive_listing",
+  "type": "SharedSlice",
+  "name": "ArchiveListing",
+  "description": "ArchiveListing",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Masonry Layout",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "list_media": {
+          "type": "Group",
+          "config": {
+            "label": "List Media(Image, Video)",
+            "repeat": true,
+            "fields": {
+              "media": {
+                "type": "Link",
+                "config": {
+                  "label": "Media",
+                  "placeholder": "Alternative Text to detect",
+                  "select": "media",
+                  "allowText": true
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

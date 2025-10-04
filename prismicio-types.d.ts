@@ -195,12 +195,34 @@ export type AboutPageDocument<Lang extends string = string> =
     Lang
   >;
 
-type ArchivePageDocumentDataSlicesSlice = never;
+type ArchivePageDocumentDataSlicesSlice = ArchiveListingSlice;
 
 /**
  * Content for Archive Page documents
  */
 interface ArchivePageDocumentData {
+  /**
+   * Max Items (Total Item in Layout) field in *Archive Page*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: *None*
+   * - **API ID Path**: archive_page.max_items
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/number
+   */
+  max_items: prismic.NumberField;
+
+  /**
+   * Columns Number field in *Archive Page*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: *None*
+   * - **API ID Path**: archive_page.columns_number
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/number
+   */
+  columns_number: prismic.NumberField;
+
   /**
    * Slice Zone field in *Archive Page*
    *
@@ -868,6 +890,68 @@ export type AboutSkillSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *ArchiveListing → Masonry Layout → Primary → List Media(Image, Video)*
+ */
+export interface ArchiveListingSliceDefaultPrimaryListMediaItem {
+  /**
+   * Media field in *ArchiveListing → Masonry Layout → Primary → List Media(Image, Video)*
+   *
+   * - **Field Type**: Link to Media
+   * - **Placeholder**: Alternative Text to detect
+   * - **API ID Path**: archive_listing.default.primary.list_media[].media
+   * - **Documentation**: https://prismic.io/docs/fields/link-to-media
+   */
+  media: prismic.LinkToMediaField<prismic.FieldState, never>;
+}
+
+/**
+ * Primary content in *ArchiveListing → Masonry Layout → Primary*
+ */
+export interface ArchiveListingSliceDefaultPrimary {
+  /**
+   * List Media(Image, Video) field in *ArchiveListing → Masonry Layout → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: archive_listing.default.primary.list_media[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  list_media: prismic.GroupField<
+    Simplify<ArchiveListingSliceDefaultPrimaryListMediaItem>
+  >;
+}
+
+/**
+ * Masonry Layout variation for ArchiveListing Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ArchiveListingSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ArchiveListingSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ArchiveListing*
+ */
+type ArchiveListingSliceVariation = ArchiveListingSliceDefault;
+
+/**
+ * ArchiveListing Shared Slice
+ *
+ * - **API ID**: `archive_listing`
+ * - **Description**: ArchiveListing
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ArchiveListingSlice = prismic.SharedSlice<
+  "archive_listing",
+  ArchiveListingSliceVariation
+>;
+
+/**
  * Primary content in *ImageBlock → Image Full Viewport → Primary*
  */
 export interface ImageBlockSliceDefaultPrimary {
@@ -995,16 +1079,6 @@ export interface ProjectSliceSliceListImagePrimaryListImagesItem {
  * Primary content in *ProjectSlice → Video → Primary*
  */
 export interface ProjectSliceSliceDefaultPrimary {
-  /**
-   * Thumbnail field in *ProjectSlice → Video → Primary*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: project_slice.default.primary.thumbnail
-   * - **Documentation**: https://prismic.io/docs/fields/image
-   */
-  thumbnail: prismic.ImageField<never>;
-
   /**
    * Video field in *ProjectSlice → Video → Primary*
    *
@@ -1331,6 +1405,11 @@ declare module "@prismicio/client" {
       AboutSkillSliceVariation,
       AboutSkillSliceDefault,
       AboutSkillSlice2Columns,
+      ArchiveListingSlice,
+      ArchiveListingSliceDefaultPrimaryListMediaItem,
+      ArchiveListingSliceDefaultPrimary,
+      ArchiveListingSliceVariation,
+      ArchiveListingSliceDefault,
       ImageBlockSlice,
       ImageBlockSliceDefaultPrimary,
       ImageBlockSliceVariation,

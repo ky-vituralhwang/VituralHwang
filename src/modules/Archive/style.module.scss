@@ -1,0 +1,73 @@
+
+
+.archive {
+    position: relative;
+    contain: paint;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include size(100%, 100svh);
+
+    &__container {
+        // @include size(100%);
+        flex-shrink: 0;
+        display: flex;
+        // flex-wrap: nowrap;
+
+        align-items: center;
+        justify-content: center;
+        // overflow: hidden;
+    }
+
+    &__col {
+        flex-shrink: 0;
+        width: calc(100vw / (var(--columns)));
+
+        height: fit-content;
+
+        @include md {
+            width: 55vw;
+        }
+
+        // @include sm {
+        //     width: 70vw;
+        // }
+    }
+}
+
+
+.item {
+    @include size(100%, auto);
+
+    flex-shrink: 0;
+    object-fit: contain;
+
+    padding: 1rem;
+
+    pointer-events: none;
+    user-select: none;
+
+
+    @include sm {
+        aspect-ratio: 1;
+    }
+    
+    img, video {
+        pointer-events: none;
+        user-select: none;
+    }
+}
+
+.video {
+    @include size(100%, auto);
+    flex-shrink: 0;
+    object-fit: contain;
+
+
+    @include sm {
+        @include size(100%);
+        object-fit: cover;
+    }
+}
