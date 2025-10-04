@@ -7,5 +7,6 @@ export const components = {
   about_skill: dynamic(() => import("./AboutSkill")),
   image_block: dynamic(() => import("./ImageBlock")),
   project_listing: dynamic(() => import("./ProjectListing")),
+  project_slice: dynamic(() => import("./ProjectSlice")),
   text_block: dynamic(() => import("./TextBlock")),
 };

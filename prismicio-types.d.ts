@@ -451,7 +451,7 @@ export type HomePageDocument<Lang extends string = string> =
     Lang
   >;
 
-type ProjectDocumentDataSlicesSlice = never;
+type ProjectDocumentDataSlicesSlice = ProjectSliceSlice;
 
 /**
  * Content for Project documents
@@ -467,6 +467,39 @@ interface ProjectDocumentData {
    * - **Documentation**: https://prismic.io/docs/fields/text
    */
   title: prismic.KeyTextField;
+
+  /**
+   * Detail Title field in *Project*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project.detail_title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  detail_title: prismic.KeyTextField;
+
+  /**
+   * Detail Scope field in *Project*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project.detail_scope
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  detail_scope: prismic.KeyTextField;
+
+  /**
+   * Year of Project Implementation field in *Project*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project.year
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/number
+   */
+  year: prismic.NumberField;
 
   /**
    * Thumbnail field in *Project*
@@ -944,6 +977,137 @@ export type ProjectListingSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *ProjectSlice → List Image → Primary → List Images*
+ */
+export interface ProjectSliceSliceListImagePrimaryListImagesItem {
+  /**
+   * Image field in *ProjectSlice → List Image → Primary → List Images*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_slice.listImage.primary.list_images[].image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * Primary content in *ProjectSlice → Video → Primary*
+ */
+export interface ProjectSliceSliceDefaultPrimary {
+  /**
+   * Thumbnail field in *ProjectSlice → Video → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_slice.default.primary.thumbnail
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  thumbnail: prismic.ImageField<never>;
+
+  /**
+   * Video field in *ProjectSlice → Video → Primary*
+   *
+   * - **Field Type**: Link to Media
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_slice.default.primary.video
+   * - **Documentation**: https://prismic.io/docs/fields/link-to-media
+   */
+  video: prismic.LinkToMediaField<prismic.FieldState, never>;
+}
+
+/**
+ * Video variation for ProjectSlice Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ProjectSliceSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ProjectSliceSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Primary content in *ProjectSlice → Single Image → Primary*
+ */
+export interface ProjectSliceSliceSingleImagePrimary {
+  /**
+   * Image field in *ProjectSlice → Single Image → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_slice.singleImage.primary.image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  image: prismic.ImageField<never>;
+}
+
+/**
+ * Single Image variation for ProjectSlice Slice
+ *
+ * - **API ID**: `singleImage`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ProjectSliceSliceSingleImage = prismic.SharedSliceVariation<
+  "singleImage",
+  Simplify<ProjectSliceSliceSingleImagePrimary>,
+  never
+>;
+
+/**
+ * Primary content in *ProjectSlice → List Image → Primary*
+ */
+export interface ProjectSliceSliceListImagePrimary {
+  /**
+   * List Images field in *ProjectSlice → List Image → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_slice.listImage.primary.list_images[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  list_images: prismic.GroupField<
+    Simplify<ProjectSliceSliceListImagePrimaryListImagesItem>
+  >;
+}
+
+/**
+ * List Image variation for ProjectSlice Slice
+ *
+ * - **API ID**: `listImage`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ProjectSliceSliceListImage = prismic.SharedSliceVariation<
+  "listImage",
+  Simplify<ProjectSliceSliceListImagePrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ProjectSlice*
+ */
+type ProjectSliceSliceVariation =
+  | ProjectSliceSliceDefault
+  | ProjectSliceSliceSingleImage
+  | ProjectSliceSliceListImage;
+
+/**
+ * ProjectSlice Shared Slice
+ *
+ * - **API ID**: `project_slice`
+ * - **Description**: ProjectSlice
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ProjectSliceSlice = prismic.SharedSlice<
+  "project_slice",
+  ProjectSliceSliceVariation
+>;
+
+/**
  * Item in *TextBlock → Resume → Primary → List Skill*
  */
 export interface TextBlockSliceResumePrimaryListSkillItem {
@@ -1176,6 +1340,15 @@ declare module "@prismicio/client" {
       ProjectListingSliceDefaultPrimary,
       ProjectListingSliceVariation,
       ProjectListingSliceDefault,
+      ProjectSliceSlice,
+      ProjectSliceSliceDefaultPrimary,
+      ProjectSliceSliceSingleImagePrimary,
+      ProjectSliceSliceListImagePrimaryListImagesItem,
+      ProjectSliceSliceListImagePrimary,
+      ProjectSliceSliceVariation,
+      ProjectSliceSliceDefault,
+      ProjectSliceSliceSingleImage,
+      ProjectSliceSliceListImage,
       TextBlockSlice,
       TextBlockSliceDefaultPrimary,
       TextBlockSliceResumePrimaryListSkillItem,

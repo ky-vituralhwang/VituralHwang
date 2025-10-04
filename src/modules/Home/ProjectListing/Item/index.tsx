@@ -5,11 +5,8 @@ import style from './style.module.scss'
 import cn from 'clsx';
 import ImagePlaceholder from '@/base/Image';
 import TypoHeading from '@/components/Typo/Heading';
-import { forwardRef, ReactEventHandler, useImperativeHandle, useRef, useState, useCallback } from 'react';
-import { useIsomorphicLayoutEffect } from 'react-haiku';
-
-// Video cache to store preloaded videos
-const videoCache = new Map<string, HTMLVideoElement>();
+import { forwardRef, useImperativeHandle, useRef, useEffect } from 'react';
+import { useVideoCache } from '@/hooks/useVideoCache';
 
 interface ProjectItemRef {
     item: HTMLAnchorElement | null;
@@ -38,48 +35,8 @@ const ProjectItem = forwardRef<ProjectItemRef, ProjectItemProps> ((
     const videoRef = useRef<HTMLVideoElement>(null);
     const titleRef = useRef<HTMLDivElement>(null);
     
-    const [isVideoLoaded, setIsVideoLoaded] = useState(false);
-    const [isVideoLoading, setIsVideoLoading] = useState(false);
-
-    const preloadVideo = useCallback(async (videoUrl: string) => {
-        if (!videoUrl || videoCache.has(videoUrl)) {
-            const cachedVideo = videoCache.get(videoUrl);
-            if (cachedVideo && videoRef.current) {
-                videoRef.current.src = cachedVideo.src;
-                setIsVideoLoaded(true);
-            }
-            return;
-        }
-
-        setIsVideoLoading(true);
-        
-        try {
-            const video = document.createElement('video');
-            video.preload = 'metadata';
-            video.muted = true;
-            video.playsInline = true;
-            
-            await new Promise<void>((resolve, reject) => {
-                video.onloadedmetadata = () => {
-                    videoCache.set(videoUrl, video);
-                    resolve();
-                };
-                video.onerror = () => reject(new Error('Failed to load video'));
-                video.src = videoUrl;
-            });
-
-            // Apply the preloaded video to the current video element
-            if (videoRef.current) {
-                videoRef.current.src = videoUrl;
-                setIsVideoLoaded(true);
-            }
-        } catch (error) {
-            console.error('Error preloading video:', error);
-        } finally {
-            setIsVideoLoading(false);
-        }
-    }, []);
-
+    const { getOrCreateVideo, preloadVideo } = useVideoCache();
+    
     useImperativeHandle(ref, () => ({
         item: itemRef.current,
         image: imageRef.current,
@@ -87,9 +44,40 @@ const ProjectItem = forwardRef<ProjectItemRef, ProjectItemProps> ((
         title: titleRef.current,
     }));
 
-    useIsomorphicLayoutEffect(() => {
-        if (videoRef.current && feature_media?.url) {
-            preloadVideo(feature_media.url);
+    // Cache and setup video when component mounts or feature_media changes
+    useEffect(() => {
+        if (feature_media?.url && videoRef.current) {
+            const cachedVideo = getOrCreateVideo(feature_media.url, {
+                playsInline: true,
+                muted: true,
+                loop: true,
+                type: 'video/mp4'
+            });
+            
+            // Replace the video element's source with the cached version
+            if (cachedVideo && cachedVideo !== videoRef.current) {
+                const parentElement = videoRef.current.parentElement;
+                if (parentElement) {
+                    // Copy classes and other attributes
+                    cachedVideo.className = videoRef.current.className;
+                    
+                    // Replace the video element
+                    parentElement.replaceChild(cachedVideo, videoRef.current);
+                    videoRef.current = cachedVideo;
+                }
+            }
+        }
+    }, [feature_media?.url, getOrCreateVideo]);
+
+    // Preload video on mount for better performance
+    useEffect(() => {
+        if (feature_media?.url) {
+            preloadVideo(feature_media.url, {
+                playsInline: true,
+                muted: true,
+                loop: true,
+                type: 'video/mp4'
+            });
         }
     }, [feature_media?.url, preloadVideo]);
 
@@ -112,17 +100,10 @@ const ProjectItem = forwardRef<ProjectItemRef, ProjectItemProps> ((
                 />
                 <video
                     playsInline muted loop
-                    className={cn(style.projectItem__video, {
-                        [style.projectItem__video_loaded]: isVideoLoaded,
-                        [style.projectItem__video_loading]: isVideoLoading
-                    })}
+                    className={style.projectItem__video}
                     ref={videoRef}
-                    style={{ 
-                        opacity: isVideoLoaded ? 1 : 0,
-                        transition: 'opacity 0.3s ease'
-                    }}
                 >
-                    {isVideoLoaded && <source src={feature_media?.url} type="video/mp4" />}
+                    <source src={feature_media?.url} type="video/mp4" />
                 </video>
             </div>
 

@@ -1,0 +1,78 @@
+
+.workDetail {
+    position: relative;
+    contain: paint;
+
+    padding-top: 20rem;
+
+    @include md {
+        padding-top: 14rem;
+    }
+
+    &__title {
+        margin-bottom: 2.4rem;
+
+        font-weight: 400;
+    }
+
+    &__scope {
+        opacity: .7;
+
+        font-weight: 200;
+
+        margin-bottom: .4rem;
+    }
+
+    &__year {
+        opacity: .5;
+
+        font-weight: 200;
+    }
+
+    // &__image {
+    //     display: grid;
+    //     grid-template-columns: repeat(2, 1fr);
+
+    //     column-gap: var(--grid-gap);
+
+    //     min-height: 40rem;
+
+    //     margin-top: 10rem;
+
+    //     @include md {
+    //         grid-template-columns: 1fr;
+
+    //         row-gap: var(--grid-gap);
+
+    //         min-height: auto;
+    //     }
+
+    //     @include sm {
+    //         margin-top: 4rem;
+    //     }
+    // }
+
+    // &__thumbnail {
+    //     grid-column: span 1;
+
+    //     flex-shrink: 0;
+
+    //     overflow: hidden;
+
+    //     background-color: black
+    // }
+
+    // // &__img {
+    // //     @include size(100%);
+
+    // //     img {
+    // //         object-fit: contain !important;
+    // //     }
+    // // }
+
+    // &__video {
+    //     @include size(100%);
+
+    //     object-fit: contain;
+    // }
+}

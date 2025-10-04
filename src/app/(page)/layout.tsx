@@ -22,13 +22,6 @@ export const generateMetadata = async () => {
 };
 
 const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>) => {
-  // const client = createClient();
-
-  // const [ global, header ] = await Promise.all([
-  //   client.getSingle('global_setting'), 
-  //   client.getSingle('header')
-  // ])
-
   return (
     <html
       lang="en"
