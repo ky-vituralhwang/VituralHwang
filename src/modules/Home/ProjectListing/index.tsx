@@ -23,8 +23,6 @@ const ProjectListing = ({ slice }: any) => {
     });
 
     const handleMouseHover = contextSafe((e: React.MouseEvent<HTMLAnchorElement>) => {
-        console.log('/saasdasdsad')
-
         if (!isDesktop) return;
 
         const target = e.currentTarget;

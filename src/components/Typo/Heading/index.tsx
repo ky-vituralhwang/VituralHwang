@@ -36,7 +36,7 @@ const TypoHeading = forwardRef<HTMLHeadingElement, TypoHeadingProps>(
             case 3:
                 if (!Tag) Tag = 'h3';
                 return 3;
-            case 32:
+            case 28:
             case 4:
                 if (!Tag) Tag = 'h4';
                 return 4;

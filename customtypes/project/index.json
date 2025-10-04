@@ -19,6 +19,27 @@
           "placeholder": ""
         }
       },
+      "detail_title": {
+        "type": "Text",
+        "config": {
+          "label": "Detail Title",
+          "placeholder": ""
+        }
+      },
+      "detail_scope": {
+        "type": "Text",
+        "config": {
+          "label": "Detail Scope",
+          "placeholder": ""
+        }
+      },
+      "year": {
+        "type": "Number",
+        "config": {
+          "label": "Year of Project Implementation",
+          "placeholder": ""
+        }
+      },
       "thumbnail": {
         "type": "Image",
         "config": {
@@ -40,7 +61,11 @@
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
-          "choices": {}
+          "choices": {
+            "project_slice": {
+              "type": "SharedSlice"
+            }
+          }
         }
       }
     },
