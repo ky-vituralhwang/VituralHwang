@@ -1,0 +1,117 @@
+{
+  "id": "virtual_light_comp",
+  "type": "SharedSlice",
+  "name": "VirtualLightComp",
+  "description": "VirtualLightComp",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink,image,list-item,o-list-item,heading2"
+          }
+        },
+        "list_image": {
+          "type": "Group",
+          "config": {
+            "label": "List Image",
+            "repeat": true,
+            "fields": {
+              "image": {
+                "type": "Image",
+                "config": {
+                  "label": "Image",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              }
+            }
+          }
+        },
+        "list_internal_media": {
+          "type": "Group",
+          "config": {
+            "label": "List Internal Media",
+            "repeat": true,
+            "fields": {
+              "media": {
+                "type": "Link",
+                "config": {
+                  "label": "Media",
+                  "placeholder": "Description for detect",
+                  "select": "media",
+                  "allowText": true
+                }
+              }
+            }
+          }
+        },
+        "list_embed_media": {
+          "type": "Group",
+          "config": {
+            "label": "List Embed Media",
+            "repeat": true,
+            "fields": {
+              "media": {
+                "type": "Embed",
+                "config": {
+                  "label": "Media",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "gridLayout",
+      "name": "Grid Layout",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,strong,em,hyperlink,image,list-item,o-list-item,heading2"
+          }
+        },
+        "list_media": {
+          "type": "Group",
+          "config": {
+            "label": "List Media(Image, Video)",
+            "repeat": true,
+            "fields": {
+              "media": {
+                "type": "Link",
+                "config": {
+                  "label": "Media",
+                  "placeholder": "Description for detect",
+                  "select": "media",
+                  "allowText": true
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

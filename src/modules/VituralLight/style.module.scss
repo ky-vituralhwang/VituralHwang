@@ -1,0 +1,30 @@
+
+
+
+
+.vituralLight {
+    padding-block: 18rem 4rem;
+    contain: paint;
+    
+    @include md {
+        padding-block: 14rem 4rem;
+    }
+
+    &__label {
+        width: fit-content;
+
+        margin-bottom: 6rem;
+
+        @include md {
+            margin-inline: auto;
+
+            margin-bottom: 8rem;
+        }
+        
+        &__text {
+            -webkit-text-fill-color: transparent;
+            background: linear-gradient(90deg, #ffffff, #878787);
+            background-clip: text;
+        }
+    }
+}

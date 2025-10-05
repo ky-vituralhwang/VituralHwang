@@ -2,22 +2,7 @@
 
 .richtext {
     position: relative;
-
     contain: paint;
 
-    padding-block: 15rem;
-
-    &__paragraph {
-        margin-block: .8em;
-
-        text-wrap: balance;
-
-        @include md {
-            font-size: 2.2rem !important;
-        }
-
-        @include sm {
-            font-size: 2rem !important;
-        }
-    }
+    padding-block: 4rem;
 }

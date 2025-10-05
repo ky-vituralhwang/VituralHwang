@@ -30,7 +30,7 @@ const ArchiveModule = ({ data, columns }: { data: any[]; columns: number }) => {
 
     const isColsInterger = Number.isInteger(columns) && columns > 0;
 
-    console.log("isColsInterger:", isColsInterger, columns);
+    // console.log("isColsInterger:", isColsInterger, columns);
 
     const [isReady, setIsReady] = useState<Boolean>(false);
 
@@ -59,7 +59,7 @@ const ArchiveModule = ({ data, columns }: { data: any[]; columns: number }) => {
         // console.log('Video readyState check:', videoStates);
 
         // Check if all videos have readyState === 4 (HAVE_ENOUGH_DATA)
-        const allVideosReady = videoStates.length > 0 && videoStates.every((state: any) => state.readyState === 4);
+        const allVideosReady = videoStates.length > 0 && videoStates.every((state: any) => state.readyState >= 2);
         
         if (allVideosReady && !isReady) {
             console.log('All videos are ready! Setting isReady to true');
@@ -256,7 +256,7 @@ const VideoModule = forwardRef<{ item: HTMLDivElement | null; isVideo: boolean }
             
             // Append to container
             container.appendChild(videoClone);
-            setVideoElement(videoClone);
+            // setVideoElement(videoClone);
             
             // Load and play
             videoClone.load();
@@ -279,7 +279,7 @@ const VideoModule = forwardRef<{ item: HTMLDivElement | null; isVideo: boolean }
             if (container) {
                 container.innerHTML = '';
             }
-            setVideoElement(null);
+            // setVideoElement(null);
         };
     }, [data?.media?.url, getOrCreateVideo]);
 

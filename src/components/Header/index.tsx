@@ -8,8 +8,9 @@ import ImagePlaceholder from '@/base/Image';
 import Link from 'next/link';
 import { useGSAP } from '@gsap/react';
 import { useCallback, useRef, useState } from 'react';
-import { useIsomorphicLayoutEffect, useUpdateEffect } from 'react-haiku';
+import { useUpdateEffect } from 'react-haiku';
 import gsap from 'gsap';
+import { useMobileMatch } from '@/hooks/useMediaQuery';
 
 const Header = (
     {
@@ -22,14 +23,23 @@ const Header = (
     const navRef = useRef<HTMLElement>(null);
     const navItemsRef = useRef<Array<HTMLAnchorElement>>([]);
 
+    const isMobile = useMobileMatch();
+
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const { contextSafe } = useGSAP({ scope: container, revertOnUpdate: true });
 
-    const handleClickMenu = useCallback(() => {
-        setIsMenuOpen(!isMenuOpen);
-    }, [isMenuOpen]);
+    useUpdateEffect(() => {
+        if (!isMobile) {
+            setIsMenuOpen(false);
+            gsap.set(navRef.current, { clearProps: "all" });
+            gsap.set(navItemsRef.current, { clearProps: "all" });
+        }
+    }, [isMobile])
 
+    const handleClickMenu = useCallback(() => {
+        if (isMobile) setIsMenuOpen(!isMenuOpen);
+    }, [isMenuOpen, isMobile]);
 
     const handleOpenMenu = contextSafe(() => {
         console.log("open menu");

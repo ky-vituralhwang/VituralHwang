@@ -6,7 +6,7 @@
   "variations": [
     {
       "id": "default",
-      "name": "RichText",
+      "name": "Summary",
       "docURL": "...",
       "version": "initial",
       "description": "Default",
@@ -103,6 +103,26 @@
                 }
               }
             }
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "richtext",
+      "name": "Richtext",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "richtext": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Richtext",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
           }
         }
       },

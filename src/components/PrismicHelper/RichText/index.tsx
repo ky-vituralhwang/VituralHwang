@@ -34,6 +34,11 @@ const RichText = forwardRef<HTMLDivElement, RichTextProps>((props, ref: Ref<HTML
                 {children}<br />
             </TypoHeading>
         ),
+        heading3: ({ children }: { children: React.ReactNode }) => (
+            <TypoHeading size={3} tag="h3" className={style.heading3}>
+                {children}<br />
+            </TypoHeading>
+        ),
         heading5: ({ children }: { children: React.ReactNode }) => (
             <TypoHeading size={24} tag="h4" className={style.heading5}>
                 {children}<br />

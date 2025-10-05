@@ -1,14 +1,31 @@
 {
   "format": "page",
   "id": "virtuallight_page",
+  "label": "VirtualLight Page",
+  "repeatable": false,
+  "status": true,
   "json": {
     "Main": {
-      "slices": {
+      "label_big_text": {
+        "type": "Text",
         "config": {
-          "choices": {}
-        },
+          "label": "Label Big Text",
+          "placeholder": ""
+        }
+      },
+      "slices": {
+        "type": "Slices",
         "fieldset": "Slice Zone",
-        "type": "Slices"
+        "config": {
+          "choices": {
+            "virtual_light_comp": {
+              "type": "SharedSlice"
+            },
+            "text_block": {
+              "type": "SharedSlice"
+            }
+          }
+        }
       }
     },
     "SEO & Metadata": {
@@ -38,8 +55,5 @@
         "type": "Image"
       }
     }
-  },
-  "label": "VirtualLight Page",
-  "repeatable": false,
-  "status": true
+  }
 }

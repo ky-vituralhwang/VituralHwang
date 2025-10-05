@@ -10,4 +10,5 @@ export const components = {
   project_listing: dynamic(() => import("./ProjectListing")),
   project_slice: dynamic(() => import("./ProjectSlice")),
   text_block: dynamic(() => import("./TextBlock")),
+  virtual_light_comp: dynamic(() => import("./VirtualLightComp")),
 };
