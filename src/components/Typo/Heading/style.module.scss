@@ -4,7 +4,7 @@
         
         &_1 {
             font-size: 6rem;
-            line-height: 1;
+            line-height: 1.1;
     
             font-weight: 400;
     
@@ -19,7 +19,7 @@
     
         &_2 {
             font-size: 3.6rem;
-            line-height: 1;
+            line-height: 1.1;
 
             @include md {
                 font-size: 2.8rem;
@@ -28,7 +28,7 @@
     
         &_3 {
             font-size: 3.2rem;
-            line-height: 1;
+            line-height: 1.1;
 
             @include md {
                 font-size: 2.6rem;
@@ -37,7 +37,7 @@
     
         &_4 {
             font-size: 2.8rem;
-            line-height: 1;
+            line-height: 1.1;
         }
     
         &_5 {
