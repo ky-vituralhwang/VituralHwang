@@ -2,62 +2,171 @@
 
 import TypoHeading from '@/components/Typo/Heading';
 import style from './style.module.scss'
+import cn from 'clsx';
+import TypoDisplay from '@/components/Typo/Display';
+import { isEmpty } from 'lodash';
+import Link from 'next/link';
+import TypoBody from '@/components/Typo/Body';
+import RichText from '@/components/PrismicHelper/RichText';
+import ImagePlaceholder from '@/base/Image';
 
-const WorkdetailModule = ({ children, data }: { children: React.ReactNode, data: any }) => {
-    const { detail_title, detail_scope, year } = data.data || {};
+const WorkdetailModule = ({ data }: {data: any }) => {
+    const { title, subtitle, live_url, role, responsibilities, deliverables, challenge, work_detail_image } = data.data || {};
 
     return (
         <>
             <section className={style.workDetail}>
-                <div className="container">
-                    <TypoHeading
-                        size={2}
+                <div className={cn(style.workDetail__container, "container")}>
+                    <TypoDisplay
+                        size={78}
                         tag="h1"
                         className={style.workDetail__title}
                     >
-                        {detail_title}
-                    </TypoHeading>
+                        {title}
+                    </TypoDisplay>
                     <TypoHeading
-                        size={4}
                         tag="div"
-                        className={style.workDetail__scope}
+                        className={style.workDetail__subtitle}
                     >
-                        {detail_scope}
+                        {subtitle}
                     </TypoHeading>
-                    <TypoHeading
-                        size={5}
-                        tag="div"
-                        className={style.workDetail__year}
+                    {!isEmpty(live_url.url) && (
+                        <Link
+                            href={live_url.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={cn(style.workDetail__liveLink, 'txt-underline')}
+                        >
+                            <TypoHeading
+                                size={4}
+                                tag="span"
+                            >
+                                {live_url?.text}
+                            </TypoHeading>
+                        </Link>
+                    )}
+                    <div
+                        className={cn(style.workDetail__list, 'grid')}
                     >
-                        {year}
-                    </TypoHeading>
-                    {/* <div className={style.workDetail__image}>
-                        {!isEmpty(thumbnail.url) && (
-                            <div className={style.workDetail__thumbnail}>
-                                <ImagePlaceholder
-                                    src={thumbnail.url}
-                                    alt={thumbnail.alt}
-                                    dimensions={thumbnail.dimensions}
-                                    className={style.workDetail__img}
+                        {!isEmpty(role) && (
+                            <ContentWrapper
+                                label="Role"
+                                className={style.role}
+                            >
+                                <RichText
+                                    content={role}
+                                    overwrite={{
+                                        paragraph: ({ children }: { children: React.ReactNode }) => (
+                                            <TypoBody
+                                                size={20}
+                                                tag="p"
+                                                className={style.workDetail__list__text}
+                                            >
+                                                {children}<br />
+                                            </TypoBody>
+                                        ),
+                                    }}
                                 />
-                            </div>
+                            </ContentWrapper>
                         )}
-                        {!isEmpty(feature_media.url) && (
-                            <div className={style.workDetail__thumbnail}>
-                                <video
-                                    playsInline loop autoPlay muted
-                                    className={style.workDetail__video}
-                                    ref={videoRef}
-                                >
-                                    <source src={feature_media.url} type="video/mp4" />
-                                </video>
-                            </div>
+                        {!isEmpty(challenge) && (
+                            <ContentWrapper
+                                label="Challenge"
+                                className={style.challenge}
+                            >
+                                <RichText
+                                    content={challenge}
+                                    overwrite={{
+                                        paragraph: ({ children }: { children: React.ReactNode }) => (
+                                            <TypoBody
+                                                size={20}
+                                                tag="p"
+                                                className={style.workDetail__list__text}
+                                            >
+                                                {children}<br />
+                                            </TypoBody>
+                                        ),
+                                    }}
+                                />
+                            </ContentWrapper>
                         )}
-                        </div> */}
-                    {children}
+                        {!isEmpty(responsibilities) && (
+                            <ContentWrapper
+                                label="Responsibilities"
+                                className={style.responsibilities}
+                            >
+                                <RichText
+                                    content={responsibilities}
+                                    overwrite={{
+                                        paragraph: ({ children }: { children: React.ReactNode }) => (
+                                            <TypoBody
+                                                size={20}
+                                                tag="p"
+                                                className={style.workDetail__list__text}
+                                            >
+                                                {children}<br />
+                                            </TypoBody>
+                                        ),
+                                    }}
+                                />
+                            </ContentWrapper>
+                        )}
+                        {!isEmpty(deliverables) && (
+                            <ContentWrapper
+                                label="Deliverables"
+                                className={style.deliverables}
+                            >
+                                <RichText
+                                    content={deliverables}
+                                    overwrite={{
+                                        paragraph: ({ children }: { children: React.ReactNode }) => (
+                                            <TypoBody
+                                                size={20}
+                                                tag="p"
+                                                className={style.workDetail__list__text}
+                                            >
+                                                {children}<br />
+                                            </TypoBody>
+                                        ),
+                                    }}
+                                />
+                            </ContentWrapper>
+                        )}
+                    </div>
+                    <ImagePlaceholder
+                        src={work_detail_image?.url}
+                        alt={work_detail_image?.alt}
+                        dimensions={work_detail_image?.dimensions}
+                        className={style.workDetail__image}
+                    />
                 </div>
             </section>
         </>
+    )
+}
+
+const ContentWrapper = ({
+    children,
+    label,
+    className
+}: {
+    children: React.ReactNode,
+    label: string,
+    className?: string
+}) => {
+    return (
+        <div className={cn(style.contentWrapper, className)}>
+            <TypoBody
+                tag="div"
+                size={20}
+                className={style.contentWrapper__label}
+            >
+                {label}
+            </TypoBody>
+            <div className={style.contentWrapper__content}>
+                {children}
+            </div>
+        </div>
     )
 }
 

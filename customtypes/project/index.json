@@ -19,31 +19,64 @@
           "placeholder": ""
         }
       },
-      "detail_title": {
+      "subtitle": {
         "type": "Text",
         "config": {
-          "label": "Detail Title",
+          "label": "Subtitle",
           "placeholder": ""
         }
       },
-      "detail_scope": {
-        "type": "Text",
+      "role": {
+        "type": "StructuredText",
         "config": {
-          "label": "Detail Scope",
-          "placeholder": ""
+          "label": "Role",
+          "placeholder": "",
+          "allowTargetBlank": false,
+          "multi": "paragraph"
         }
       },
-      "year": {
-        "type": "Number",
+      "challenge": {
+        "type": "StructuredText",
         "config": {
-          "label": "Year of Project Implementation",
-          "placeholder": ""
+          "label": "Challenge",
+          "placeholder": "",
+          "allowTargetBlank": false,
+          "multi": "paragraph"
+        }
+      },
+      "responsibilities": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Responsibilities",
+          "placeholder": "",
+          "allowTargetBlank": false,
+          "multi": "paragraph"
+        }
+      },
+      "deliverables": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Deliverables",
+          "placeholder": "",
+          "allowTargetBlank": false,
+          "multi": "paragraph"
+        }
+      },
+      "live_url": {
+        "type": "Link",
+        "config": {
+          "label": "Live Link URL",
+          "placeholder": "",
+          "select": null,
+          "allowTargetBlank": false,
+          "allowText": true,
+          "repeat": false
         }
       },
       "thumbnail": {
         "type": "Image",
         "config": {
-          "label": "Thumbnail",
+          "label": "Home Thumbnail",
           "constraint": {},
           "thumbnails": []
         }
@@ -57,11 +90,32 @@
           "allowText": false
         }
       },
+      "work_detail_image": {
+        "type": "Image",
+        "config": {
+          "label": "Work Detail Image",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "label_of_detail_slices": {
+        "type": "Text",
+        "config": {
+          "label": "Label of Detail Slices",
+          "placeholder": ""
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "project_detail_slices": {
+              "type": "SharedSlice"
+            },
+            "project_image": {
+              "type": "SharedSlice"
+            },
             "project_slice": {
               "type": "SharedSlice"
             }

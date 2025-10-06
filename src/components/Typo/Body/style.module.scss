@@ -30,6 +30,10 @@
             line-height: 1.5;
 
             font-weight: 200;
+
+            @include md {
+                font-size: max(2rem, 18px);
+            }
         }
     }
 }

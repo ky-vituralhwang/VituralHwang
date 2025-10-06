@@ -5,7 +5,7 @@
 
     width: 100%;
 
-    padding-block: max(1rem, 10px);
+    padding-block: 4px;
 
     background-color: #000000c4;
 
@@ -26,7 +26,6 @@
 
         }
     }
-
 
     &__nav {
         grid-column: 8/-1;
