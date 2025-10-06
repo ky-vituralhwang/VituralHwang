@@ -102,5 +102,10 @@
         &__icon {
             @include size(3rem);
         }
+
+        &.disabled {
+            opacity: 0.3;
+            pointer-events: none;
+        }
     }
 }

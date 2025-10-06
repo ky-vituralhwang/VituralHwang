@@ -1,14 +1,16 @@
+
 'use client';
 
 import { isEmpty } from 'lodash';
 import style from './style.module.scss'
 import ProjectItem from './Item';
-import { useIsomorphicLayoutEffect } from 'react-haiku';
-import { useRef } from 'react';
+import { useMemo, useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { useDesktopMatch } from '@/hooks/useMediaQuery';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useLenis } from 'lenis/react';
+import { useUpdateEffect } from 'react-haiku';
 
 const ProjectListing = ({ slice }: any) => {
     const { feature_projects } = slice?.primary || {};
@@ -17,10 +19,25 @@ const ProjectListing = ({ slice }: any) => {
     const itemRefs = useRef<Array<any>>([])
     
     const isDesktop = useDesktopMatch();
+
     const { contextSafe } = useGSAP({
         scope: container,
         dependencies: [isDesktop]
     });
+
+    const lenis = useLenis();
+
+    useUpdateEffect(() => {
+        const url = new URL(window.location.href);
+        const hash = url.hash;
+
+        if (hash === '#projects') {
+            if (container.current) {
+                lenis?.scrollTo(container.current, { offset: -100 });
+            }
+        }
+
+    }, [lenis])
 
     const handleMouseHover = contextSafe((e: React.MouseEvent<HTMLAnchorElement>) => {
         if (!isDesktop) return;
@@ -101,26 +118,29 @@ const ProjectListing = ({ slice }: any) => {
         dependencies: [isDesktop]
     })
 
-
+    const ProjectListingMemo = useMemo(() => {
+        return !isEmpty(feature_projects) && (
+            feature_projects.map((project: any, idx: number) => (
+                <ProjectItem
+                    key={idx}
+                    data={project}
+                    onMouseEnter={handleMouseHover}
+                    onMouseLeave={handleMouseLeave}
+                    ref={el => { itemRefs.current[idx] = el }}
+                />
+            ))
+        );
+    }, [feature_projects, handleMouseHover, handleMouseLeave]);
 
     return (
         <section
             className={style.projectList}
             data-slice-type={slice.slice_type}
             data-slice-variation={slice.variation}
+            id="projects"
             ref={container}
         >
-            {!isEmpty(feature_projects) && (
-                feature_projects.map((project: any, idx: number) => (
-                    <ProjectItem
-                        key={idx}
-                        data={project}
-                        onMouseEnter={handleMouseHover}
-                        onMouseLeave={handleMouseLeave}
-                        ref={el => { itemRefs.current[idx] = el }}
-                    />
-                ))
-            )}
+            {ProjectListingMemo}
         </section>
     )
 

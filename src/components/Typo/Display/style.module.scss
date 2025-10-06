@@ -12,5 +12,31 @@
                 font-size: 3.6rem;
             }
         }
+
+        &_90 {
+            font-size: 9rem;
+            line-height: 1;
+
+            font-weight: 700;
+
+            @include md {
+                font-size: 5rem;
+            }
+        }
+
+        &_78 {
+            font-size: 7.8rem;
+            line-height: 1;
+
+            font-weight: 700;
+
+            @include md {
+                font-size: 6rem;
+            }
+
+            @include sm {
+                font-size: 4rem;
+            }
+        }
     }
 }

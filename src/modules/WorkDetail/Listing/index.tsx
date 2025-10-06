@@ -2,21 +2,19 @@
 
 import style from './style.module.scss'
 import cn from 'clsx';
-import { forwardRef, useImperativeHandle, useRef, useEffect, useState, useCallback } from 'react';
-import { useVideoCache } from '@/hooks/useVideoCache';
+import { forwardRef, useImperativeHandle, useRef, useState, useCallback } from 'react';
 import ImagePlaceholder from '@/base/Image';
-import { useIsomorphicLayoutEffect, useUpdateEffect } from 'react-haiku';
+import { useUpdateEffect } from 'react-haiku';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
+import useVideoRenderer from '@/components/Video';
 
 const WorkdetailListingModule = ({ data } :any) => {
-    const { slices } = data.data || {};
-
     const itemRefs = useRef<Array<any>>([]);
 
     return (
         <div className={style.listing}>
-            {slices.map((slice: any, index: number) => {
+            {data.map((slice: any, index: number) => {
                 const { variation } = slice;
 
                 switch(variation) {
@@ -50,60 +48,23 @@ const VideoModule = forwardRef(( props: any, ref) => {
     const { data } = props;
     const { video } = data.primary || {};
 
-    const videoRef = useRef<HTMLVideoElement>(null);
-    const { getOrCreateVideo, preloadVideo } = useVideoCache();
+    const { videoRef} = useVideoRenderer({
+        url: video.url,
+        type: 'video/mp4',
+        playsInline: true,
+        loop: true,
+        autoPlay: true,
+        muted: true,
+    })
 
     useImperativeHandle(ref, () => ({
         video: videoRef.current,
         isVideo: true,
     }));
 
-    // Cache and setup video when component mounts or video.url changes
-    useEffect(() => {
-        if (video?.url && videoRef.current) {
-            const cachedVideo = getOrCreateVideo(video.url, {
-                playsInline: true,
-                loop: true,
-                autoplay: true,
-                muted: true
-            });
-            
-            // Replace the video element's source with the cached version
-            if (cachedVideo && cachedVideo !== videoRef.current) {
-                const parentElement = videoRef.current.parentElement;
-                if (parentElement) {
-                    // Copy classes and other attributes
-                    cachedVideo.className = videoRef.current.className;
-                    
-                    // Replace the video element
-                    parentElement.replaceChild(cachedVideo, videoRef.current);
-                    videoRef.current = cachedVideo;
-                }
-            }
-        }
-    }, [video?.url, getOrCreateVideo]);
-
-    // Preload video on mount for better performance
-    useEffect(() => {
-        if (video?.url) {
-            preloadVideo(video.url, {
-                playsInline: true,
-                loop: true,
-                autoplay: true,
-                muted: true
-            });
-        }
-    }, [video?.url, preloadVideo]);
-
     return (
         <div className={style.listing__item}>
-            <video
-                ref={videoRef}
-                playsInline loop autoPlay muted
-                className={style.video}
-            >
-                <source src={video.url} type="video/mp4" />
-            </video>
+            <video ref={videoRef} className={style.video} />
         </div>
     )
 })
@@ -227,11 +188,17 @@ const ListImageModule = forwardRef(( props: any, ref) => {
 
     return (
         <div className={style.listing__item} ref={containerRef}>
-            <button className={cn(style.listImg__arrow, style.left)} onClick={handleClickLeft}>
+            <button
+                className={cn(style.listImg__arrow, style.left, currentIndex === 0 && style.disabled)}
+                onClick={handleClickLeft}
+            >
                 <Arrow className={style.listImg__arrow__icon} rotate={true} />
             </button>
 
-            <button className={cn(style.listImg__arrow, style.right)} onClick={handleClickRight}>
+            <button
+                className={cn(style.listImg__arrow, style.right, currentIndex === list_images.length -1 && style.disabled)}
+                onClick={handleClickRight}
+            >
                 <Arrow className={style.listImg__arrow__icon} rotate={false} />
             </button>
 

@@ -25,6 +25,10 @@ const TypoDisplay = forwardRef<HTMLElement, TypoDisplayProps>(
             switch (size) {
                 case 48:
                     return 48;
+                case 90:
+                    return 90;
+                case 78:
+                    return 78;
                 default:
                     return 48;
             }

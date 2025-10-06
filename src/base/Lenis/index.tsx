@@ -30,6 +30,9 @@ const LenisProvider = ({ option, ...restProps }: LenisProviderProps) => {
         <ReactLenis
             ref={lenisRef}
             options={{
+                anchors: {
+                    offset: -100,
+                },
                 lerp: 0.11,
                 autoRaf: false,
                 // syncTouch: true,

@@ -10,7 +10,7 @@
     &__paragraph {
         margin-block: .8em;
 
-        text-wrap: balance;
+        // text-wrap: balance;
 
         @include md {
             font-size: 2.2rem !important;

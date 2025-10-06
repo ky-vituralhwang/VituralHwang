@@ -3,6 +3,7 @@ import MainLayout from "@/base/Layouts/Layout"
 import generateSEO from "@/base/SEO";
 import WorkdetailModule from "@/modules/WorkDetail";
 import WorkdetailListingModule from "@/modules/WorkDetail/Listing";
+import WorkDetailSliceWrapper from "@/modules/WorkDetail/SliceWrapper";
 import { createClient } from "@/prismicio";
 
 import { notFound } from "next/navigation";
@@ -25,9 +26,10 @@ const WorkDetailPage = async ({ params }: { params: Promise<{ uid: any }> }) => 
 
     return (
         <MainLayout>
-            <WorkdetailModule data={page}>
-                <WorkdetailListingModule data={page} /> 
-            </WorkdetailModule>
+            <WorkdetailModule data={page}/>
+            <WorkDetailSliceWrapper
+                data={page.data}
+            />
         </MainLayout>
     )
 }

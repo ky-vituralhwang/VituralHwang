@@ -3,76 +3,113 @@
     position: relative;
     contain: paint;
 
-    padding-top: 20rem;
+    padding-block: 20rem 4rem;
 
     @include md {
         padding-top: 14rem;
     }
 
-    &__title {
-        margin-bottom: 2.4rem;
-
-        font-weight: 400;
+    &__container {
+        @include sm {
+            display: flex;
+            flex-direction: column;
+        }
     }
 
-    &__scope {
+    &__title {
+        margin-bottom: 1rem;
+
+        font-weight: 500;
+    }
+
+    &__subtitle {
         opacity: .7;
 
         font-weight: 200;
-
-        margin-bottom: .4rem;
     }
 
-    &__year {
+    &__liveLink {
+        display: inline-block;
+        width: fit-content;
+        margin-top: 6rem;
+
+        @include md {
+            margin-top: 4rem;
+        }
+
+        @include sm {
+            margin-top: 3rem;
+        }
+    }
+
+    &__list {
+        margin-top: 6.5rem;
+
+        gap: var(--grid-gap);
+
+        @include md {
+            margin-top: 6rem;
+        };
+
+        @include sm {
+            order: 1;
+
+            margin-top: 4rem;
+        }
+
+        &__text {
+            font-weight: 500;
+        }
+    }
+
+    &__image {
+        margin-top: 10rem;
+
+        @include sm {
+            margin-top: 2rem;
+        }
+    }
+}
+
+.contentWrapper {
+    display: flex;
+    flex-direction: column;
+
+    row-gap: 1.5rem;
+
+    @include md {
+        grid-column: span 6 !important;
+
+        row-gap: .8rem;
+    }
+
+    @include sm {
+        grid-column: 1/-1 !important;
+
+        row-gap: .1rem;
+    }
+
+    &__label {
+        font-weight: 600;
+
         opacity: .5;
-
-        font-weight: 200;
     }
 
-    // &__image {
-    //     display: grid;
-    //     grid-template-columns: repeat(2, 1fr);
+    &__content {
+        width: 100%;
+    }
 
-    //     column-gap: var(--grid-gap);
 
-    //     min-height: 40rem;
-
-    //     margin-top: 10rem;
-
-    //     @include md {
-    //         grid-template-columns: 1fr;
-
-    //         row-gap: var(--grid-gap);
-
-    //         min-height: auto;
-    //     }
-
-    //     @include sm {
-    //         margin-top: 4rem;
-    //     }
-    // }
-
-    // &__thumbnail {
-    //     grid-column: span 1;
-
-    //     flex-shrink: 0;
-
-    //     overflow: hidden;
-
-    //     background-color: black
-    // }
-
-    // // &__img {
-    // //     @include size(100%);
-
-    // //     img {
-    // //         object-fit: contain !important;
-    // //     }
-    // // }
-
-    // &__video {
-    //     @include size(100%);
-
-    //     object-fit: contain;
-    // }
+    &.role {
+        grid-column: span 2;
+    }
+    &.challenge {
+        grid-column: span 3;
+    }
+    &.responsibilities {
+        grid-column: span 3;
+    }
+    &.deliverables {
+        grid-column: span 4;
+    }
 }

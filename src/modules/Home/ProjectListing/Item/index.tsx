@@ -5,8 +5,8 @@ import style from './style.module.scss'
 import cn from 'clsx';
 import ImagePlaceholder from '@/base/Image';
 import TypoHeading from '@/components/Typo/Heading';
-import { forwardRef, useImperativeHandle, useRef, useEffect } from 'react';
-import { useVideoCache } from '@/hooks/useVideoCache';
+import { forwardRef, useImperativeHandle, useRef } from 'react';
+import useVideoRenderer from '@/components/Video';
 
 interface ProjectItemRef {
     item: HTMLAnchorElement | null;
@@ -32,10 +32,16 @@ const ProjectItem = forwardRef<ProjectItemRef, ProjectItemProps> ((
 
     const itemRef = useRef<HTMLAnchorElement>(null);
     const imageRef = useRef<HTMLImageElement>(null);
-    const videoRef = useRef<HTMLVideoElement>(null);
     const titleRef = useRef<HTMLDivElement>(null);
-    
-    const { getOrCreateVideo, preloadVideo } = useVideoCache();
+
+    const { videoRef } = useVideoRenderer({
+        url: feature_media?.url,
+        type: 'video/mp4',
+        autoPlay: true,
+        playsInline: true,
+        muted: true,
+        loop: true
+    });
     
     useImperativeHandle(ref, () => ({
         item: itemRef.current,
@@ -43,43 +49,6 @@ const ProjectItem = forwardRef<ProjectItemRef, ProjectItemProps> ((
         video: videoRef.current,
         title: titleRef.current,
     }));
-
-    // Cache and setup video when component mounts or feature_media changes
-    useEffect(() => {
-        if (feature_media?.url && videoRef.current) {
-            const cachedVideo = getOrCreateVideo(feature_media.url, {
-                playsInline: true,
-                muted: true,
-                loop: true,
-                type: 'video/mp4'
-            });
-            
-            // Replace the video element's source with the cached version
-            if (cachedVideo && cachedVideo !== videoRef.current) {
-                const parentElement = videoRef.current.parentElement;
-                if (parentElement) {
-                    // Copy classes and other attributes
-                    cachedVideo.className = videoRef.current.className;
-                    
-                    // Replace the video element
-                    parentElement.replaceChild(cachedVideo, videoRef.current);
-                    videoRef.current = cachedVideo;
-                }
-            }
-        }
-    }, [feature_media?.url, getOrCreateVideo]);
-
-    // Preload video on mount for better performance
-    useEffect(() => {
-        if (feature_media?.url) {
-            preloadVideo(feature_media.url, {
-                playsInline: true,
-                muted: true,
-                loop: true,
-                type: 'video/mp4'
-            });
-        }
-    }, [feature_media?.url, preloadVideo]);
 
     return (
         <Link
@@ -98,18 +67,13 @@ const ProjectItem = forwardRef<ProjectItemRef, ProjectItemProps> ((
                     className={style.projectItem__img}
                     ref={imageRef}
                 />
-                <video
-                    playsInline muted loop
-                    className={style.projectItem__video}
-                    ref={videoRef}
-                >
-                    <source src={feature_media?.url} type="video/mp4" />
-                </video>
+                <video ref={videoRef} className={style.projectItem__video}/>
             </div>
 
             <div className={style.projectItem__content} >
                 <TypoHeading
                     tag="div"
+                    size={4}
                     className={style.projectItem__content__title}
                     ref={titleRef}
                 >

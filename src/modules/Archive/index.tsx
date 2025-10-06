@@ -1,14 +1,13 @@
 'use client';
 
-import { forwardRef, useRef, useEffect, useState, useImperativeHandle } from 'react';
+import { forwardRef, useRef, useState, useImperativeHandle, useMemo } from 'react';
 import style from './style.module.scss';
-import cn from 'clsx';
 import { useGSAP } from '@gsap/react';
-import { useVideoCache } from '@/hooks/useVideoCache';
 import ImagePlaceholder from '@/base/Image';
 import { useTempus } from 'tempus/react';
 import gsap from 'gsap';
 import { Observer } from 'gsap/Observer';
+import useVideoRenderer from '@/components/Video';
 
 // Helper function to convert readyState to readable text
 const getReadyStateText = (readyState: number): string => {
@@ -27,10 +26,6 @@ const ArchiveModule = ({ data, columns }: { data: any[]; columns: number }) => {
     const innerRef = useRef<HTMLDivElement>(null);
     const itemRefs = useRef<HTMLDivElement[]>([]);
     const colRefs = useRef<HTMLDivElement[]>([]);
-
-    const isColsInterger = Number.isInteger(columns) && columns > 0;
-
-    // console.log("isColsInterger:", isColsInterger, columns);
 
     const [isReady, setIsReady] = useState<Boolean>(false);
 
@@ -174,122 +169,70 @@ const ArchiveModule = ({ data, columns }: { data: any[]; columns: number }) => {
         dependencies: [isReady]
     })
 
+
+    const ItemRender = useMemo(() => {
+        return (
+            data.map((col: any, index: number) => (
+                <div
+                    key={index}
+                    className={style.archive__col}
+                    ref={el => { if (el) colRefs.current[index] = el; }}
+                >
+                    {col.map((item: any, idx: number) => {
+                        const { kind} = item?.media || {};
+                        const flatIndex = data.slice(0, index).reduce((sum: number, c: any) => sum + c.length, 0) + idx;
+
+                        switch (kind) {
+                            case 'file':
+                                return <VideoModule
+                                    key={idx}
+                                    data={item}
+                                    ref={el => { if (el?.item) itemRefs.current[flatIndex] = el.item; }}
+                                />;
+                            case 'image':
+                                return <ImageModule
+                                    key={idx}
+                                    data={item}
+                                    ref={el => { if (el?.item) itemRefs.current[flatIndex] = el.item; }}
+                                />;
+                            default:
+                                return null;
+                        }
+                    })}
+                </div>
+            ))
+        )
+    }, [data]);
+
     return (
         <section className={style.archive} ref={container} style={{ '--columns': columns } as React.CSSProperties}>
             <div className={style.archive__container} ref={innerRef}>
-                {data.map((col: any, index: number) => (
-                    <div
-                        key={index}
-                        className={style.archive__col}
-                        ref={el => { if (el) colRefs.current[index] = el; }}
-                    >
-                        {col.map((item: any, idx: number) => {
-                            const { kind} = item?.media || {};
-                            const flatIndex = data.slice(0, index).reduce((sum: number, c: any) => sum + c.length, 0) + idx;
-
-                            switch (kind) {
-                                case 'file':
-                                    return <VideoModule
-                                        key={idx}
-                                        data={item}
-                                        ref={el => { if (el?.item) itemRefs.current[flatIndex] = el.item; }}
-                                    />;
-                                case 'image':
-                                    return <ImageModule
-                                        key={idx}
-                                        data={item}
-                                        ref={el => { if (el?.item) itemRefs.current[flatIndex] = el.item; }}
-                                    />;
-                                default:
-                                    return null;
-                            }
-                        })}
-                    </div>
-                ))}
+                {ItemRender}
             </div>
         </section>
     )
 }
 
 const VideoModule = forwardRef<{ item: HTMLDivElement | null; isVideo: boolean }, any>((props, ref) => {
-    const { data } = props;
-    const { getOrCreateVideo } = useVideoCache();
-    const containerRef = useRef<HTMLDivElement>(null);
     const itemRef = useRef<HTMLDivElement>(null);
-    const [videoElement, setVideoElement] = useState<HTMLVideoElement | null>(null);
+
+    const { videoRef } = useVideoRenderer({
+        url: props?.data?.media?.url,
+        type: 'video/mp4',
+        autoPlay: true,
+        loop: true,
+        muted: true,
+        playsInline: true,
+    })
 
     useImperativeHandle(ref, () => ({
         item: itemRef.current,
         isVideo: true
     }));
 
-    useEffect(() => {
-        if (!data?.media?.url || !containerRef.current) return;
-
-        const container = containerRef.current;
-        
-        // Get cached video element
-        const cachedVideo = getOrCreateVideo(data.media.url, {
-            playsInline: true,
-            loop: true,
-            autoplay: true,
-            muted: true,
-            type: 'video/mp4'
-        });
-
-        if (cachedVideo) {
-            // Clear container
-            container.innerHTML = '';
-            
-            // Clone the cached video to avoid conflicts if it's used elsewhere
-            const videoClone = cachedVideo.cloneNode(true) as HTMLVideoElement;
-            
-            // Apply styles and properties
-            videoClone.className = style.video;
-            videoClone.playsInline = true;
-            videoClone.loop = true;
-            videoClone.muted = true;
-            videoClone.autoplay = true;
-            
-            // Set the source explicitly
-            videoClone.src = data.media.url;
-            
-            // Append to container
-            container.appendChild(videoClone);
-            // setVideoElement(videoClone);
-            
-            // Load and play
-            videoClone.load();
-            
-            const handleCanPlay = () => {
-                videoClone.play().catch(error => {
-                    console.log('Autoplay prevented:', error);
-                });
-            };
-            
-            if (videoClone.readyState >= 3) {
-                handleCanPlay();
-            } else {
-                videoClone.addEventListener('canplay', handleCanPlay, { once: true });
-            }
-        }
-
-        // Cleanup function
-        return () => {
-            if (container) {
-                container.innerHTML = '';
-            }
-            // setVideoElement(null);
-        };
-    }, [data?.media?.url, getOrCreateVideo]);
-
-    if (!data?.media?.url) {
-        return null;
-    }
-
     return (
         <div className={style.item} ref={itemRef}>
-            <div ref={containerRef} style={{ width: '100%', height: '100%' }} />
+            <video ref={videoRef} className={style.video}/>
         </div>
     )
 })

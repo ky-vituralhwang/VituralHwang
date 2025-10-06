@@ -77,6 +77,8 @@ const Header = (
     });
 
     useUpdateEffect(() => {
+        if (!isMobile) return
+
         if (isMenuOpen) {
             handleOpenMenu();
         } else {
@@ -89,7 +91,6 @@ const Header = (
             <div className={cn("container", "grid", style.header__container)}>
                 <Link href="/" className={style.header__logo}>
                     <ImagePlaceholder
-
                         src={data.logo.url}
                         alt={data.logo.alt}
                         className={style.header__logo__img}
@@ -101,7 +102,7 @@ const Header = (
                     {data.navigation.map((link: any, idx:number) => (
                         <Link
                             key={idx}
-                            href={link?.page?.url}
+                            href={idx === 0 ? `${link?.page?.url}#projects` : link?.page?.url}
                             className={cn(style.header__nav__link, "txt-underline", "txt-18", "txt-medium")}
                             ref={el => { navItemsRef.current[idx] = el! }}
                         >
