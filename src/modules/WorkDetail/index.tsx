@@ -133,12 +133,14 @@ const WorkdetailModule = ({ data }: {data: any }) => {
                             </ContentWrapper>
                         )}
                     </div>
-                    <ImagePlaceholder
-                        src={work_detail_image?.url}
-                        alt={work_detail_image?.alt}
-                        dimensions={work_detail_image?.dimensions}
-                        className={style.workDetail__image}
-                    />
+                    {!isEmpty(work_detail_image?.url) && (
+                        <ImagePlaceholder
+                            src={work_detail_image?.url}
+                            alt={work_detail_image?.alt}
+                            dimensions={work_detail_image?.dimensions}
+                            className={style.workDetail__image}
+                        />
+                    )}
                 </div>
             </section>
         </>
