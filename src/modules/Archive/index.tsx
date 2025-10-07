@@ -153,19 +153,27 @@ const ArchiveModule = ({ data, columns }: { data: any[]; columns: number }) => {
                     xTo[idx](increment.x);
                 })
             },
-            onChangeY: ({ deltaY, velocityY, event }) => {
+            onChangeY: ({ deltaY, deltaX, velocityY, event }) => {
                 if (deltaY === 0) return;
     
                 const isWheel = event.type === "wheel";
+
+                if (isWheel) {
+                    increment.x += isWheel ? -deltaY : deltaY;
+                    colRefs.current.forEach((item:any, idx:number) => {
+                        xTo[idx](increment.x);
+                    })
+                }
     
                 increment.y += isWheel ? -deltaY : deltaY;
-
+                
                 itemRefs.current.forEach((item:any, idx:number) => {
                     const parentCol = item.parentElement;
                     const parentIndex = parentCol ? colRefs.current.indexOf(parentCol) : 0;
-    
+                    
                     yTo[idx](increment.y * (1 + .1 * parentIndex));
                 })
+                
             },
         })
     }, {

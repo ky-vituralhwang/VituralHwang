@@ -59,7 +59,7 @@ const WorkdetailModule = ({ data }: {data: any }) => {
                     >
                         {!isEmpty(role) && (
                             <ContentWrapper
-                                label="Role"
+                                label="ROLE"
                                 className={style.role}
                             >
                                 <RichText
@@ -80,7 +80,7 @@ const WorkdetailModule = ({ data }: {data: any }) => {
                         )}
                         {!isEmpty(challenge) && (
                             <ContentWrapper
-                                label="Challenge"
+                                label="CHALLENGE"
                                 className={style.challenge}
                             >
                                 <RichText
@@ -101,7 +101,7 @@ const WorkdetailModule = ({ data }: {data: any }) => {
                         )}
                         {!isEmpty(responsibilities) && (
                             <ContentWrapper
-                                label="Responsibilities"
+                                label="SCOPE OF WORK"
                                 className={style.responsibilities}
                             >
                                 <RichText

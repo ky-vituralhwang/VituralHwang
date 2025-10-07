@@ -42,7 +42,7 @@
     }
 
     &__title {
-        grid-column: 2/6;
+        grid-column: 2/4;
 
         font-size: max(2.2rem, 20px) !important;
         font-weight: 600 !important;
@@ -61,7 +61,7 @@
     }
 
     &__description {
-        grid-column: 7/-1;
+        grid-column: 5/-1;
 
         @include md {
             grid-column: 6/-1;
