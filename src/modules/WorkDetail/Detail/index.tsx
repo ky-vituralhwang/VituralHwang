@@ -42,19 +42,19 @@ const ListContent = (data: any) => {
                 cn(style.detailDetail__item, "container", "grid")
             }
         >
-            <TypoHeading
-                size={2}
+            <TypoBody
+                size={22}
+                tag="div"
                 className={style.detailDetail__title}
             >
                 {title}
-            </TypoHeading>
+            </TypoBody>
             <RichText
                 content={description}
                 className={style.detailDetail__description}
                 overwrite={{
                     paragraph: ({ children }: { children: React.ReactNode }) => (
                         <TypoBody
-                            size={26}
                             tag="p"
                             className={style.paragraph}
                         >

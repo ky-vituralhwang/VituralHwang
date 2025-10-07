@@ -17,15 +17,16 @@ const WorkdetailModule = ({ data }: {data: any }) => {
         <>
             <section className={style.workDetail}>
                 <div className={cn(style.workDetail__container, "container")}>
-                    <TypoDisplay
-                        size={78}
+                    <TypoHeading
+                        size={60}
                         tag="h1"
                         className={style.workDetail__title}
                     >
                         {title}
-                    </TypoDisplay>
+                    </TypoHeading>
                     <TypoHeading
                         tag="div"
+                        size={32}
                         className={style.workDetail__subtitle}
                     >
                         {subtitle}
@@ -66,7 +67,7 @@ const WorkdetailModule = ({ data }: {data: any }) => {
                                     overwrite={{
                                         paragraph: ({ children }: { children: React.ReactNode }) => (
                                             <TypoBody
-                                                size={20}
+                                                size={16}
                                                 tag="p"
                                                 className={style.workDetail__list__text}
                                             >
@@ -87,7 +88,7 @@ const WorkdetailModule = ({ data }: {data: any }) => {
                                     overwrite={{
                                         paragraph: ({ children }: { children: React.ReactNode }) => (
                                             <TypoBody
-                                                size={20}
+                                                size={16}
                                                 tag="p"
                                                 className={style.workDetail__list__text}
                                             >
@@ -108,7 +109,7 @@ const WorkdetailModule = ({ data }: {data: any }) => {
                                     overwrite={{
                                         paragraph: ({ children }: { children: React.ReactNode }) => (
                                             <TypoBody
-                                                size={20}
+                                                size={16}
                                                 tag="p"
                                                 className={style.workDetail__list__text}
                                             >
@@ -148,7 +149,7 @@ const ContentWrapper = ({
         <div className={cn(style.contentWrapper, className)}>
             <TypoBody
                 tag="div"
-                size={20}
+                size={16}
                 className={style.contentWrapper__label}
             >
                 {label}

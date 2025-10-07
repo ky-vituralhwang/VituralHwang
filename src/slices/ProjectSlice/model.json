@@ -113,6 +113,59 @@
         }
       },
       "items": {}
+    },
+    {
+      "id": "embedVideo",
+      "name": "Embed Video",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "embed": {
+          "type": "Embed",
+          "config": {
+            "label": "Embed",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "gridLayout",
+      "name": "GridLayout",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "columns": {
+          "type": "Number",
+          "config": {
+            "label": "Number of columns",
+            "placeholder": "2"
+          }
+        },
+        "list_image": {
+          "type": "Group",
+          "config": {
+            "label": "List Image",
+            "repeat": true,
+            "fields": {
+              "image": {
+                "type": "Image",
+                "config": {
+                  "label": "Image",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
     }
   ]
 }

@@ -1,0 +1,23 @@
+
+
+.detailEmbed {
+    position: relative;
+    contain: paint;
+
+    &__item {
+        width: 100%;
+
+        iframe, video, embed, object {
+            @include size(100% !important);
+        }
+
+        > * {
+            width: 100% !important;
+            
+            iframe, video, embed, object {
+                width: 100% !important;
+                height: auto;
+            }
+        }
+    }
+}

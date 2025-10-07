@@ -1049,105 +1049,6 @@ export type ImageBlockSlice = prismic.SharedSlice<
 >;
 
 /**
- * Item in *ProjectDetailSlices → Default → Primary → List Content*
- */
-export interface ProjectDetailSlicesSliceDefaultPrimaryListContentItem {
-  /**
-   * Title field in *ProjectDetailSlices → Default → Primary → List Content*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: project_detail_slices.default.primary.list_content[].title
-   * - **Documentation**: https://prismic.io/docs/fields/text
-   */
-  title: prismic.KeyTextField;
-
-  /**
-   * Description field in *ProjectDetailSlices → Default → Primary → List Content*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: project_detail_slices.default.primary.list_content[].description
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  description: prismic.RichTextField;
-}
-
-/**
- * Item in *ProjectDetailSlices → Default → Primary → List Image*
- */
-export interface ProjectDetailSlicesSliceDefaultPrimaryListImageItem {
-  /**
-   * Image field in *ProjectDetailSlices → Default → Primary → List Image*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: project_detail_slices.default.primary.list_image[].image
-   * - **Documentation**: https://prismic.io/docs/fields/image
-   */
-  image: prismic.ImageField<never>;
-}
-
-/**
- * Primary content in *ProjectDetailSlices → Default → Primary*
- */
-export interface ProjectDetailSlicesSliceDefaultPrimary {
-  /**
-   * List Content field in *ProjectDetailSlices → Default → Primary*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: project_detail_slices.default.primary.list_content[]
-   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
-   */
-  list_content: prismic.GroupField<
-    Simplify<ProjectDetailSlicesSliceDefaultPrimaryListContentItem>
-  >;
-
-  /**
-   * List Image field in *ProjectDetailSlices → Default → Primary*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: project_detail_slices.default.primary.list_image[]
-   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
-   */
-  list_image: prismic.GroupField<
-    Simplify<ProjectDetailSlicesSliceDefaultPrimaryListImageItem>
-  >;
-}
-
-/**
- * Default variation for ProjectDetailSlices Slice
- *
- * - **API ID**: `default`
- * - **Description**: Default
- * - **Documentation**: https://prismic.io/docs/slices
- */
-export type ProjectDetailSlicesSliceDefault = prismic.SharedSliceVariation<
-  "default",
-  Simplify<ProjectDetailSlicesSliceDefaultPrimary>,
-  never
->;
-
-/**
- * Slice variation for *ProjectDetailSlices*
- */
-type ProjectDetailSlicesSliceVariation = ProjectDetailSlicesSliceDefault;
-
-/**
- * ProjectDetailSlices Shared Slice
- *
- * - **API ID**: `project_detail_slices`
- * - **Description**: ProjectDetailSlices
- * - **Documentation**: https://prismic.io/docs/slices
- */
-export type ProjectDetailSlicesSlice = prismic.SharedSlice<
-  "project_detail_slices",
-  ProjectDetailSlicesSliceVariation
->;
-
-/**
  * Item in *ProjectListing → Default → Primary → Feature Projects*
  */
 export interface ProjectListingSliceDefaultPrimaryFeatureProjectsItem {
@@ -1249,6 +1150,21 @@ export interface ProjectSliceSliceDetailPrimaryListContentItem {
    * - **Documentation**: https://prismic.io/docs/fields/rich-text
    */
   description: prismic.RichTextField;
+}
+
+/**
+ * Item in *ProjectSlice → GridLayout → Primary → List Image*
+ */
+export interface ProjectSliceSliceGridLayoutPrimaryListImageItem {
+  /**
+   * Image field in *ProjectSlice → GridLayout → Primary → List Image*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_slice.gridLayout.primary.list_image[].image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  image: prismic.ImageField<never>;
 }
 
 /**
@@ -1378,13 +1294,83 @@ export type ProjectSliceSliceDetail = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *ProjectSlice → Embed Video → Primary*
+ */
+export interface ProjectSliceSliceEmbedVideoPrimary {
+  /**
+   * Embed field in *ProjectSlice → Embed Video → Primary*
+   *
+   * - **Field Type**: Embed
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_slice.embedVideo.primary.embed
+   * - **Documentation**: https://prismic.io/docs/fields/embed
+   */
+  embed: prismic.EmbedField;
+}
+
+/**
+ * Embed Video variation for ProjectSlice Slice
+ *
+ * - **API ID**: `embedVideo`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ProjectSliceSliceEmbedVideo = prismic.SharedSliceVariation<
+  "embedVideo",
+  Simplify<ProjectSliceSliceEmbedVideoPrimary>,
+  never
+>;
+
+/**
+ * Primary content in *ProjectSlice → GridLayout → Primary*
+ */
+export interface ProjectSliceSliceGridLayoutPrimary {
+  /**
+   * Number of columns field in *ProjectSlice → GridLayout → Primary*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: 2
+   * - **API ID Path**: project_slice.gridLayout.primary.columns
+   * - **Documentation**: https://prismic.io/docs/fields/number
+   */
+  columns: prismic.NumberField;
+
+  /**
+   * List Image field in *ProjectSlice → GridLayout → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_slice.gridLayout.primary.list_image[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  list_image: prismic.GroupField<
+    Simplify<ProjectSliceSliceGridLayoutPrimaryListImageItem>
+  >;
+}
+
+/**
+ * GridLayout variation for ProjectSlice Slice
+ *
+ * - **API ID**: `gridLayout`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ProjectSliceSliceGridLayout = prismic.SharedSliceVariation<
+  "gridLayout",
+  Simplify<ProjectSliceSliceGridLayoutPrimary>,
+  never
+>;
+
+/**
  * Slice variation for *ProjectSlice*
  */
 type ProjectSliceSliceVariation =
   | ProjectSliceSliceDefault
   | ProjectSliceSliceSingleImage
   | ProjectSliceSliceListImage
-  | ProjectSliceSliceDetail;
+  | ProjectSliceSliceDetail
+  | ProjectSliceSliceEmbedVideo
+  | ProjectSliceSliceGridLayout;
 
 /**
  * ProjectSlice Shared Slice
@@ -1845,12 +1831,6 @@ declare module "@prismicio/client" {
       ImageBlockSliceDefaultPrimary,
       ImageBlockSliceVariation,
       ImageBlockSliceDefault,
-      ProjectDetailSlicesSlice,
-      ProjectDetailSlicesSliceDefaultPrimaryListContentItem,
-      ProjectDetailSlicesSliceDefaultPrimaryListImageItem,
-      ProjectDetailSlicesSliceDefaultPrimary,
-      ProjectDetailSlicesSliceVariation,
-      ProjectDetailSlicesSliceDefault,
       ProjectListingSlice,
       ProjectListingSliceDefaultPrimaryFeatureProjectsItem,
       ProjectListingSliceDefaultPrimary,
@@ -1863,11 +1843,16 @@ declare module "@prismicio/client" {
       ProjectSliceSliceListImagePrimary,
       ProjectSliceSliceDetailPrimaryListContentItem,
       ProjectSliceSliceDetailPrimary,
+      ProjectSliceSliceEmbedVideoPrimary,
+      ProjectSliceSliceGridLayoutPrimaryListImageItem,
+      ProjectSliceSliceGridLayoutPrimary,
       ProjectSliceSliceVariation,
       ProjectSliceSliceDefault,
       ProjectSliceSliceSingleImage,
       ProjectSliceSliceListImage,
       ProjectSliceSliceDetail,
+      ProjectSliceSliceEmbedVideo,
+      ProjectSliceSliceGridLayout,
       TextBlockSlice,
       TextBlockSliceDefaultPrimary,
       TextBlockSliceResumePrimaryListSkillItem,

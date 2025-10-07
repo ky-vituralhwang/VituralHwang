@@ -5,6 +5,8 @@ import WorkDetailSliceImageModule from "@/modules/WorkDetail/Image";
 import WorkDetailSliceVideoModule from "@/modules/WorkDetail/Video";
 import WorkDetailSliceSlideModule from "@/modules/WorkDetail/Slide";
 import WorkDetailSlideDetailModule from "@/modules/WorkDetail/Detail";
+import WorkDetailSliceEmbedModule from "@/modules/WorkDetail/Embed";
+import WorkDetailSliceGridModule from "@/modules/WorkDetail/GridLayout";
 
 /**
  * Props for `ProjectSlice`.
@@ -26,6 +28,10 @@ const ProjectSlice: FC<ProjectSliceProps> = ({ slice }) => {
       return <WorkDetailSliceSlideModule slice={slice} />;
     case "detail":
       return <WorkDetailSlideDetailModule slice={slice} />;
+    case "embedVideo":
+      return <WorkDetailSliceEmbedModule slice={slice} />;
+    case "gridLayout":
+      return <WorkDetailSliceGridModule slice={slice} />;
     default:
       console.log(variation)
   }

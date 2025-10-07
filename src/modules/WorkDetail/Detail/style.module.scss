@@ -16,9 +16,11 @@
     }
 
     &__bigTitle {
-        opacity: .8;
+        opacity: .5;
 
         margin-bottom: 3.6rem;
+
+        font-size: 3rem !important;
     }
 
     &__list {
@@ -41,7 +43,11 @@
 
     &__title {
         grid-column: 2/6;
-        opacity: .7;
+
+        font-size: max(2.2rem, 20px) !important;
+        font-weight: 600 !important;
+
+        opacity: .5;
 
         @include md {
             grid-column: 1/5;
@@ -67,6 +73,10 @@
             p {
                 font-size: max(1.6rem, 14px);
             }
+        }
+
+        b {
+            opacity: .5;
         }
     }
 }
