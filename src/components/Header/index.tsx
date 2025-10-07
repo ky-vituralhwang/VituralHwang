@@ -42,7 +42,6 @@ const Header = (
     }, [isMenuOpen, isMobile]);
 
     const handleOpenMenu = contextSafe(() => {
-        console.log("open menu");
         gsap.to(navRef.current, {
             height: "auto",
             duration: 0.7,
@@ -58,8 +57,6 @@ const Header = (
     });
 
     const handleCloseMenu = contextSafe(() => {
-        console.log("close menu");
-
         gsap.to(navRef.current, {
             height: "0px",
             duration: 0.7,

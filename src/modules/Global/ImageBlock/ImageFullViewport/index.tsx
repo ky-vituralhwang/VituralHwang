@@ -1,6 +1,5 @@
 'use client';
 
-
 import clsx from "clsx";
 import style from  './style.module.scss';
 
@@ -43,10 +42,12 @@ const ImageFullViewport = ({ slice }: any) => {
                 className={style.imageFVP__img}
                 ref={imageRef}
             >
+                {/* <img src={image?.url} alt={image?.alt} /> */}
                 <ImagePlaceholder
                     src={image?.url}
                     alt={image?.alt}
                     dimensions={image?.dimensions}
+                    optimized={false}
                 />
             </div>
         </section>

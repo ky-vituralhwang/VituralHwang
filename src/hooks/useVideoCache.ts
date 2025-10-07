@@ -14,6 +14,8 @@ interface VideoCacheState {
 	getOrCreateVideo: (src: string, options?: VideoOptions) => HTMLVideoElement;
 	preloadVideo: (src: string, options?: VideoOptions) => HTMLVideoElement;
 	getCache: () => Map<string, HTMLVideoElement>;
+	clearVideoCache: (src: string) => void;
+	reloadVideo: (src: string, options?: VideoOptions) => HTMLVideoElement;
 }
 
 export const useVideoCache = create((set, get): VideoCacheState => {
@@ -94,6 +96,52 @@ export const useVideoCache = create((set, get): VideoCacheState => {
 		},
 
 		// Return the entire cache for debugging purposes
-		getCache: () => videoCache
+		getCache: () => videoCache,
+
+		// Function to clear cache for a specific video
+		clearVideoCache: (src) => {
+			try {
+				if (videoCache.has(src)) {
+					const video = videoCache.get(src);
+					
+					// Pause and reset the video
+					video.pause();
+					video.currentTime = 0;
+					
+					// Remove all event listeners by cloning the element
+					const newVideo = video.cloneNode(true) as HTMLVideoElement;
+					
+					// Remove from cache
+					videoCache.delete(src);
+					
+					console.log(`Cleared video cache for: ${src}`);
+				} else {
+					console.log(`No cached video found for: ${src}`);
+				}
+			} catch (error) {
+				console.error(`Error clearing video cache for ${src}:`, error);
+			}
+		},
+
+		// Function to reload a video (clear cache and create new)
+		reloadVideo: (src, options = {}) => {
+			try {
+				console.log(`Reloading video: ${src}`);
+				
+				// First clear the cache for this video
+				get().clearVideoCache(src);
+				
+				// Then create a new video element
+				const video = get().getOrCreateVideo(src, options);
+				
+				// Force reload the video data
+				video.load();
+				
+				return video;
+			} catch (error) {
+				console.error(`Error reloading video ${src}:`, error);
+				return document.createElement('video');
+			}
+		}
 	};
 });

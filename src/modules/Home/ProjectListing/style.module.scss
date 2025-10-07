@@ -3,4 +3,13 @@
 .projectList {
     position: relative;
     contain: paint;
+
+    display: flex;
+
+    flex-direction: column;
+    row-gap: 2rem;
+
+    @include sm {
+        row-gap: .6rem;
+    }
 }

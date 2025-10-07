@@ -80,13 +80,17 @@ const VideoModule = ({ data }: any) => {
 const EmbedModule = ({ data }: any) => {
     return (
         <div className={cn(style.list__item, style.list__embed)}>
-            {data.map((item: any, index: number) => (
-                <div
-                    key={index}
-                    dangerouslySetInnerHTML={{ __html: item.media.html }}
-                    className={style.list__embed__item}
-                />
-            ))}
+            {data.map((item: any, index: number) => {
+                const aspectRatio = item.media.width / item.media.height;
+                return (
+                    <div
+                        key={index}
+                        style={{ aspectRatio }}
+                        dangerouslySetInnerHTML={{ __html: item.media.html }}
+                        className={style.list__embed__item}
+                    />
+                )
+            })}
         </div>
     )
 }
