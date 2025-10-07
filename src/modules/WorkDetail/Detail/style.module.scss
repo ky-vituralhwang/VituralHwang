@@ -1,0 +1,72 @@
+
+
+
+.detailDetail {
+    position: relative;
+    contain: paint;
+
+    margin-top: 4rem;
+
+    @include md {
+        margin-top: 3rem;
+    }
+
+    @include sm {
+        margin-top: 2rem;
+    }
+
+    &__bigTitle {
+        opacity: .8;
+
+        margin-bottom: 3.6rem;
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        row-gap: 6rem;
+
+        @include md {
+            row-gap: 4rem;
+        }
+
+        @include sm {
+            row-gap: 2.4rem;
+        }
+    }
+
+    &__item {
+        position: relative;
+    }
+
+    &__title {
+        grid-column: 2/6;
+        opacity: .7;
+
+        @include md {
+            grid-column: 1/5;
+        }
+
+        @include sm {
+            grid-column: 1/-1;
+
+            margin-bottom: 1.2rem;
+        }
+    }
+
+    &__description {
+        grid-column: 7/-1;
+
+        @include md {
+            grid-column: 6/-1;
+        }
+
+        @include sm {
+            grid-column: 1/-1;
+
+            p {
+                font-size: max(1.6rem, 14px);
+            }
+        }
+    }
+}

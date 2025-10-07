@@ -1,32 +1,20 @@
 
-.container {
-    padding-block: 4rem 12rem;
-}
+.sliceWrapper {
+    position: relative;
+    contain: paint;
 
-.slices {
     display: flex;
     flex-direction: column;
-    row-gap: 8rem;
+
+    row-gap: 4rem;
+
+    padding-bottom: 12rem;
 
     @include md {
-        row-gap: 6rem;
+        padding-bottom: 8rem;
     }
 
     @include sm {
-        row-gap: 4rem;
-    }
-}
-
-.label {
-    opacity: .7;
-    
-    margin-bottom: 6rem;
-
-    @include md {
-        margin-bottom: 4rem;
-    }
-
-    @include sm {
-        margin-bottom: 2rem;
+        padding-bottom: 6rem;
     }
 }

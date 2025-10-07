@@ -8,7 +8,6 @@ export const components = {
   archive_listing: dynamic(() => import("./ArchiveListing")),
   image_block: dynamic(() => import("./ImageBlock")),
   project_detail_slices: dynamic(() => import("./ProjectDetailSlices")),
-  project_image: dynamic(() => import("./ProjectImage")),
   project_listing: dynamic(() => import("./ProjectListing")),
   project_slice: dynamic(() => import("./ProjectSlice")),
   text_block: dynamic(() => import("./TextBlock")),
