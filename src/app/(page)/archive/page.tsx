@@ -19,17 +19,22 @@ const ArchivePage = async () => {
 
     const { slices, columns_number, max_items } = page.data;
 
-
     if (!slices || slices.length === 0) notFound()
 
     const allMedia: any[] = slices
         .map((slice: any) => slice?.primary?.list_media)
         .flat();
 
+    if (allMedia.length === 0) notFound()
 
     let loop = 1;
 
     let maxItems = max_items || 40;
+
+    if (allMedia.length > maxItems) {
+        maxItems = allMedia.length;
+    }
+
     let cols = columns_number || 5;
 
     if (allMedia.length < maxItems) {

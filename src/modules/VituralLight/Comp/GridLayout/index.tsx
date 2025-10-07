@@ -8,9 +8,6 @@ import useVideoRenderer from '@/components/Video';
 
 const VirtualLightGridLayoutModule = ({ data }: any) => {
     const { description, list_media } = data.primary || {};
-
-    console.log(list_media)
-
     return (
         <section className={style.VLGL}>
             <div className="container">

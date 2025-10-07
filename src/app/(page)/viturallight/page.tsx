@@ -20,8 +20,6 @@ const VituralLightPage = async () => {
     const client = createClient();
     const page = await client.getSingle('virtuallight_page').catch(() => notFound());
 
-    // console.log(page.data.slices)
-
     return (
         <MainLayout>
             <VituralLightModule data={page.data} />

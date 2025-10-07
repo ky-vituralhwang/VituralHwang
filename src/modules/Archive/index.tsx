@@ -50,11 +50,16 @@ const ArchiveModule = ({ data, columns }: { data: any[]; columns: number }) => {
                 return null;
             })
             .filter(Boolean); // Remove non-video items
-        
-        // console.log('Video readyState check:', videoStates);
 
+
+        if (videoStates.length === 0) {
+            // If there are no videos, consider it ready
+            setIsReady(true);
+            return;
+        }
+        
         // Check if all videos have readyState === 4 (HAVE_ENOUGH_DATA)
-        const allVideosReady = videoStates.length > 0 && videoStates.every((state: any) => state.readyState >= 2);
+        const allVideosReady = videoStates.length > 0 && videoStates.every((state: any) => state.readyState >= 4);
         
         if (allVideosReady && !isReady) {
             console.log('All videos are ready! Setting isReady to true');

@@ -35,10 +35,18 @@ interface ImagePlaceholderProps extends Omit<ImageProps, 'src' | 'alt'> {
     alt?: string;
     className?: string;
     dimensions?: Dimensions;
+    optimized?: boolean;
 }
 
 const ImagePlaceholder = forwardRef<HTMLDivElement, ImagePlaceholderProps>((props, ref) => {
-    let { src = "/images/placeholder.svg", alt = "VituralHwang Image", className, dimensions, ...restProps } = props;
+    let {
+        src = "/images/placeholder.svg",
+        alt = "VituralHwang Image",
+        className,
+        optimized = true,
+        dimensions,
+        ...restProps
+    } = props;
 
     if (!src) {
         src = '/images/placeholder.svg';
@@ -46,6 +54,16 @@ const ImagePlaceholder = forwardRef<HTMLDivElement, ImagePlaceholderProps>((prop
     if (!alt) {
         alt = 'VituralHwang Image';
     }
+
+    if (!optimized) {
+        restProps.unoptimized = true;
+
+        if (src.startsWith('https://images.prismic.io/')) {
+            src = src.replace('?auto=format,compress', '');
+        }
+    }
+
+    // https://images.prismic.io/
 
     const aspectRatio = dimensions ? dimensions.width / dimensions.height : undefined;
 

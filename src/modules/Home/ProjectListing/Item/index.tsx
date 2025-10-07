@@ -64,6 +64,7 @@ const ProjectItem = forwardRef<ProjectItemRef, ProjectItemProps> ((
                     src={thumbnail?.url}
                     alt={thumbnail?.alt}
                     dimensions={thumbnail?.dimensions}
+                    optimized={false}
                     className={style.projectItem__img}
                     ref={imageRef}
                 />

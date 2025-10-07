@@ -10,5 +10,12 @@
 
     &__img {
         @include size(100%);
+        
+    }
+
+    img {
+        @include size(100%);
+
+        object-fit: cover;
     }
 }
