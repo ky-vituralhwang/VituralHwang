@@ -44,6 +44,7 @@
     &__title {
         grid-column: 2/6;
 
+        font-size: max(2.2rem, 20px) !important;
         font-weight: 600 !important;
 
         opacity: .5;
@@ -72,6 +73,10 @@
             p {
                 font-size: max(1.6rem, 14px);
             }
+        }
+
+        b {
+            opacity: .5;
         }
     }
 }

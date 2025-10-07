@@ -112,7 +112,7 @@ const RichText = forwardRef<HTMLDivElement, RichTextProps>((props, ref: Ref<HTML
             );
         },
         strong: ({ children }: { children: React.ReactNode }) => (
-            <span className='txt-med'>{children}</span>
+            <b className='txt-med'>{children}</b>
         ),
         em: ({ children }: { children: React.ReactNode }) => (
             <span className='txt-italic'>{children}</span>

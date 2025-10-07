@@ -43,7 +43,7 @@ const ListContent = (data: any) => {
             }
         >
             <TypoBody
-                size={16}
+                size={22}
                 tag="div"
                 className={style.detailDetail__title}
             >
