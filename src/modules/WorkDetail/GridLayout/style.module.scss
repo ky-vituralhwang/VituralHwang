@@ -1,0 +1,18 @@
+
+
+.detailGrid {
+    position: relative;
+    contain: paint;
+
+    display: grid;
+    grid-template-columns: repeat(var(--grid-columns), 1fr);
+    gap: var(--grid-gap);
+
+    @include md {
+        --grid-columns: 2 !important;
+    }
+
+    @include sm {
+        --grid-columns: 1 !important;
+    }
+}
