@@ -134,7 +134,7 @@
     },
     {
       "id": "gridLayout",
-      "name": "GridLayout",
+      "name": "Image GridLayout",
       "docURL": "...",
       "version": "initial",
       "description": "Default",
@@ -159,6 +159,42 @@
                   "label": "Image",
                   "constraint": {},
                   "thumbnails": []
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "videoGridLayout",
+      "name": "Video GridLayout",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "columns": {
+          "type": "Number",
+          "config": {
+            "label": "Number of columns",
+            "placeholder": "2"
+          }
+        },
+        "list_video": {
+          "type": "Group",
+          "config": {
+            "label": "List Video",
+            "repeat": true,
+            "fields": {
+              "media": {
+                "type": "Link",
+                "config": {
+                  "label": "Media",
+                  "placeholder": "",
+                  "select": "media",
+                  "allowText": false
                 }
               }
             }

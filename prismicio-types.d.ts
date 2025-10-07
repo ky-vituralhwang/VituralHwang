@@ -1153,11 +1153,11 @@ export interface ProjectSliceSliceDetailPrimaryListContentItem {
 }
 
 /**
- * Item in *ProjectSlice → GridLayout → Primary → List Image*
+ * Item in *ProjectSlice → Image GridLayout → Primary → List Image*
  */
 export interface ProjectSliceSliceGridLayoutPrimaryListImageItem {
   /**
-   * Image field in *ProjectSlice → GridLayout → Primary → List Image*
+   * Image field in *ProjectSlice → Image GridLayout → Primary → List Image*
    *
    * - **Field Type**: Image
    * - **Placeholder**: *None*
@@ -1165,6 +1165,21 @@ export interface ProjectSliceSliceGridLayoutPrimaryListImageItem {
    * - **Documentation**: https://prismic.io/docs/fields/image
    */
   image: prismic.ImageField<never>;
+}
+
+/**
+ * Item in *ProjectSlice → Video GridLayout → Primary → List Video*
+ */
+export interface ProjectSliceSliceVideoGridLayoutPrimaryListVideoItem {
+  /**
+   * Media field in *ProjectSlice → Video GridLayout → Primary → List Video*
+   *
+   * - **Field Type**: Link to Media
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_slice.videoGridLayout.primary.list_video[].media
+   * - **Documentation**: https://prismic.io/docs/fields/link-to-media
+   */
+  media: prismic.LinkToMediaField<prismic.FieldState, never>;
 }
 
 /**
@@ -1322,11 +1337,11 @@ export type ProjectSliceSliceEmbedVideo = prismic.SharedSliceVariation<
 >;
 
 /**
- * Primary content in *ProjectSlice → GridLayout → Primary*
+ * Primary content in *ProjectSlice → Image GridLayout → Primary*
  */
 export interface ProjectSliceSliceGridLayoutPrimary {
   /**
-   * Number of columns field in *ProjectSlice → GridLayout → Primary*
+   * Number of columns field in *ProjectSlice → Image GridLayout → Primary*
    *
    * - **Field Type**: Number
    * - **Placeholder**: 2
@@ -1336,7 +1351,7 @@ export interface ProjectSliceSliceGridLayoutPrimary {
   columns: prismic.NumberField;
 
   /**
-   * List Image field in *ProjectSlice → GridLayout → Primary*
+   * List Image field in *ProjectSlice → Image GridLayout → Primary*
    *
    * - **Field Type**: Group
    * - **Placeholder**: *None*
@@ -1349,7 +1364,7 @@ export interface ProjectSliceSliceGridLayoutPrimary {
 }
 
 /**
- * GridLayout variation for ProjectSlice Slice
+ * Image GridLayout variation for ProjectSlice Slice
  *
  * - **API ID**: `gridLayout`
  * - **Description**: Default
@@ -1362,6 +1377,46 @@ export type ProjectSliceSliceGridLayout = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *ProjectSlice → Video GridLayout → Primary*
+ */
+export interface ProjectSliceSliceVideoGridLayoutPrimary {
+  /**
+   * Number of columns field in *ProjectSlice → Video GridLayout → Primary*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: 2
+   * - **API ID Path**: project_slice.videoGridLayout.primary.columns
+   * - **Documentation**: https://prismic.io/docs/fields/number
+   */
+  columns: prismic.NumberField;
+
+  /**
+   * List Video field in *ProjectSlice → Video GridLayout → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_slice.videoGridLayout.primary.list_video[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  list_video: prismic.GroupField<
+    Simplify<ProjectSliceSliceVideoGridLayoutPrimaryListVideoItem>
+  >;
+}
+
+/**
+ * Video GridLayout variation for ProjectSlice Slice
+ *
+ * - **API ID**: `videoGridLayout`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ProjectSliceSliceVideoGridLayout = prismic.SharedSliceVariation<
+  "videoGridLayout",
+  Simplify<ProjectSliceSliceVideoGridLayoutPrimary>,
+  never
+>;
+
+/**
  * Slice variation for *ProjectSlice*
  */
 type ProjectSliceSliceVariation =
@@ -1370,7 +1425,8 @@ type ProjectSliceSliceVariation =
   | ProjectSliceSliceListImage
   | ProjectSliceSliceDetail
   | ProjectSliceSliceEmbedVideo
-  | ProjectSliceSliceGridLayout;
+  | ProjectSliceSliceGridLayout
+  | ProjectSliceSliceVideoGridLayout;
 
 /**
  * ProjectSlice Shared Slice
@@ -1846,6 +1902,8 @@ declare module "@prismicio/client" {
       ProjectSliceSliceEmbedVideoPrimary,
       ProjectSliceSliceGridLayoutPrimaryListImageItem,
       ProjectSliceSliceGridLayoutPrimary,
+      ProjectSliceSliceVideoGridLayoutPrimaryListVideoItem,
+      ProjectSliceSliceVideoGridLayoutPrimary,
       ProjectSliceSliceVariation,
       ProjectSliceSliceDefault,
       ProjectSliceSliceSingleImage,
@@ -1853,6 +1911,7 @@ declare module "@prismicio/client" {
       ProjectSliceSliceDetail,
       ProjectSliceSliceEmbedVideo,
       ProjectSliceSliceGridLayout,
+      ProjectSliceSliceVideoGridLayout,
       TextBlockSlice,
       TextBlockSliceDefaultPrimary,
       TextBlockSliceResumePrimaryListSkillItem,
