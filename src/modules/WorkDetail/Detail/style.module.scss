@@ -5,14 +5,14 @@
     position: relative;
     contain: paint;
 
-    margin-top: 4rem;
+    padding-block: 10rem 6rem;
 
     @include md {
-        margin-top: 3rem;
+        padding-block: 4rem 3rem;
     }
 
     @include sm {
-        margin-top: 2rem;
+        padding-top: 2rem 1rem;
     }
 
     &__bigTitle {
