@@ -47,16 +47,7 @@
       "responsibilities": {
         "type": "StructuredText",
         "config": {
-          "label": "Responsibilities",
-          "placeholder": "",
-          "allowTargetBlank": false,
-          "multi": "paragraph"
-        }
-      },
-      "deliverables": {
-        "type": "StructuredText",
-        "config": {
-          "label": "Deliverables",
+          "label": "Scope of Work",
           "placeholder": "",
           "allowTargetBlank": false,
           "multi": "paragraph"
@@ -84,7 +75,7 @@
       "feature_media": {
         "type": "Link",
         "config": {
-          "label": "Feature Media(Video)",
+          "label": "Home Media(Video)",
           "placeholder": "",
           "select": "media",
           "allowText": false
@@ -98,24 +89,11 @@
           "thumbnails": []
         }
       },
-      "label_of_detail_slices": {
-        "type": "Text",
-        "config": {
-          "label": "Label of Detail Slices",
-          "placeholder": ""
-        }
-      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
-            "project_detail_slices": {
-              "type": "SharedSlice"
-            },
-            "project_image": {
-              "type": "SharedSlice"
-            },
             "project_slice": {
               "type": "SharedSlice"
             }

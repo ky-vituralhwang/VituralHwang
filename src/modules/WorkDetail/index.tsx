@@ -11,7 +11,7 @@ import RichText from '@/components/PrismicHelper/RichText';
 import ImagePlaceholder from '@/base/Image';
 
 const WorkdetailModule = ({ data }: {data: any }) => {
-    const { title, subtitle, live_url, role, responsibilities, deliverables, challenge, work_detail_image } = data.data || {};
+    const { title, subtitle, live_url, role, responsibilities, challenge, work_detail_image } = data.data || {};
 
     return (
         <>
@@ -44,6 +44,14 @@ const WorkdetailModule = ({ data }: {data: any }) => {
                                 {live_url?.text}
                             </TypoHeading>
                         </Link>
+                    )}
+                    {!isEmpty(work_detail_image?.url) && (
+                        <ImagePlaceholder
+                            src={work_detail_image?.url}
+                            alt={work_detail_image?.alt}
+                            dimensions={work_detail_image?.dimensions}
+                            className={cn(style.workDetail__image, style.sm)}
+                        />
                     )}
                     <div
                         className={cn(style.workDetail__list, 'grid')}
@@ -111,37 +119,17 @@ const WorkdetailModule = ({ data }: {data: any }) => {
                                 />
                             </ContentWrapper>
                         )}
-                        {!isEmpty(deliverables) && (
-                            <ContentWrapper
-                                label="Deliverables"
-                                className={style.deliverables}
-                            >
-                                <RichText
-                                    content={deliverables}
-                                    overwrite={{
-                                        paragraph: ({ children }: { children: React.ReactNode }) => (
-                                            <TypoBody
-                                                size={20}
-                                                tag="p"
-                                                className={style.workDetail__list__text}
-                                            >
-                                                {children}<br />
-                                            </TypoBody>
-                                        ),
-                                    }}
-                                />
-                            </ContentWrapper>
-                        )}
                     </div>
-                    {!isEmpty(work_detail_image?.url) && (
-                        <ImagePlaceholder
-                            src={work_detail_image?.url}
-                            alt={work_detail_image?.alt}
-                            dimensions={work_detail_image?.dimensions}
-                            className={style.workDetail__image}
-                        />
-                    )}
                 </div>
+                {!isEmpty(work_detail_image?.url) && (
+                    <ImagePlaceholder
+                        src={work_detail_image?.url}
+                        alt={work_detail_image?.alt}
+                        dimensions={work_detail_image?.dimensions}
+                        optimized={false}
+                        className={style.workDetail__image}
+                    />
+                )}
             </section>
         </>
     )

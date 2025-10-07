@@ -1,0 +1,12 @@
+
+
+.detailVideo {
+    contain: paint;
+    position: relative;
+
+    .video {
+        @include size(100%);
+
+        object-fit: contain;
+    }
+}

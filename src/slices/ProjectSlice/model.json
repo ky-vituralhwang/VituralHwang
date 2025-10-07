@@ -45,7 +45,7 @@
     },
     {
       "id": "listImage",
-      "name": "List Image",
+      "name": "Slide List",
       "docURL": "...",
       "version": "initial",
       "description": "Default",
@@ -63,6 +63,49 @@
                   "label": "Image",
                   "constraint": {},
                   "thumbnails": []
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    },
+    {
+      "id": "detail",
+      "name": "Detail",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "big_title": {
+          "type": "Text",
+          "config": {
+            "label": "Big Title",
+            "placeholder": ""
+          }
+        },
+        "list_content": {
+          "type": "Group",
+          "config": {
+            "label": "List Content",
+            "repeat": true,
+            "fields": {
+              "title": {
+                "type": "Text",
+                "config": {
+                  "label": "Title",
+                  "placeholder": ""
+                }
+              },
+              "description": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Description",
+                  "placeholder": "",
+                  "allowTargetBlank": false,
+                  "multi": "paragraph,strong,em"
                 }
               }
             }
