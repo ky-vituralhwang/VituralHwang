@@ -12,6 +12,7 @@ const VituralLightModule = ({ data }: any) => {
             <div className="container">
                 <TypoDisplay
                     tag="span"
+                    size={90}
                     className={style.vituralLight__label__text}
                 >
                     {label_big_text}

@@ -64,22 +64,23 @@ const AboutModule = ({ data }: any) => {
                 <div className={style.about__label} ref={bigLabel}>
                     <TypoDisplay
                         tag="span"
+                        size={90}
                         className={style.about__label__text}
                     >
                         {label_big_text}
                     </TypoDisplay>
                 </div>
                 <div className={style.about__content} ref={contentHead}>
-                    <TypoHeading
+                    <TypoDisplay
                         tag="h3"
-                        size={36}
+                        size={78}
                         className={style.about__name}
                     >
                         {name}
-                    </TypoHeading>
+                    </TypoDisplay>
                     <TypoHeading
                         tag="div"
-                        size={32}
+                        size={1}
                         className={style.about__nickname}
                     >
                         {nickname}
@@ -125,12 +126,12 @@ const RichtextModule = ({ data }: any) => {
 
     return (
         <div className={cn(style.richtext, "grid")}>
-            <TypoBody
-                size={20}
+            <TypoHeading
+                size={32}
                 className={style.richtext__text}
             >
                 {title}
-            </TypoBody>
+            </TypoHeading>
             <RichText
                 content={description}
                 className={style.richtext__desc}
@@ -142,12 +143,12 @@ const RichtextModule = ({ data }: any) => {
 const SkillModuleWrapper = ({ children }: React.PropsWithChildren) => {
     return (
         <div className={cn(style.skill__wrapper, "grid")}>
-            <TypoBody
-                size={20}
+            <TypoHeading
+                size={32}
                 className={style.richtext__text}
             >
                 Skills
-            </TypoBody>
+            </TypoHeading>
             <div className={style.skill__list}>
                 {children}
             </div>
@@ -163,7 +164,7 @@ const SkillModule = ({ data }: any) => {
     return (
         <div className={style.skill}>
             <TypoBody
-                size={20}
+                size={26}
                 className={style.skill__label}
             >
                 {title}

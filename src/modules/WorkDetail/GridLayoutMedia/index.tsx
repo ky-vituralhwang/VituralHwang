@@ -48,8 +48,6 @@ const WorkDetailSliceGridMediaModule = ({ slice }: any) => {
 
 
 const VideoModule = ({ data }: any) => {
-    console.log(data)
-
     const { videoRef } = useVideoRenderer({
         url: data.media.url,
         type: 'video/mp4',
