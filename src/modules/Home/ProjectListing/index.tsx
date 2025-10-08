@@ -9,8 +9,6 @@ import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { useDesktopMatch } from '@/hooks/useMediaQuery';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useLenis } from 'lenis/react';
-import { useUpdateEffect } from 'react-haiku';
 
 const ProjectListing = ({ slice }: any) => {
     const { feature_projects } = slice?.primary || {};
@@ -24,20 +22,6 @@ const ProjectListing = ({ slice }: any) => {
         scope: container,
         dependencies: [isDesktop]
     });
-
-    const lenis = useLenis();
-
-    useUpdateEffect(() => {
-        const url = new URL(window.location.href);
-        const hash = url.hash;
-
-        if (hash === '#projects') {
-            if (container.current) {
-                lenis?.scrollTo(container.current, { offset: -100 });
-            }
-        }
-
-    }, [lenis])
 
     const handleMouseHover = contextSafe((e: React.MouseEvent<HTMLAnchorElement>) => {
         if (!isDesktop) return;
@@ -137,7 +121,6 @@ const ProjectListing = ({ slice }: any) => {
             className={style.projectList}
             data-slice-type={slice.slice_type}
             data-slice-variation={slice.variation}
-            id="projects"
             ref={container}
         >
             {ProjectListingMemo}

@@ -99,7 +99,7 @@ const Header = (
                     {data.navigation.map((link: any, idx:number) => (
                         <Link
                             key={idx}
-                            href={idx === 0 ? `${link?.page?.url}#projects` : link?.page?.url}
+                            href={idx === 0 ? `${link?.page?.url}#summary` : link?.page?.url}
                             className={cn(style.header__nav__link, "txt-underline", "txt-18", "txt-medium")}
                             ref={el => { navItemsRef.current[idx] = el! }}
                         >
