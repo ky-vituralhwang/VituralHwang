@@ -8,6 +8,7 @@
 
     &__bg {
         position: relative;
+        @include size(100%);
         z-index: 1;
 
         display: grid;

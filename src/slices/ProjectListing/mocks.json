@@ -12,12 +12,20 @@
 							[
 								"project",
 								{
-									"__TYPE__": "LinkContent",
 									"key": "9ef7f55b-a381-4cbc-b2b3-c5df0ea2524c",
+									"__TYPE__": "LinkContent",
 									"value": {
 										"__TYPE__": "DocumentLink",
 										"id": "mock_document_id"
 									}
+								}
+							],
+							[
+								"aspect_ratio",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "74",
+									"type": "Number"
 								}
 							]
 						]

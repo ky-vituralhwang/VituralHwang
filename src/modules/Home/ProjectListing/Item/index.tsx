@@ -27,8 +27,11 @@ const ProjectItem = forwardRef<ProjectItemRef, ProjectItemProps> ((
     props, ref
 ) => {
     const { data, className, onMouseEnter, onMouseLeave, ...restProps } = props;
+
     const { url } = data?.project || {};
     const { title, feature_media, thumbnail } = data?.project?.data || {};
+
+    const aspectRatio = data?.aspect_ratio || undefined;
 
     const itemRef = useRef<HTMLAnchorElement>(null);
     const imageRef = useRef<HTMLImageElement>(null);
@@ -57,6 +60,7 @@ const ProjectItem = forwardRef<ProjectItemRef, ProjectItemProps> ((
             ref={itemRef}
             onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}
+            style={{ aspectRatio }}
             {...restProps}
         >
             <div className={style.projectItem__bg} >
