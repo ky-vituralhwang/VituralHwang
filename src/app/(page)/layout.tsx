@@ -32,9 +32,7 @@ const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>)
     >
       <body cz-shortcut-listen="true" suppressHydrationWarning>
         <GsapConfig/>
-        <MainLayout>
-          {children}
-        </MainLayout>
+        {children}
         <ReactTempus patch />
         <ResetScroll />
         <Analytics />
