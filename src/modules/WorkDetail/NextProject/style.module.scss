@@ -1,0 +1,77 @@
+
+
+
+.nextProject {
+    position: relative;
+    contain: paint;
+
+    padding-top: 12rem;
+
+    max-height: 100svh;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+
+    @include md {
+        padding-top: 8rem;
+    }
+
+    @include sm {
+        padding-top: 6rem;
+    }
+
+    &__label {
+        margin-bottom: 6rem;
+    }
+
+    &__link {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        overflow: hidden;
+
+        @include hover {
+            .nextProject__img {
+                transform: scale(1.05);
+                filter: brightness(.5) sepia(.1) saturate(.5);
+            }
+        }
+    }
+
+    &__title {
+        position: absolute;
+        z-index: 2;
+
+        text-align: center;
+
+        &__text {
+            font-weight: 600 !important;
+
+            font-size: 10rem;
+
+            @include md {
+                font-size: 6rem;
+            }
+
+            @include sm {
+                font-size: 3.8rem;
+            }
+        }
+    }
+
+    &__img {
+        position: relative;
+        z-index: 1;
+        @include size(100%);
+
+        min-height: 50svh;
+
+        transition: transform 0.3s var(--ease-inOut-quad), filter 0.3s var(--ease-inOut-quad);
+
+        display: flex;
+    }
+}

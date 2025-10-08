@@ -473,6 +473,57 @@ export type HomePageDocument<Lang extends string = string> =
     Lang
   >;
 
+/**
+ * Item in *Listing Order Project → List Ortder Projects*
+ */
+export interface ListingOrderProjectDocumentDataListOrtderProjectsItem {
+  /**
+   * Project field in *Listing Order Project → List Ortder Projects*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: listing_order_project.list_ortder_projects[].project
+   * - **Documentation**: https://prismic.io/docs/fields/content-relationship
+   */
+  project: ContentRelationshipFieldWithData<
+    [{ id: "project"; fields: ["title", "work_detail_image", "thumbnail"] }]
+  >;
+}
+
+/**
+ * Content for Listing Order Project documents
+ */
+interface ListingOrderProjectDocumentData {
+  /**
+   * List Ortder Projects field in *Listing Order Project*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: listing_order_project.list_ortder_projects[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  list_ortder_projects: prismic.GroupField<
+    Simplify<ListingOrderProjectDocumentDataListOrtderProjectsItem>
+  >;
+}
+
+/**
+ * Listing Order Project document from Prismic
+ *
+ * - **API ID**: `listing_order_project`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ListingOrderProjectDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<ListingOrderProjectDocumentData>,
+    "listing_order_project",
+    Lang
+  >;
+
 type ProjectDocumentDataSlicesSlice = ProjectSliceSlice;
 
 /**
@@ -727,6 +778,7 @@ export type AllDocumentTypes =
   | GlobalSettingDocument
   | HeaderDocument
   | HomePageDocument
+  | ListingOrderProjectDocument
   | ProjectDocument
   | VirtuallightPageDocument;
 
@@ -1858,6 +1910,9 @@ declare module "@prismicio/client" {
       HomePageDocument,
       HomePageDocumentData,
       HomePageDocumentDataSlicesSlice,
+      ListingOrderProjectDocument,
+      ListingOrderProjectDocumentData,
+      ListingOrderProjectDocumentDataListOrtderProjectsItem,
       ProjectDocument,
       ProjectDocumentData,
       ProjectDocumentDataSlicesSlice,
