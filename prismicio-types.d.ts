@@ -1105,6 +1105,16 @@ export type ImageBlockSlice = prismic.SharedSlice<
  */
 export interface ProjectListingSliceDefaultPrimaryFeatureProjectsItem {
   /**
+   * Aspect Ratio field in *ProjectListing → Default → Primary → Feature Projects*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: 1.7777777778
+   * - **API ID Path**: project_listing.default.primary.feature_projects[].aspect_ratio
+   * - **Documentation**: https://prismic.io/docs/fields/number
+   */
+  aspect_ratio: prismic.NumberField;
+
+  /**
    * Project field in *ProjectListing → Default → Primary → Feature Projects*
    *
    * - **Field Type**: Content Relationship

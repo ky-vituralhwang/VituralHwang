@@ -18,6 +18,13 @@
             "label": "Feature Projects",
             "repeat": true,
             "fields": {
+              "aspect_ratio": {
+                "type": "Number",
+                "config": {
+                  "label": "Aspect Ratio",
+                  "placeholder": "1.7777777778"
+                }
+              },
               "project": {
                 "type": "Link",
                 "config": {
