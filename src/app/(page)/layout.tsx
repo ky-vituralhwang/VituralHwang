@@ -9,6 +9,8 @@ import { createClient } from '@/prismicio';
 import generateSEO from '@/base/SEO';
 import MainLayout from '@/base/Layouts/Layout';
 
+import { Analytics } from "@vercel/analytics/next"
+
 const be_Vietnam_Pro = Be_Vietnam_Pro({
   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
   subsets: ['latin'],
@@ -35,6 +37,7 @@ const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>)
         </MainLayout>
         <ReactTempus patch />
         <ResetScroll />
+        <Analytics />
       </body>
     </html>
   );
