@@ -5,7 +5,7 @@ import { Be_Vietnam_Pro } from 'next/font/google'
 import { ReactTempus } from 'tempus/react';
 import ResetScroll from '@/base/ResetScroll';
 import GsapConfig from '@/base/GsapConfig';
-
+// import MainLayout from '@/base/Layouts/Layout';
 
 export const metadata: Metadata = {
   title: "Slice Machine",
@@ -29,7 +29,9 @@ export default function RootLayout({
     >
       <body cz-shortcut-listen="true" suppressHydrationWarning>
         <GsapConfig/>
-        {children}
+        {/* <MainLayout> */}
+          {children}
+        {/* </MainLayout> */}
         <ReactTempus patch />
         <ResetScroll />
       </body>
