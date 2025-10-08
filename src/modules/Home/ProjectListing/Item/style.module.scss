@@ -6,6 +6,8 @@
 
     width: 100%;
 
+    overflow: hidden;
+
     &__bg {
         position: relative;
         @include size(100%);

@@ -22,7 +22,7 @@
                 "type": "Number",
                 "config": {
                   "label": "Aspect Ratio",
-                  "placeholder": "1.7777777778"
+                  "placeholder": ""
                 }
               },
               "project": {
