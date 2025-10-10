@@ -183,44 +183,73 @@ const ArchiveModule = ({ data, columns }: { data: any[]; columns: number }) => {
     })
 
 
-    const ItemRender = useMemo(() => {
-        return (
-            data.map((col: any, index: number) => (
-                <div
-                    key={index}
-                    className={style.archive__col}
-                    ref={el => { if (el) colRefs.current[index] = el; }}
-                >
-                    {col.map((item: any, idx: number) => {
-                        const { kind} = item?.media || {};
-                        const flatIndex = data.slice(0, index).reduce((sum: number, c: any) => sum + c.length, 0) + idx;
+    // const ItemRender = useMemo(() => {
+    //     return (
+    //         data.map((col: any, index: number) => (
+    //             <div
+    //                 key={index}
+    //                 className={style.archive__col}
+    //                 ref={el => { if (el) colRefs.current[index] = el; }}
+    //             >
+    //                 {col.map((item: any, idx: number) => {
+    //                     const { kind} = item?.media || {};
+    //                     const flatIndex = data.slice(0, index).reduce((sum: number, c: any) => sum + c.length, 0) + idx;
 
-                        switch (kind) {
-                            case 'file':
-                                return <VideoModule
-                                    key={idx}
-                                    data={item}
-                                    ref={el => { if (el?.item) itemRefs.current[flatIndex] = el.item; }}
-                                />;
-                            case 'image':
-                                return <ImageModule
-                                    key={idx}
-                                    data={item}
-                                    ref={el => { if (el?.item) itemRefs.current[flatIndex] = el.item; }}
-                                />;
-                            default:
-                                return null;
-                        }
-                    })}
-                </div>
-            ))
-        )
-    }, [data]);
+    //                     switch (kind) {
+    //                         case 'file':
+    //                             return <VideoModule
+    //                                 key={idx}
+    //                                 data={item}
+    //                                 ref={el => { if (el?.item) itemRefs.current[flatIndex] = el.item; }}
+    //                             />;
+    //                         case 'image':
+    //                             return <ImageModule
+    //                                 key={idx}
+    //                                 data={item}
+    //                                 ref={el => { if (el?.item) itemRefs.current[flatIndex] = el.item; }}
+    //                             />;
+    //                         default:
+    //                             return null;
+    //                     }
+    //                 })}
+    //             </div>
+    //         ))
+    //     )
+    // }, [data]);
 
     return (
         <section className={style.archive} ref={container} style={{ '--columns': columns } as React.CSSProperties}>
             <div className={style.archive__container} ref={innerRef}>
-                {ItemRender}
+                {/* {ItemRender} */}
+                {data.map((col: any, index: number) => (
+                    <div
+                        key={index}
+                        className={style.archive__col}
+                        ref={el => { if (el) colRefs.current[index] = el; }}
+                    >
+                        {col.map((item: any, idx: number) => {
+                            const { kind} = item?.media || {};
+                            const flatIndex = data.slice(0, index).reduce((sum: number, c: any) => sum + c.length, 0) + idx;
+
+                            switch (kind) {
+                                case 'file':
+                                    return <VideoModule
+                                        key={idx}
+                                        data={item}
+                                        ref={el => { if (el?.item) itemRefs.current[flatIndex] = el.item; }}
+                                    />;
+                                case 'image':
+                                    return <ImageModule
+                                        key={idx}
+                                        data={item}
+                                        ref={el => { if (el?.item) itemRefs.current[flatIndex] = el.item; }}
+                                    />;
+                                default:
+                                    return null;
+                            }
+                        })}
+                    </div>
+                ))}
             </div>
         </section>
     )

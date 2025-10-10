@@ -697,9 +697,7 @@ export type ProjectDocument<Lang extends string = string> =
 type VirtuallightPageDocumentDataSlicesSlice =
   | SpacingSlice
   | VituralightSliceSlice
-  | VituralightRecognizedPotentialSlice
-  | VirtualLightCompSlice
-  | TextBlockSlice;
+  | VituralightRecognizedPotentialSlice;
 
 /**
  * Content for VirtualLight Page documents
