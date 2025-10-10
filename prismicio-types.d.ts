@@ -695,6 +695,9 @@ export type ProjectDocument<Lang extends string = string> =
   >;
 
 type VirtuallightPageDocumentDataSlicesSlice =
+  | SpacingSlice
+  | VituralightSliceSlice
+  | VituralightRecognizedPotentialSlice
   | VirtualLightCompSlice
   | TextBlockSlice;
 
@@ -712,6 +715,17 @@ interface VirtuallightPageDocumentData {
    * - **Documentation**: https://prismic.io/docs/fields/text
    */
   label_big_text: prismic.KeyTextField;
+
+  /**
+   * Image Under Title field in *VirtualLight Page*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: virtuallight_page.image_under_title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  image_under_title: prismic.ImageField<never>;
 
   /**
    * Slice Zone field in *VirtualLight Page*
@@ -1503,6 +1517,55 @@ export type ProjectSliceSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *Spacing → Default → Primary*
+ */
+export interface SpacingSliceDefaultPrimary {
+  /**
+   * Spacing field in *Spacing → Default → Primary*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **Default Value**: 10
+   * - **API ID Path**: spacing.default.primary.spacing
+   * - **Documentation**: https://prismic.io/docs/fields/select
+   */
+  spacing: prismic.SelectField<
+    "10" | "20" | "30" | "40" | "50" | "60" | "70" | "80" | "90",
+    "filled"
+  >;
+}
+
+/**
+ * Default variation for Spacing Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type SpacingSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<SpacingSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Spacing*
+ */
+type SpacingSliceVariation = SpacingSliceDefault;
+
+/**
+ * Spacing Shared Slice
+ *
+ * - **API ID**: `spacing`
+ * - **Description**: Spacing
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type SpacingSlice = prismic.SharedSlice<
+  "spacing",
+  SpacingSliceVariation
+>;
+
+/**
  * Item in *TextBlock → Resume → Primary → List Skill*
  */
 export interface TextBlockSliceResumePrimaryListSkillItem {
@@ -1883,6 +1946,280 @@ export type VirtualLightCompSlice = prismic.SharedSlice<
   VirtualLightCompSliceVariation
 >;
 
+/**
+ * Item in *VituralightRecognizedPotential → Default → Primary → List Member*
+ */
+export interface VituralightRecognizedPotentialSliceDefaultPrimaryListMemberItem {
+  /**
+   * Name field in *VituralightRecognizedPotential → Default → Primary → List Member*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: vituralight_recognized_potential.default.primary.list_member[].name
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  name: prismic.KeyTextField;
+
+  /**
+   * Description field in *VituralightRecognizedPotential → Default → Primary → List Member*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: vituralight_recognized_potential.default.primary.list_member[].description
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  description: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *VituralightRecognizedPotential → Default → Primary*
+ */
+export interface VituralightRecognizedPotentialSliceDefaultPrimary {
+  /**
+   * Top paragraph field in *VituralightRecognizedPotential → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: vituralight_recognized_potential.default.primary.top_paragraph
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  top_paragraph: prismic.RichTextField;
+
+  /**
+   * Description of List field in *VituralightRecognizedPotential → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: vituralight_recognized_potential.default.primary.description_of_list
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  description_of_list: prismic.KeyTextField;
+
+  /**
+   * List Member field in *VituralightRecognizedPotential → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: vituralight_recognized_potential.default.primary.list_member[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  list_member: prismic.GroupField<
+    Simplify<VituralightRecognizedPotentialSliceDefaultPrimaryListMemberItem>
+  >;
+
+  /**
+   * Last Description  field in *VituralightRecognizedPotential → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: vituralight_recognized_potential.default.primary.last_description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  last_description: prismic.RichTextField;
+}
+
+/**
+ * Default variation for VituralightRecognizedPotential Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type VituralightRecognizedPotentialSliceDefault =
+  prismic.SharedSliceVariation<
+    "default",
+    Simplify<VituralightRecognizedPotentialSliceDefaultPrimary>,
+    never
+  >;
+
+/**
+ * Slice variation for *VituralightRecognizedPotential*
+ */
+type VituralightRecognizedPotentialSliceVariation =
+  VituralightRecognizedPotentialSliceDefault;
+
+/**
+ * VituralightRecognizedPotential Shared Slice
+ *
+ * - **API ID**: `vituralight_recognized_potential`
+ * - **Description**: VituralightRecognizedPotential
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type VituralightRecognizedPotentialSlice = prismic.SharedSlice<
+  "vituralight_recognized_potential",
+  VituralightRecognizedPotentialSliceVariation
+>;
+
+/**
+ * Item in *VituralightSlice → GridLayout → Primary → List Media(Image, Video)*
+ */
+export interface VituralightSliceSliceGridLayoutPrimaryListMediaItem {
+  /**
+   * Media field in *VituralightSlice → GridLayout → Primary → List Media(Image, Video)*
+   *
+   * - **Field Type**: Link to Media
+   * - **Placeholder**: *None*
+   * - **API ID Path**: vituralight_slice.gridLayout.primary.list_media[].media
+   * - **Documentation**: https://prismic.io/docs/fields/link-to-media
+   */
+  media: prismic.LinkToMediaField<prismic.FieldState, never>;
+}
+
+/**
+ * Primary content in *VituralightSlice → Richtext → Primary*
+ */
+export interface VituralightSliceSliceDefaultPrimary {
+  /**
+   * Richtext field in *VituralightSlice → Richtext → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: vituralight_slice.default.primary.richtext
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  richtext: prismic.RichTextField;
+}
+
+/**
+ * Richtext variation for VituralightSlice Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type VituralightSliceSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<VituralightSliceSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Primary content in *VituralightSlice → GridLayout → Primary*
+ */
+export interface VituralightSliceSliceGridLayoutPrimary {
+  /**
+   * Number of columns field in *VituralightSlice → GridLayout → Primary*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: *None*
+   * - **API ID Path**: vituralight_slice.gridLayout.primary.number_of_columns
+   * - **Documentation**: https://prismic.io/docs/fields/number
+   */
+  number_of_columns: prismic.NumberField;
+
+  /**
+   * List Media(Image, Video) field in *VituralightSlice → GridLayout → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: vituralight_slice.gridLayout.primary.list_media[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  list_media: prismic.GroupField<
+    Simplify<VituralightSliceSliceGridLayoutPrimaryListMediaItem>
+  >;
+}
+
+/**
+ * GridLayout variation for VituralightSlice Slice
+ *
+ * - **API ID**: `gridLayout`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type VituralightSliceSliceGridLayout = prismic.SharedSliceVariation<
+  "gridLayout",
+  Simplify<VituralightSliceSliceGridLayoutPrimary>,
+  never
+>;
+
+/**
+ * Primary content in *VituralightSlice → Embed → Primary*
+ */
+export interface VituralightSliceSliceEmbedPrimary {
+  /**
+   * Embed field in *VituralightSlice → Embed → Primary*
+   *
+   * - **Field Type**: Embed
+   * - **Placeholder**: *None*
+   * - **API ID Path**: vituralight_slice.embed.primary.embed
+   * - **Documentation**: https://prismic.io/docs/fields/embed
+   */
+  embed: prismic.EmbedField;
+}
+
+/**
+ * Embed variation for VituralightSlice Slice
+ *
+ * - **API ID**: `embed`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type VituralightSliceSliceEmbed = prismic.SharedSliceVariation<
+  "embed",
+  Simplify<VituralightSliceSliceEmbedPrimary>,
+  never
+>;
+
+/**
+ * Primary content in *VituralightSlice → 2Columns → Primary*
+ */
+export interface VituralightSliceSlice2ColumnsPrimary {
+  /**
+   * Title field in *VituralightSlice → 2Columns → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: vituralight_slice.2Columns.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  title: prismic.RichTextField;
+
+  /**
+   * Description field in *VituralightSlice → 2Columns → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: vituralight_slice.2Columns.primary.description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField;
+}
+
+/**
+ * 2Columns variation for VituralightSlice Slice
+ *
+ * - **API ID**: `2Columns`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type VituralightSliceSlice2Columns = prismic.SharedSliceVariation<
+  "2Columns",
+  Simplify<VituralightSliceSlice2ColumnsPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *VituralightSlice*
+ */
+type VituralightSliceSliceVariation =
+  | VituralightSliceSliceDefault
+  | VituralightSliceSliceGridLayout
+  | VituralightSliceSliceEmbed
+  | VituralightSliceSlice2Columns;
+
+/**
+ * VituralightSlice Shared Slice
+ *
+ * - **API ID**: `vituralight_slice`
+ * - **Description**: VituralightSlice
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type VituralightSliceSlice = prismic.SharedSlice<
+  "vituralight_slice",
+  VituralightSliceSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -1977,6 +2314,10 @@ declare module "@prismicio/client" {
       ProjectSliceSliceEmbedVideo,
       ProjectSliceSliceGridLayout,
       ProjectSliceSliceVideoGridLayout,
+      SpacingSlice,
+      SpacingSliceDefaultPrimary,
+      SpacingSliceVariation,
+      SpacingSliceDefault,
       TextBlockSlice,
       TextBlockSliceDefaultPrimary,
       TextBlockSliceResumePrimaryListSkillItem,
@@ -1997,6 +2338,22 @@ declare module "@prismicio/client" {
       VirtualLightCompSliceVariation,
       VirtualLightCompSliceDefault,
       VirtualLightCompSliceGridLayout,
+      VituralightRecognizedPotentialSlice,
+      VituralightRecognizedPotentialSliceDefaultPrimaryListMemberItem,
+      VituralightRecognizedPotentialSliceDefaultPrimary,
+      VituralightRecognizedPotentialSliceVariation,
+      VituralightRecognizedPotentialSliceDefault,
+      VituralightSliceSlice,
+      VituralightSliceSliceDefaultPrimary,
+      VituralightSliceSliceGridLayoutPrimaryListMediaItem,
+      VituralightSliceSliceGridLayoutPrimary,
+      VituralightSliceSliceEmbedPrimary,
+      VituralightSliceSlice2ColumnsPrimary,
+      VituralightSliceSliceVariation,
+      VituralightSliceSliceDefault,
+      VituralightSliceSliceGridLayout,
+      VituralightSliceSliceEmbed,
+      VituralightSliceSlice2Columns,
     };
   }
 }

@@ -1,0 +1,62 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"top_paragraph": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Nulla sint minim voluptate mollit adipisicing deserunt elit nulla commodo. Mollit adipisicing incididunt qui."
+						}
+					}
+				]
+			},
+			"description_of_list": {
+				"__TYPE__": "FieldContent",
+				"value": "cheese",
+				"type": "Text"
+			},
+			"list_member": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"name",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "any",
+									"type": "Text"
+								}
+							],
+							[
+								"description",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "largest",
+									"type": "Text"
+								}
+							]
+						]
+					}
+				]
+			},
+			"last_description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Ullamco culpa velit et pariatur labore id exercitation laborum laboris nulla Lorem exercitation."
+						}
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

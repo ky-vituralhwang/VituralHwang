@@ -117,6 +117,16 @@ const RichText = forwardRef<HTMLDivElement, RichTextProps>((props, ref: Ref<HTML
         em: ({ children }: { children: React.ReactNode }) => (
             <span className='txt-italic'>{children}</span>
         ),
+        label: ({ node, children }: { node: any; children: React.ReactNode }) => {
+            const { data } = node || {};
+            const { label } = data || {};
+            
+            if (label === 'highlight') {
+                return <span className={style.highlight}>{children}</span>;
+            }
+            
+            return <span>{children}</span>;
+        },
         hyperlink: ({ node, children }: HyperlinkProps) => {
             const { data } = node || {};
             const { url, target, link_type } = data || {};

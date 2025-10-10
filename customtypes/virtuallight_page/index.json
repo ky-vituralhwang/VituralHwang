@@ -13,11 +13,28 @@
           "placeholder": ""
         }
       },
+      "image_under_title": {
+        "type": "Image",
+        "config": {
+          "label": "Image Under Title",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "spacing": {
+              "type": "SharedSlice"
+            },
+            "vituralight_slice": {
+              "type": "SharedSlice"
+            },
+            "vituralight_recognized_potential": {
+              "type": "SharedSlice"
+            },
             "virtual_light_comp": {
               "type": "SharedSlice"
             },

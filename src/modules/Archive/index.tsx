@@ -159,12 +159,12 @@ const ArchiveModule = ({ data, columns }: { data: any[]; columns: number }) => {
                 const isWheel = event.type === "wheel";
 
                 if (isWheel) {
-                    increment.x += isWheel ? -deltaY : deltaY;
+                    increment.x += -Math.abs(deltaY);
                     colRefs.current.forEach((item:any, idx:number) => {
                         xTo[idx](increment.x);
                     })
                 }
-    
+
                 increment.y += isWheel ? -deltaY : deltaY;
                 
                 itemRefs.current.forEach((item:any, idx:number) => {
