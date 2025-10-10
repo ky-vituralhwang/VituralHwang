@@ -1,0 +1,26 @@
+
+
+.twoCols {
+    contain: paint;
+    position: relative;
+
+    &__title {
+        grid-column: 2 / 6;
+
+        font-weight: 600 !important;
+
+        @include md {
+            grid-column: 1 / -1;
+        }
+    }
+
+    &__desc {
+        grid-column: 6 / 12;
+        margin-top: 2rem;
+
+        @include md {
+            grid-column: 1 / -1;
+            margin-top: 1.6rem;
+        }
+    }
+}

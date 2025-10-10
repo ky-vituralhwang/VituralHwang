@@ -1,0 +1,25 @@
+
+
+.gridLayout {
+    position: relative;
+    contain: paint;
+
+    display: grid;
+    --grid-columns: var(--rf-grid-columns);
+    grid-template-columns: repeat(var(--grid-columns), 1fr);
+    gap: var(--grid-gap);
+
+    @include md {
+        --grid-columns: max(calc(var(--rf-grid-columns) - 1), 1) !important;
+    }
+
+    @include sm {
+        --grid-columns: 1 !important;
+    }
+
+    &__video {
+        @include size(100%);
+
+        object-fit: cover;
+    }
+}

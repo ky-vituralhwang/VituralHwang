@@ -36,7 +36,7 @@ const routes: Route[] = [
   },
   {
     type: 'virtuallight_page',
-    path: '/viturallight',
+    path: '/vituralight',
   },
   {
     type: 'project',

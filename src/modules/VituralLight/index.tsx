@@ -2,21 +2,29 @@
 
 import TypoDisplay from '@/components/Typo/Display';
 import style from './style.module.scss';
+import ImagePlaceholder from '@/base/Image';
 
 
 const VituralLightModule = ({ data }: any) => {
-    const { label_big_text } = data || {}; 
-
+    const { label_big_text, image_under_title } = data || {}; 
     return (
         <section className={style.vituralLight}>
-            <div className="container">
+            <div className="container grid">
                 <TypoDisplay
-                    tag="span"
+                    tag="h1"
                     size={90}
-                    className={style.vituralLight__label__text}
+                    className={style.vituralLight__title}
                 >
                     {label_big_text}
                 </TypoDisplay>
+                <div className={style.vituralLight__image}>
+                    <ImagePlaceholder
+                        src={image_under_title?.url}
+                        alt={image_under_title?.alt}
+                        dimensions={image_under_title?.dimensions}
+                        optimized={false}
+                    />
+                </div>
             </div>
         </section>
     )

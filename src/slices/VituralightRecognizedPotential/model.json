@@ -1,0 +1,70 @@
+{
+  "id": "vituralight_recognized_potential",
+  "type": "SharedSlice",
+  "name": "VituralightRecognizedPotential",
+  "description": "VituralightRecognizedPotential",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "top_paragraph": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Top paragraph",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "multi": "em,heading4,paragraph,strong",
+            "labels": [
+              "highlight"
+            ]
+          }
+        },
+        "description_of_list": {
+          "type": "Text",
+          "config": {
+            "label": "Description of List",
+            "placeholder": ""
+          }
+        },
+        "list_member": {
+          "type": "Group",
+          "config": {
+            "label": "List Member",
+            "repeat": true,
+            "fields": {
+              "name": {
+                "type": "Text",
+                "config": {
+                  "label": "Name",
+                  "placeholder": ""
+                }
+              },
+              "description": {
+                "type": "Text",
+                "config": {
+                  "label": "Description",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        },
+        "last_description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Last Description ",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "multi": "paragraph"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
