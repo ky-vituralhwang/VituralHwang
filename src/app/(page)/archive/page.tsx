@@ -13,6 +13,8 @@ export const generateMetadata = async () => {
     return generateSEO(page);
 }
 
+export const revalidate = 1800;
+
 const ArchivePage = async () => {
     const client = createClient();
     const page = await client.getSingle('archive_page').catch(() => notFound());
