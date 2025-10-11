@@ -1,0 +1,53 @@
+
+
+
+.skill {
+    grid-template-columns: 25.5rem 1fr;
+
+    @include md {
+        --grid-column: 3;
+
+        grid-template-columns: repeat(var(--grid-column), minmax(1px, 1fr));
+    }
+
+    @include sm {
+        --grid-column: 1;
+
+        row-gap: 2rem;
+    }
+
+    &__text {
+        font-weight: 500 !important;
+    }
+
+    &__content {
+        grid-column: 2/-1;
+
+        
+        @include sm {
+            grid-column: 1/-1;
+        }
+    }
+
+    &__label {
+        margin-bottom: 2rem;
+
+        font-weight: 400;
+    }
+
+    &__item {
+        opacity: .6;
+    }
+
+    &__single {
+        display: flex;
+        flex-direction: column;
+        row-gap: .2rem;
+    }
+
+    &__2columns {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: var(--grid-gap);
+    }
+}

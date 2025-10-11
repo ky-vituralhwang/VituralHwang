@@ -1,0 +1,18 @@
+
+
+
+
+.marquee {
+    position: relative;
+    contain: paint;
+
+    display: flex;
+    overflow: hidden;
+
+    padding-block: 4rem;
+
+    &__content {
+        padding-right: 4rem;
+        text-wrap: nowrap;
+    }
+}

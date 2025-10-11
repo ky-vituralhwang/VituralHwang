@@ -9,23 +9,50 @@ import { isEmpty } from 'lodash';
 import TypoBody from '@/components/Typo/Body';
 import RichText from '@/components/PrismicHelper/RichText';
 import { useGSAP } from '@gsap/react';
-import { useRef } from 'react';
+import { useCallback, useRef } from 'react';
 import { useDesktopMatch } from '@/hooks/useMediaQuery';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useLenis } from 'lenis/react';
+import gsap from 'gsap';
 
 
-const AboutModule = ({ data }: any) => {
-    const { label_big_text, name, nickname, feature_skill, slices } = data?.data || {};
-
-    
-    const skillSlice = slices.filter((slice: any) => slice?.slice_type === 'about_skill');
+const AboutModule = ({ children, data }: { children: React.ReactNode; data: any }) => {
+    const { label_big_text, name, nickname, feature_skill, scroll_down_text } = data?.data || {};
     
     const container = useRef<HTMLElement>(null);
     const wrapper = useRef<HTMLDivElement>(null);
     const bigLabel = useRef<HTMLDivElement>(null);
     const contentHead = useRef<HTMLDivElement>(null);
+    const scrollBtn = useRef<HTMLButtonElement>(null);
 
     const isDesktop = useDesktopMatch();
+
+    const lenis = useLenis();
+
+    useGSAP(() => {
+         ScrollTrigger.create({
+            trigger: container.current,
+            start: 'top top',
+            end: 'bottom-=10% bottom',
+            onLeave: () => {
+                gsap.to(scrollBtn.current, {
+                    autoAlpha: 0,
+                    y: 20,
+                    duration: .3,
+                })
+            },
+            onEnterBack: () => {
+                gsap.to(scrollBtn.current, {
+                    autoAlpha: 1,
+                    y: 0,
+                    duration: .3,
+                })
+            }
+        })
+    }, {
+        scope: container,
+        revertOnUpdate: true,
+    })
 
     useGSAP(() => {
         if (!isDesktop) return;
@@ -55,13 +82,21 @@ const AboutModule = ({ data }: any) => {
         dependencies: [isDesktop],
     })
 
+    const handleScrollDown = useCallback(() => {
+        if (!lenis) return;
+        lenis.scrollTo(wrapper.current?.clientHeight || 0, { duration: 1.5 });
+    }, [lenis])
+
     return (
         <section
             ref={container}
             className={style.about}
         >
             <div className="container grid" ref={wrapper}>
-                <div className={style.about__label} ref={bigLabel}>
+                <div
+                    className={style.about__label}
+                    ref={bigLabel}
+                >
                     <TypoDisplay
                         tag="span"
                         size={90}
@@ -71,13 +106,13 @@ const AboutModule = ({ data }: any) => {
                     </TypoDisplay>
                 </div>
                 <div className={style.about__content} ref={contentHead}>
-                    <TypoDisplay
+                    <TypoHeading
                         tag="h3"
-                        size={78}
+                        size={1}
                         className={style.about__name}
                     >
                         {name}
-                    </TypoDisplay>
+                    </TypoHeading>
                     <TypoHeading
                         tag="div"
                         size={1}
@@ -100,20 +135,15 @@ const AboutModule = ({ data }: any) => {
                     )}
                 </div>
                 <div className={style.about__slices}>
-                    {slices.map((slice: any, index: number) => {
-                        const type = slice?.slice_type;
-                        switch (type) {
-                            case 'about_richtext':
-                                return <RichtextModule key={index} data={slice} />
-                            default:
-                                break;
-                        }
-                    })}
-                    <SkillModuleWrapper>
-                        {skillSlice.map((slice: any, index: number) => (
-                            <SkillModule key={index} data={slice} />
-                        ))}
-                    </SkillModuleWrapper>
+                    {children}
+                    <button
+                        className={style.about__scroll}
+                        onClick={handleScrollDown}
+                        ref={scrollBtn}
+                    >
+                        <ChevronDown className={style.about__scroll__icon}/>
+                        {scroll_down_text}
+                    </button>
                 </div>
             </div>
         </section>
@@ -121,102 +151,19 @@ const AboutModule = ({ data }: any) => {
 }
 
 
-const RichtextModule = ({ data }: any) => {
-    const { title, description } = data?.primary || {};
-
+const ChevronDown = ({ className }: { className?: string }) => {
     return (
-        <div className={cn(style.richtext, "grid")}>
-            <TypoHeading
-                size={32}
-                className={style.richtext__text}
-            >
-                {title}
-            </TypoHeading>
-            <RichText
-                content={description}
-                className={style.richtext__desc}
+        <svg
+            className={className}
+            width="100%"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 640 640"
+        >
+            <path
+                d="M297.4 470.6C309.9 483.1 330.2 483.1 342.7 470.6L534.7 278.6C547.2 266.1 547.2 245.8 534.7 233.3C522.2 220.8 501.9 220.8 489.4 233.3L320 402.7L150.6 233.4C138.1 220.9 117.8 220.9 105.3 233.4C92.8 245.9 92.8 266.2 105.3 278.7L297.3 470.7z"
+                fill="currentColor"
             />
-        </div>
-    )
-}
-
-const SkillModuleWrapper = ({ children }: React.PropsWithChildren) => {
-    return (
-        <div className={cn(style.skill__wrapper, "grid")}>
-            <TypoHeading
-                size={32}
-                className={style.richtext__text}
-            >
-                Skills
-            </TypoHeading>
-            <div className={style.skill__list}>
-                {children}
-            </div>
-        </div>
-    )
-}
-
-const SkillModule = ({ data }: any) => {
-    const { variation } = data || {};
-
-    const { title, skill_list, skill_list_left, skill_list_right } = data?.primary || {};
-
-    return (
-        <div className={style.skill}>
-            <TypoBody
-                size={26}
-                className={style.skill__label}
-            >
-                {title}
-            </TypoBody>
-            <div className={style.skill__content}>
-                {(() => {
-                    switch (variation) {
-                        case 'default':
-                            return (
-                                <div className={style.skill__single}>
-                                    {skill_list?.map((item: any, index: number) => (
-                                        <TypoBody
-                                            key={index}
-                                            size={16}
-                                            className={style.skill__item}
-                                        >
-                                            {item?.skill}
-                                        </TypoBody>
-                                    ))}
-                                </div>
-                            );
-                        case '2Columns':
-                            return (
-                                <div className={style.skill__columns}>
-                                    <div className={style.skill__single}>
-                                        {skill_list_left?.map((item: any, index: number) => (
-                                            <TypoBody
-                                                key={index}
-                                                className={style.skill__item}
-                                            >
-                                                {item?.skill}
-                                            </TypoBody>
-                                        ))}
-                                    </div>
-                                    <div className={style.skill__single}>
-                                        {skill_list_right?.map((item: any, index: number) => (
-                                            <TypoBody
-                                                key={index}
-                                                className={style.skill__item}
-                                            >
-                                                {item?.skill}
-                                            </TypoBody>
-                                        ))}
-                                    </div>
-                                </div>
-                            );
-                        default:
-                            return null;
-                    }
-                })()}
-            </div>
-        </div>
+        </svg>
     )
 }
 

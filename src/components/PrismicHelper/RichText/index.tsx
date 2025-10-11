@@ -136,7 +136,7 @@ const RichText = forwardRef<HTMLDivElement, RichTextProps>((props, ref: Ref<HTML
                     href={url}
                     target={target || '_blank'}
                     rel={target === '_blank' ? 'noopener noreferrer' : undefined}
-                    className='txt-med txt-underline'
+                    className='txt-underline'
                     prefetch={link_type === 'Document' ? false : true}
                 >
                     {children}
