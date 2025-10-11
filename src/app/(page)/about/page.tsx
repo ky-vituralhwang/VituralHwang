@@ -5,6 +5,8 @@ import { createClient } from "@/prismicio";
 
 import { notFound } from "next/navigation";
 import AboutModule from "@/modules/About";
+import { SliceZone } from "@prismicio/react";
+import { components } from "@/slices";
 
 
 export const generateMetadata = async () => {
@@ -20,7 +22,9 @@ const AboutPage = async () => {
 
   return (
     <MainLayout>
-        <AboutModule data={page} />
+      <AboutModule data={page}>
+        <SliceZone slices={page.data.slices} components={components} />
+      </AboutModule>
     </MainLayout>
   )
 }

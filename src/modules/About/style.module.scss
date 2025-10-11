@@ -1,9 +1,5 @@
 
 
-
-
-
-
 .about {
     padding-block: 18rem 4rem;
     contain: paint;
@@ -25,7 +21,7 @@
         @include md {
             margin-inline: auto;
 
-            margin-bottom: 8rem;
+            margin-bottom: 4rem;
         }
         
         &__text {
@@ -48,39 +44,33 @@
 
 
     &__name {
-        font-weight: 100;
+        font-weight: 600 !important;
 
-        // margin-bottom: 1rem;
-
-        // @include md {
-        //     margin-bottom: .4rem;
-        // }
+        @include sm {
+            font-size: 4rem;
+        }
     }
 
     &__nickname {
-        font-weight: 100;
+        font-size: 4.8rem !important;
 
-        font-size: 7rem !important;
+        font-weight: 200 !important;
 
         opacity: .5;
 
-        @include md {
-            font-size: 4.8rem !important;
-        }
-
         @include sm {
-            font-size: 3.6rem !important;
+            font-size: 4rem !important;
         }
     }
 
     &__skill {
         display: flex;
-        margin-top: 6rem;
+        margin-top: 4rem;
 
         @include md {
             justify-content: center;
 
-            margin-top: 2rem;
+            margin-top: 2.4rem;
         }
 
         &__item {
@@ -88,30 +78,32 @@
             width: fit-content;
 
             line-height: 1 !important;
+            font-weight: 400;
 
-            padding: 1.4rem 4.8rem 1.6rem;
+            padding: 1.4rem 4rem;
             
             border: solid 1px #ffffff;
             
             border-radius: 100vmax;
             
             &:not(:first-child) {
-                margin-left: -.9rem;
+                margin-left: -2rem;
             }
 
             @include md {
                 font-size: 1.5rem !important;
 
-                padding: 1rem 1.2rem 1.1rem;
+                padding: .8rem 2.4rem 1rem;
 
                 &:not(:first-child) {
-                    margin-left: -.7rem;
+                    margin-left: -1.2rem;
                 }
             }
         }
     }
 
     &__slices {
+        position: relative;
         grid-column: 7/-1;
 
         display: flex;
@@ -119,10 +111,14 @@
 
         row-gap: 12rem;
 
+        margin-right: -1.8rem;
+
+
         @include md {
             grid-column: 1/-1;
 
             margin-top: 8rem;
+            margin-right: unset;
 
             row-gap: 8rem;
         }
@@ -132,42 +128,32 @@
             row-gap: 6rem;
         }
     }
-}
 
-.richtext {
-    // --grid-column: 3;
+    &__scroll {
+        cursor: pointer;
 
-    grid-template-columns: 30.5rem 1fr;
+        position: sticky;
+        bottom: -1px;
+        width: 100%;
+        z-index: 5;
 
-    @include md {
-        --grid-column: 3;
-
-        grid-template-columns: repeat(var(--grid-column), minmax(1px, 1fr));
-    }
-
-    @include sm {
-        --grid-column: 1;
-
-        row-gap: 2rem;
-    }
-
-    &__text {
-        font-weight: 600 !important;
-    }
-
-    &__desc {
-        grid-column: 2/-1;
-
-        opacity: .6;
+        display: flex;
         
-        @include sm {
-            grid-column: 1/-1;
+        align-items: center;
+        justify-content: center;
+
+        padding-block: 4rem;
+
+        background-image: linear-gradient(to bottom, transparent 0%, var(--background) 85%);
+
+        transition: opacity .3s var(--ease-out-quint);
+
+        @include hover {
+            opacity: .8;
         }
-        
-        p {
-            line-height: 1.7 !important;
 
-            // font-weight: 400;
+        &__icon {
+            width: 3.2rem;
         }
     }
 }
@@ -178,7 +164,7 @@
     row-gap: 1.6rem;
     
     &__wrapper {
-        grid-template-columns: 30.5rem 1fr;
+        grid-template-columns: 25.5rem 1fr;
         
         @include md {
             --grid-column: 3;

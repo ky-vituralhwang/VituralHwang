@@ -137,6 +137,17 @@ interface AboutPageDocumentData {
   >;
 
   /**
+   * Scroll Down Text field in *About Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_page.scroll_down_text
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  scroll_down_text: prismic.KeyTextField;
+
+  /**
    * Slice Zone field in *About Page*
    *
    * - **Field Type**: Slice Zone
@@ -406,6 +417,7 @@ export type HeaderDocument<Lang extends string = string> =
   >;
 
 type HomePageDocumentDataSlicesSlice =
+  | MarqueeSlice
   | ProjectListingSlice
   | TextBlockSlice
   | ImageBlockSlice;
@@ -899,7 +911,7 @@ export interface AboutSkillSlice2ColumnsPrimarySkillListRightItem {
  */
 export interface AboutSkillSliceDefaultPrimary {
   /**
-   * Title field in *AboutSkill → Default → Primary*
+   * Title Left field in *AboutSkill → Default → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
@@ -907,6 +919,16 @@ export interface AboutSkillSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/text
    */
   title: prismic.KeyTextField;
+
+  /**
+   * Title Right field in *AboutSkill → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_skill.default.primary.title_right
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  title_right: prismic.KeyTextField;
 
   /**
    * Skill List field in *AboutSkill → Default → Primary*
@@ -939,7 +961,7 @@ export type AboutSkillSliceDefault = prismic.SharedSliceVariation<
  */
 export interface AboutSkillSlice2ColumnsPrimary {
   /**
-   * Title field in *AboutSkill → 2 Columns → Primary*
+   * Title Left field in *AboutSkill → 2 Columns → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
@@ -947,6 +969,16 @@ export interface AboutSkillSlice2ColumnsPrimary {
    * - **Documentation**: https://prismic.io/docs/fields/text
    */
   title: prismic.KeyTextField;
+
+  /**
+   * Title Right field in *AboutSkill → 2 Columns → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about_skill.2Columns.primary.title_right
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  title_right: prismic.KeyTextField;
 
   /**
    * Skill List Left field in *AboutSkill → 2 Columns → Primary*
@@ -1110,6 +1142,51 @@ type ImageBlockSliceVariation = ImageBlockSliceDefault;
 export type ImageBlockSlice = prismic.SharedSlice<
   "image_block",
   ImageBlockSliceVariation
+>;
+
+/**
+ * Primary content in *Marquee → Default → Primary*
+ */
+export interface MarqueeSliceDefaultPrimary {
+  /**
+   * Text field in *Marquee → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: marquee.default.primary.text
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  text: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for Marquee Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type MarqueeSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<MarqueeSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Marquee*
+ */
+type MarqueeSliceVariation = MarqueeSliceDefault;
+
+/**
+ * Marquee Shared Slice
+ *
+ * - **API ID**: `marquee`
+ * - **Description**: Marquee
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type MarqueeSlice = prismic.SharedSlice<
+  "marquee",
+  MarqueeSliceVariation
 >;
 
 /**
@@ -2287,6 +2364,10 @@ declare module "@prismicio/client" {
       ImageBlockSliceDefaultPrimary,
       ImageBlockSliceVariation,
       ImageBlockSliceDefault,
+      MarqueeSlice,
+      MarqueeSliceDefaultPrimary,
+      MarqueeSliceVariation,
+      MarqueeSliceDefault,
       ProjectListingSlice,
       ProjectListingSliceDefaultPrimaryFeatureProjectsItem,
       ProjectListingSliceDefaultPrimary,

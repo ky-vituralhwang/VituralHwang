@@ -43,6 +43,13 @@
           }
         }
       },
+      "scroll_down_text": {
+        "type": "Text",
+        "config": {
+          "label": "Scroll Down Text",
+          "placeholder": ""
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",

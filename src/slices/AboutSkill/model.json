@@ -15,7 +15,14 @@
         "title": {
           "type": "Text",
           "config": {
-            "label": "Title",
+            "label": "Title Left",
+            "placeholder": ""
+          }
+        },
+        "title_right": {
+          "type": "Text",
+          "config": {
+            "label": "Title Right",
             "placeholder": ""
           }
         },
@@ -49,7 +56,14 @@
         "title": {
           "type": "Text",
           "config": {
-            "label": "Title",
+            "label": "Title Left",
+            "placeholder": ""
+          }
+        },
+        "title_right": {
+          "type": "Text",
+          "config": {
+            "label": "Title Right",
             "placeholder": ""
           }
         },

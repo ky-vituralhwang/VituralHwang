@@ -5,7 +5,7 @@
 		"primary": {
 			"title": {
 				"__TYPE__": "FieldContent",
-				"value": "bowl",
+				"value": "sheep",
 				"type": "Text"
 			},
 			"skill_list": {
@@ -25,6 +25,11 @@
 						]
 					}
 				]
+			},
+			"title_right": {
+				"__TYPE__": "FieldContent",
+				"value": "belt",
+				"type": "Text"
 			}
 		},
 		"items": []
@@ -35,7 +40,7 @@
 		"primary": {
 			"title": {
 				"__TYPE__": "FieldContent",
-				"value": "especially",
+				"value": "cold",
 				"type": "Text"
 			},
 			"skill_list_left": {
@@ -73,6 +78,11 @@
 						]
 					}
 				]
+			},
+			"title_right": {
+				"__TYPE__": "FieldContent",
+				"value": "gun",
+				"type": "Text"
 			}
 		},
 		"items": [
