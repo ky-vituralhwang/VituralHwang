@@ -1,11 +1,11 @@
-import '../style.scss';
+import '../../style.scss';
 import type { Metadata } from "next";
 
 import { Be_Vietnam_Pro } from 'next/font/google'
 import { ReactTempus } from 'tempus/react';
 import ResetScroll from '@/base/ResetScroll';
 import GsapConfig from '@/base/GsapConfig';
-// import MainLayout from '@/base/Layouts/Layout';
+import { LenisProvider } from '@/base/Lenis';
 
 export const metadata: Metadata = {
   title: "Slice Machine",
@@ -29,9 +29,8 @@ export default function RootLayout({
     >
       <body cz-shortcut-listen="true" suppressHydrationWarning>
         <GsapConfig/>
-        {/* <MainLayout> */}
+        <LenisProvider root/>
           {children}
-        {/* </MainLayout> */}
         <ReactTempus patch />
         <ResetScroll />
       </body>
