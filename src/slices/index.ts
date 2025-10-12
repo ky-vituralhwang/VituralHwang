@@ -12,7 +12,6 @@ export const components = {
   project_slice: dynamic(() => import("./ProjectSlice")),
   spacing: dynamic(() => import("./Spacing")),
   text_block: dynamic(() => import("./TextBlock")),
-  virtual_light_comp: dynamic(() => import("./VirtualLightComp")),
   vituralight_recognized_potential: dynamic(
     () => import("./VituralightRecognizedPotential"),
   ),
