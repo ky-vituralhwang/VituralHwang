@@ -94,6 +94,18 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "vituralight_slice": {
+              "type": "SharedSlice"
+            },
+            "spacing": {
+              "type": "SharedSlice"
+            },
+            "marquee": {
+              "type": "SharedSlice"
+            },
+            "vituralight_recognized_potential": {
+              "type": "SharedSlice"
+            },
             "project_slice": {
               "type": "SharedSlice"
             }

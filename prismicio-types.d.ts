@@ -536,7 +536,12 @@ export type ListingOrderProjectDocument<Lang extends string = string> =
     Lang
   >;
 
-type ProjectDocumentDataSlicesSlice = ProjectSliceSlice;
+type ProjectDocumentDataSlicesSlice =
+  | VituralightSliceSlice
+  | SpacingSlice
+  | MarqueeSlice
+  | VituralightRecognizedPotentialSlice
+  | ProjectSliceSlice;
 
 /**
  * Content for Project documents
@@ -707,6 +712,7 @@ export type ProjectDocument<Lang extends string = string> =
   >;
 
 type VirtuallightPageDocumentDataSlicesSlice =
+  | MarqueeSlice
   | SpacingSlice
   | VituralightSliceSlice
   | VituralightRecognizedPotentialSlice;
@@ -1839,189 +1845,6 @@ export type TextBlockSlice = prismic.SharedSlice<
 >;
 
 /**
- * Item in *VirtualLightComp → Default → Primary → List Image*
- */
-export interface VirtualLightCompSliceDefaultPrimaryListImageItem {
-  /**
-   * Image field in *VirtualLightComp → Default → Primary → List Image*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: virtual_light_comp.default.primary.list_image[].image
-   * - **Documentation**: https://prismic.io/docs/fields/image
-   */
-  image: prismic.ImageField<never>;
-}
-
-/**
- * Item in *VirtualLightComp → Default → Primary → List Internal Media*
- */
-export interface VirtualLightCompSliceDefaultPrimaryListInternalMediaItem {
-  /**
-   * Media field in *VirtualLightComp → Default → Primary → List Internal Media*
-   *
-   * - **Field Type**: Link to Media
-   * - **Placeholder**: Description for detect
-   * - **API ID Path**: virtual_light_comp.default.primary.list_internal_media[].media
-   * - **Documentation**: https://prismic.io/docs/fields/link-to-media
-   */
-  media: prismic.LinkToMediaField<prismic.FieldState, never>;
-}
-
-/**
- * Item in *VirtualLightComp → Default → Primary → List Embed Media*
- */
-export interface VirtualLightCompSliceDefaultPrimaryListEmbedMediaItem {
-  /**
-   * Media field in *VirtualLightComp → Default → Primary → List Embed Media*
-   *
-   * - **Field Type**: Embed
-   * - **Placeholder**: *None*
-   * - **API ID Path**: virtual_light_comp.default.primary.list_embed_media[].media
-   * - **Documentation**: https://prismic.io/docs/fields/embed
-   */
-  media: prismic.EmbedField;
-}
-
-/**
- * Item in *VirtualLightComp → Grid Layout → Primary → List Media(Image, Video)*
- */
-export interface VirtualLightCompSliceGridLayoutPrimaryListMediaItem {
-  /**
-   * Media field in *VirtualLightComp → Grid Layout → Primary → List Media(Image, Video)*
-   *
-   * - **Field Type**: Link to Media
-   * - **Placeholder**: Description for detect
-   * - **API ID Path**: virtual_light_comp.gridLayout.primary.list_media[].media
-   * - **Documentation**: https://prismic.io/docs/fields/link-to-media
-   */
-  media: prismic.LinkToMediaField<prismic.FieldState, never>;
-}
-
-/**
- * Primary content in *VirtualLightComp → Default → Primary*
- */
-export interface VirtualLightCompSliceDefaultPrimary {
-  /**
-   * Description field in *VirtualLightComp → Default → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: virtual_light_comp.default.primary.description
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  description: prismic.RichTextField;
-
-  /**
-   * List Image field in *VirtualLightComp → Default → Primary*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: virtual_light_comp.default.primary.list_image[]
-   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
-   */
-  list_image: prismic.GroupField<
-    Simplify<VirtualLightCompSliceDefaultPrimaryListImageItem>
-  >;
-
-  /**
-   * List Internal Media field in *VirtualLightComp → Default → Primary*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: virtual_light_comp.default.primary.list_internal_media[]
-   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
-   */
-  list_internal_media: prismic.GroupField<
-    Simplify<VirtualLightCompSliceDefaultPrimaryListInternalMediaItem>
-  >;
-
-  /**
-   * List Embed Media field in *VirtualLightComp → Default → Primary*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: virtual_light_comp.default.primary.list_embed_media[]
-   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
-   */
-  list_embed_media: prismic.GroupField<
-    Simplify<VirtualLightCompSliceDefaultPrimaryListEmbedMediaItem>
-  >;
-}
-
-/**
- * Default variation for VirtualLightComp Slice
- *
- * - **API ID**: `default`
- * - **Description**: Default
- * - **Documentation**: https://prismic.io/docs/slices
- */
-export type VirtualLightCompSliceDefault = prismic.SharedSliceVariation<
-  "default",
-  Simplify<VirtualLightCompSliceDefaultPrimary>,
-  never
->;
-
-/**
- * Primary content in *VirtualLightComp → Grid Layout → Primary*
- */
-export interface VirtualLightCompSliceGridLayoutPrimary {
-  /**
-   * Description field in *VirtualLightComp → Grid Layout → Primary*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: virtual_light_comp.gridLayout.primary.description
-   * - **Documentation**: https://prismic.io/docs/fields/rich-text
-   */
-  description: prismic.RichTextField;
-
-  /**
-   * List Media(Image, Video) field in *VirtualLightComp → Grid Layout → Primary*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: virtual_light_comp.gridLayout.primary.list_media[]
-   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
-   */
-  list_media: prismic.GroupField<
-    Simplify<VirtualLightCompSliceGridLayoutPrimaryListMediaItem>
-  >;
-}
-
-/**
- * Grid Layout variation for VirtualLightComp Slice
- *
- * - **API ID**: `gridLayout`
- * - **Description**: Default
- * - **Documentation**: https://prismic.io/docs/slices
- */
-export type VirtualLightCompSliceGridLayout = prismic.SharedSliceVariation<
-  "gridLayout",
-  Simplify<VirtualLightCompSliceGridLayoutPrimary>,
-  never
->;
-
-/**
- * Slice variation for *VirtualLightComp*
- */
-type VirtualLightCompSliceVariation =
-  | VirtualLightCompSliceDefault
-  | VirtualLightCompSliceGridLayout;
-
-/**
- * VirtualLightComp Shared Slice
- *
- * - **API ID**: `virtual_light_comp`
- * - **Description**: VirtualLightComp
- * - **Documentation**: https://prismic.io/docs/slices
- */
-export type VirtualLightCompSlice = prismic.SharedSlice<
-  "virtual_light_comp",
-  VirtualLightCompSliceVariation
->;
-
-/**
  * Item in *VituralightRecognizedPotential → Default → Primary → List Member*
  */
 export interface VituralightRecognizedPotentialSliceDefaultPrimaryListMemberItem {
@@ -2407,16 +2230,6 @@ declare module "@prismicio/client" {
       TextBlockSliceDefault,
       TextBlockSliceResume,
       TextBlockSliceRichtext,
-      VirtualLightCompSlice,
-      VirtualLightCompSliceDefaultPrimaryListImageItem,
-      VirtualLightCompSliceDefaultPrimaryListInternalMediaItem,
-      VirtualLightCompSliceDefaultPrimaryListEmbedMediaItem,
-      VirtualLightCompSliceDefaultPrimary,
-      VirtualLightCompSliceGridLayoutPrimaryListMediaItem,
-      VirtualLightCompSliceGridLayoutPrimary,
-      VirtualLightCompSliceVariation,
-      VirtualLightCompSliceDefault,
-      VirtualLightCompSliceGridLayout,
       VituralightRecognizedPotentialSlice,
       VituralightRecognizedPotentialSliceDefaultPrimaryListMemberItem,
       VituralightRecognizedPotentialSliceDefaultPrimary,
