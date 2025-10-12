@@ -20,15 +20,23 @@ const MarqueeModule = ({ slice }: any) => {
 
     // const lenis = useLenis();
 
-    // useLenis(({ direction }) => {
-    //     if (tlRef.current) {
-    //         console.log('qq', direction)
-    //         gsap.to(tlRef.current, {
-    //             timeScale: direction ? 1 : -1,
-    //             overwrite: true,
-    //         })
-    //     }
-    // })
+    const directionRef = useRef<Number>(0);
+
+    useLenis(({ direction, velocity }) => {
+        // console.log(velocity)
+        if (tlRef.current) {
+            if (direction === 1) {
+                gsap.set(tlRef.current, {
+                    timeScale: 1 + velocity / 10,
+                })
+            } else if (direction === -1) {
+                gsap.set(tlRef.current, {
+                    timeScale: -1 + velocity / 10,
+                })
+            }
+        }
+        directionRef.current = direction;
+    })
 
     useGSAP(() => {
         if (!container.current || !itemDefaultRef.current) return;
@@ -50,16 +58,21 @@ const MarqueeModule = ({ slice }: any) => {
             defaults: {
                 ease: 'none',
                 repeat: -1,
-                duration: 10,
+            },
+            scrollTrigger: {
+                trigger: container.current,
+                toggleActions: 'play pause resume pause',
             }
         })
+
+        const speed = 150;
 
         tlRef.current.fromTo([...itemCloneRef.current, itemDefaultRef.current], {
             xPercent: 0
         }, {
             xPercent: -100,
-        }).progress(1).progress(0); 
-
+            duration: itemReact.width / speed,
+        }).seek(19800);
 
         return () => {
             itemCloneRef.current.forEach(item => {

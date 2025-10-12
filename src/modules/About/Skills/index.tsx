@@ -44,7 +44,7 @@ const DefaultSkillList = ({ data }: any) => {
     return (
         <>
             <TypoBody
-                size={26}
+                size={16}
                 className={style.skill__label}
             >
                 {title_right}
@@ -53,7 +53,7 @@ const DefaultSkillList = ({ data }: any) => {
                 {skill_list?.map((item: any, index: number) => (
                     <TypoBody
                         key={index}
-                        size={20}
+                        size={16}
                         className={style.skill__item}
                     >
                         {item?.skill}
@@ -70,7 +70,7 @@ const TwoColumnSkillList = ({ data }: any) => {
     return (
         <>
             <TypoBody
-                size={26}
+                size={16}
                 className={style.skill__label}
             >
                 {title_right}
@@ -81,7 +81,7 @@ const TwoColumnSkillList = ({ data }: any) => {
                         {skill_list_left?.map((item: any, index: number) => (
                             <TypoBody
                                 key={index}
-                                size={20}
+                                size={16}
                                 className={style.skill__item}
                             >
                                 {item?.skill}
@@ -94,7 +94,7 @@ const TwoColumnSkillList = ({ data }: any) => {
                         {skill_list_right?.map((item: any, index: number) => (
                             <TypoBody
                                 key={index}
-                                size={20}
+                                size={16}
                                 className={style.skill__item}
                             >
                                 {item?.skill}
@@ -106,71 +106,5 @@ const TwoColumnSkillList = ({ data }: any) => {
         </>
     )
 }
-
-
-// const SkillModule = ({ data }: any) => {
-//     const { variation } = data || {};
-
-//     const { title, skill_list, skill_list_left, skill_list_right } = data?.primary || {};
-
-//     return (
-//         <div className={style.skill}>
-//             <TypoBody
-//                 size={26}
-//                 className={style.skill__label}
-//             >
-//                 {title}
-//             </TypoBody>
-//             <div className={style.skill__content}>
-//                 {(() => {
-//                     switch (variation) {
-//                         case 'default':
-//                             return (
-//                                 <div className={style.skill__single}>
-//                                     {skill_list?.map((item: any, index: number) => (
-//                                         <TypoBody
-//                                             key={index}
-//                                             size={16}
-//                                             className={style.skill__item}
-//                                         >
-//                                             {item?.skill}
-//                                         </TypoBody>
-//                                     ))}
-//                                 </div>
-//                             );
-//                         case '2Columns':
-//                             return (
-//                                 <div className={style.skill__columns}>
-//                                     <div className={style.skill__single}>
-//                                         {skill_list_left?.map((item: any, index: number) => (
-//                                             <TypoBody
-//                                                 key={index}
-//                                                 className={style.skill__item}
-//                                             >
-//                                                 {item?.skill}
-//                                             </TypoBody>
-//                                         ))}
-//                                     </div>
-//                                     <div className={style.skill__single}>
-//                                         {skill_list_right?.map((item: any, index: number) => (
-//                                             <TypoBody
-//                                                 key={index}
-//                                                 className={style.skill__item}
-//                                             >
-//                                                 {item?.skill}
-//                                             </TypoBody>
-//                                         ))}
-//                                     </div>
-//                                 </div>
-//                             );
-//                         default:
-//                             return null;
-//                     }
-//                 })()}
-//             </div>
-//         </div>
-//     )
-// }
-
 
 export default AboutSkillModule;
