@@ -31,7 +31,7 @@ const Header = (
     const { contextSafe } = useGSAP({ scope: container, revertOnUpdate: true });
 
     useIsomorphicLayoutEffect(() => {
-        stopOverscroll();
+        stopOverscroll("");
     }, [])
 
     useUpdateEffect(() => {
