@@ -30,6 +30,14 @@ const ProjectListing = ({ slice }: any) => {
 
         const index = itemRefs.current.findIndex(({ item }) => item === target)
 
+        gsap.to(itemRefs.current[index]?.content, {
+            autoAlpha: 1,
+            xPercent: 0,
+            duration: 0.8,
+            ease: 'expo.out',
+            overwrite: true,
+        })
+
         gsap.to(itemRefs.current[index]?.image, {
             opacity: 0,
             overwrite: true,
@@ -46,6 +54,14 @@ const ProjectListing = ({ slice }: any) => {
         const target = e.currentTarget;
         const index = itemRefs.current.findIndex(({ item }) => item === target)
 
+        gsap.to(itemRefs.current[index]?.content, {
+            autoAlpha: 0,
+            xPercent: 15,
+            duration: 0.3,
+            ease: 'expo.in',
+            overwrite: true,
+        })
+
         gsap.to(itemRefs.current[index]?.image, {
             opacity: 1,
             overwrite: true,
@@ -57,6 +73,14 @@ const ProjectListing = ({ slice }: any) => {
     })
 
     const handleEnter = contextSafe((index: number) => {
+        gsap.to(itemRefs.current[index]?.content, {
+            autoAlpha: 1,
+            xPercent: 0,
+            duration: 0.8,
+            ease: 'expo.out',
+            overwrite: true,
+        })
+
         gsap.to(itemRefs.current[index]?.image, {
             opacity: 0,
             duration: 0.5,
@@ -70,6 +94,13 @@ const ProjectListing = ({ slice }: any) => {
 
 
     const handleLeave = contextSafe((index: number) => {
+        gsap.to(itemRefs.current[index]?.content, {
+            autoAlpha: 0,
+            xPercent: 15,
+            duration: 0.3,
+            ease: 'expo.in',
+            overwrite: true,
+        })
         gsap.to(itemRefs.current[index]?.image, {
             opacity: 1,
             duration: 0.5,
@@ -82,13 +113,18 @@ const ProjectListing = ({ slice }: any) => {
     })
 
     useGSAP(() => {
+        gsap.set(itemRefs.current.map(({ content }) => content), {
+            xPercent: 15,
+            autoAlpha: 0,
+        })
+
         if (isDesktop) return;
 
         itemRefs.current.forEach(({ item }, idx) => {
             ScrollTrigger.create({
                 trigger: item,
-                start: 'top center+=10%',
-                end: 'bottom center-=10%',
+                start: 'top center+=30%',
+                end: 'bottom center-=20%',
                 // markers: true,
                 onEnter: () => handleEnter(idx),
                 onEnterBack: () => handleEnter(idx),

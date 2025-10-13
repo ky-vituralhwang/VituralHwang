@@ -8,6 +8,11 @@
 
     overflow: hidden;
 
+    @include sm {
+        // height: 18rem;
+        aspect-ratio: 21/9 !important;
+    }
+
     &__bg {
         position: relative;
         @include size(100%);
@@ -49,20 +54,41 @@
         flex-direction: column;
         justify-content: flex-end;
 
-
         padding: var(--container-padding);
 
+        mix-blend-mode: difference;
+
+        color: white;
+
+        opacity: 0;
+
         &__title {
-            font-weight: 100;
+            font-weight: 300;
 
             letter-spacing: -.03em;
 
+            margin-bottom: .4rem;
+
             @include md {
-                font-size: 2.8rem;
+                font-size: 2.8rem !important;
             }
 
             @include sm {
-                font-size: 2rem;
+                font-size: 1.6rem !important;
+            }
+        }
+
+        &__sub {
+            // opacity: .8;
+
+            font-weight: 100 !important;
+
+            @include md {
+                font-size: 1.6rem !important;
+            }
+
+            @include sm {
+                font-size: 1.2rem !important;
             }
         }
     }

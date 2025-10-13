@@ -7,6 +7,7 @@ import ImagePlaceholder from '@/base/Image';
 import TypoHeading from '@/components/Typo/Heading';
 import { forwardRef, useImperativeHandle, useRef } from 'react';
 import useVideoRenderer from '@/components/Video';
+import TypoBody from '@/components/Typo/Body';
 
 interface ProjectItemRef {
     item: HTMLAnchorElement | null;
@@ -36,6 +37,7 @@ const ProjectItem = forwardRef<ProjectItemRef, ProjectItemProps> ((
     const itemRef = useRef<HTMLAnchorElement>(null);
     const imageRef = useRef<HTMLImageElement>(null);
     const titleRef = useRef<HTMLDivElement>(null);
+    const contentRef = useRef<HTMLDivElement>(null);
 
     const { videoRef } = useVideoRenderer({
         url: feature_media?.url,
@@ -51,6 +53,7 @@ const ProjectItem = forwardRef<ProjectItemRef, ProjectItemProps> ((
         image: imageRef.current,
         video: videoRef.current,
         title: titleRef.current,
+        content: contentRef.current
     }));
 
     return (
@@ -75,15 +78,22 @@ const ProjectItem = forwardRef<ProjectItemRef, ProjectItemProps> ((
                 <video ref={videoRef} className={style.projectItem__video}/>
             </div>
 
-            <div className={style.projectItem__content} >
+            <div className={style.projectItem__content} ref={contentRef}>
                 <TypoHeading
                     tag="div"
-                    size={4}
+                    size={3}
                     className={style.projectItem__content__title}
                     ref={titleRef}
                 >
                     {title}
                 </TypoHeading>
+                <TypoBody
+                    tag="div"
+                    size={20}
+                    className={style.projectItem__content__sub}
+                >
+                    Click for Details
+                </TypoBody>
             </div>
         </Link>
     )

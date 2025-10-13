@@ -13,7 +13,7 @@ interface TypoHeadingProps extends React.HTMLAttributes<HTMLHeadingElement> {
 
 const TypoHeading = forwardRef<HTMLHeadingElement, TypoHeadingProps>(
     ({ children,
-        color = 'text-100',
+        color = undefined,
         size = 64,
         tag = 'h1',
         className,
