@@ -129,6 +129,8 @@ const ArchiveModule = ({ data, columns }: { data: any[]; columns: number }) => {
             y: 0
         }
 
+        const multiplier = 2.5
+
         Observer.create({
             target: innerRef.current,
             type: "wheel, touch, pointer",
@@ -146,8 +148,10 @@ const ArchiveModule = ({ data, columns }: { data: any[]; columns: number }) => {
                 if (deltaX === 0) return;
     
                 const isWheel = event.type === "wheel";
+                const isTouch = event.type === "touchmove";
+
     
-                increment.x += isWheel ? -deltaX : deltaX;
+                increment.x += (isWheel ? -deltaX : deltaX) * (isTouch ? multiplier : 1);
     
                 colRefs.current.forEach((item:any, idx:number) => {
                     xTo[idx](increment.x);
@@ -157,6 +161,7 @@ const ArchiveModule = ({ data, columns }: { data: any[]; columns: number }) => {
                 if (deltaY === 0) return;
     
                 const isWheel = event.type === "wheel";
+                const isTouch = event.type === "touchmove";
 
                 if (isWheel) {
                     increment.x += -Math.abs(deltaY);
@@ -165,7 +170,7 @@ const ArchiveModule = ({ data, columns }: { data: any[]; columns: number }) => {
                     })
                 }
 
-                increment.y += isWheel ? -deltaY : deltaY;
+                increment.y += (isWheel ? -deltaY : deltaY) * (isTouch ? multiplier : 1);
                 
                 itemRefs.current.forEach((item:any, idx:number) => {
                     const parentCol = item.parentElement;

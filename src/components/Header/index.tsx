@@ -8,9 +8,10 @@ import ImagePlaceholder from '@/base/Image';
 import Link from 'next/link';
 import { useGSAP } from '@gsap/react';
 import { useCallback, useRef, useState } from 'react';
-import { useUpdateEffect } from 'react-haiku';
+import { useIsomorphicLayoutEffect, useUpdateEffect } from 'react-haiku';
 import gsap from 'gsap';
 import { useMobileMatch } from '@/hooks/useMediaQuery';
+import { stopOverscroll } from '@/scripts/stopOverscroll';
 
 const Header = (
     {
@@ -28,6 +29,10 @@ const Header = (
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const { contextSafe } = useGSAP({ scope: container, revertOnUpdate: true });
+
+    useIsomorphicLayoutEffect(() => {
+        stopOverscroll();
+    }, [])
 
     useUpdateEffect(() => {
         if (!isMobile) {
