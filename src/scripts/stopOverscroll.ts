@@ -1,6 +1,6 @@
 type ScrollableElement = Element | Window;
 
-const stopOverscroll = (element: ScrollableElement | string): void => {
+const stopOverscroll = (element: ScrollableElement | string | ""): void => {
     // Handle GSAP utils toArray - assuming it returns an array of elements
     const elementsArray = (window as any).gsap?.utils?.toArray(element) || [element];
     let targetElement: ScrollableElement = elementsArray[0] || window;
