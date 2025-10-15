@@ -3,6 +3,12 @@
     position: relative;
     contain: paint;
 
+    display: flex;
+    flex-direction: column;
+
+    max-height: 80svh;
+    overflow: hidden;
+
     &__list {
         position: relative;
         z-index: 1;
@@ -12,7 +18,9 @@
     
         user-select: none;
 
-        max-height: 100svh;
+        height: 100%;
+
+        overflow: hidden;
     }
 
     &__img {
@@ -20,7 +28,12 @@
         grid-column: 1/2;
         grid-row: 1/2;
 
+        @include size(100%);
+
+        overflow: hidden;
+
         z-index: 1;
+
 
         &.clone {
             user-select: none;
@@ -28,9 +41,15 @@
             z-index: 10;
         }
 
-
         &:first-child {
             z-index: 2;
+        }
+
+
+        & img {
+            object-fit: contain !important;
+
+            background-color: var(--white-80);
         }
     }
 
