@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
-    "@slicemachine/adapter-next": "^0.3.84",
+    "@slicemachine/adapter-next": "^0.3.95",
     "@types/lodash": "^4.17.20",
     "@types/node": "^20",
     "@types/react": "^19",
@@ -43,7 +43,7 @@
     "concurrently": "^9.2.1",
     "eslint": "^9",
     "eslint-config-next": "15.5.4",
-    "slice-machine-ui": "^2.18.2",
+    "slice-machine-ui": "^2.21.2",
     "typescript": "^5"
   }
 }

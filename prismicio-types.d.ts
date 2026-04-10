@@ -156,7 +156,7 @@ interface AboutPageDocumentData {
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/slices
    */
-  slices: prismic.SliceZone<AboutPageDocumentDataSlicesSlice> /**
+  slices: prismic.SliceZone<AboutPageDocumentDataSlicesSlice>; /**
    * Meta Title field in *About Page*
    *
    * - **Field Type**: Text
@@ -164,7 +164,7 @@ interface AboutPageDocumentData {
    * - **API ID Path**: about_page.meta_title
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/fields/text
-   */;
+   */
   meta_title: prismic.KeyTextField;
 
   /**
@@ -243,7 +243,7 @@ interface ArchivePageDocumentData {
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/slices
    */
-  slices: prismic.SliceZone<ArchivePageDocumentDataSlicesSlice> /**
+  slices: prismic.SliceZone<ArchivePageDocumentDataSlicesSlice>; /**
    * Meta Title field in *Archive Page*
    *
    * - **Field Type**: Text
@@ -251,7 +251,7 @@ interface ArchivePageDocumentData {
    * - **API ID Path**: archive_page.meta_title
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/fields/text
-   */;
+   */
   meta_title: prismic.KeyTextField;
 
   /**
@@ -308,7 +308,7 @@ interface GlobalSettingDocumentData {
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/slices
    */
-  slices: prismic.SliceZone<GlobalSettingDocumentDataSlicesSlice> /**
+  slices: prismic.SliceZone<GlobalSettingDocumentDataSlicesSlice>; /**
    * Meta Title field in *Global Setting*
    *
    * - **Field Type**: Text
@@ -316,7 +316,7 @@ interface GlobalSettingDocumentData {
    * - **API ID Path**: global_setting.meta_title
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/fields/text
-   */;
+   */
   meta_title: prismic.KeyTextField;
 
   /**
@@ -435,7 +435,7 @@ interface HomePageDocumentData {
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/slices
    */
-  slices: prismic.SliceZone<HomePageDocumentDataSlicesSlice> /**
+  slices: prismic.SliceZone<HomePageDocumentDataSlicesSlice>; /**
    * Meta Title field in *Home Page*
    *
    * - **Field Type**: Text
@@ -443,7 +443,7 @@ interface HomePageDocumentData {
    * - **API ID Path**: home_page.meta_title
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/fields/text
-   */;
+   */
   meta_title: prismic.KeyTextField;
 
   /**
@@ -661,7 +661,7 @@ interface ProjectDocumentData {
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/slices
    */
-  slices: prismic.SliceZone<ProjectDocumentDataSlicesSlice> /**
+  slices: prismic.SliceZone<ProjectDocumentDataSlicesSlice>; /**
    * Meta Title field in *Project*
    *
    * - **Field Type**: Text
@@ -669,7 +669,7 @@ interface ProjectDocumentData {
    * - **API ID Path**: project.meta_title
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/fields/text
-   */;
+   */
   meta_title: prismic.KeyTextField;
 
   /**
@@ -752,7 +752,7 @@ interface VirtuallightPageDocumentData {
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/slices
    */
-  slices: prismic.SliceZone<VirtuallightPageDocumentDataSlicesSlice> /**
+  slices: prismic.SliceZone<VirtuallightPageDocumentDataSlicesSlice>; /**
    * Meta Title field in *VirtualLight Page*
    *
    * - **Field Type**: Text
@@ -760,7 +760,7 @@ interface VirtuallightPageDocumentData {
    * - **API ID Path**: virtuallight_page.meta_title
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/fields/text
-   */;
+   */
   meta_title: prismic.KeyTextField;
 
   /**
