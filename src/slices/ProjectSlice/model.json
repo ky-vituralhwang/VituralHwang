@@ -105,7 +105,7 @@
                   "label": "Description",
                   "placeholder": "",
                   "allowTargetBlank": false,
-                  "multi": "paragraph,strong,em"
+                  "multi": "paragraph,strong,em,hyperlink"
                 }
               }
             }

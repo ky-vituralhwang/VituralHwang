@@ -127,7 +127,7 @@
 										{
 											"type": "paragraph",
 											"content": {
-												"text": "Ut id ex eu."
+												"text": "Exercitation reprehenderit laborum non fugiat. Nulla pariatur cupidatat Lorem non mollit pariatur et amet irure cillum deserunt mollit ipsum culpa."
 											}
 										}
 									]
@@ -258,8 +258,8 @@
 							[
 								"media",
 								{
-									"__TYPE__": "LinkContent",
 									"key": "ded423b9-4ffa-47b2-9616-b7689dd36c8b",
+									"__TYPE__": "LinkContent",
 									"value": {
 										"__TYPE__": "FileLink",
 										"id": "mock_Media_link",
