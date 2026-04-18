@@ -7,15 +7,20 @@ import { ReactTempus } from "tempus/react";
 import ResetScroll from "@/base/ResetScroll";
 import { createClient } from '@/prismicio';
 import generateSEO from '@/base/SEO';
-import MainLayout from '@/base/Layouts/Layout';
 
 import { Analytics } from "@vercel/analytics/next"
+import { Viewport } from 'next';
 
 const be_Vietnam_Pro = Be_Vietnam_Pro({
   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
   subsets: ['latin'],
 })
 
+export const viewport: Viewport = {
+	width: "device-width",
+	initialScale: 1,
+	colorScheme: "dark",
+};
 
 export const generateMetadata = async () => {
   const client = createClient();
