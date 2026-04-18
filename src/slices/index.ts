@@ -7,6 +7,7 @@ export const components = {
   about_skill: dynamic(() => import("./AboutSkill")),
   archive_listing: dynamic(() => import("./ArchiveListing")),
   image_block: dynamic(() => import("./ImageBlock")),
+  landing_page_body: dynamic(() => import("./LandingPageBody")),
   marquee: dynamic(() => import("./Marquee")),
   project_listing: dynamic(() => import("./ProjectListing")),
   project_slice: dynamic(() => import("./ProjectSlice")),

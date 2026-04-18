@@ -3,12 +3,37 @@
 import TypoHeading from '@/components/Typo/Heading';
 import style from './style.module.scss'
 import cn from 'clsx';
-import TypoDisplay from '@/components/Typo/Display';
 import { isEmpty } from 'lodash';
 import Link from 'next/link';
 import TypoBody from '@/components/Typo/Body';
 import RichText from '@/components/PrismicHelper/RichText';
 import ImagePlaceholder from '@/base/Image';
+
+const ContentWrapper = ({
+    children,
+    label,
+    className
+}: {
+    children: React.ReactNode,
+    label: string,
+    className?: string
+}) => {
+    return (
+        <div className={cn(style.contentWrapper, className)}>
+            <TypoBody
+                tag="div"
+                size={16}
+                className={style.contentWrapper__label}
+            >
+                {label}
+            </TypoBody>
+            <div className={style.contentWrapper__content}>
+                {children}
+            </div>
+        </div>
+    )
+}
+
 
 const WorkdetailModule = ({ data }: {data: any }) => {
     const { title, subtitle, live_url, role, responsibilities, challenge, work_detail_image } = data.data || {};
@@ -136,29 +161,5 @@ const WorkdetailModule = ({ data }: {data: any }) => {
     )
 }
 
-const ContentWrapper = ({
-    children,
-    label,
-    className
-}: {
-    children: React.ReactNode,
-    label: string,
-    className?: string
-}) => {
-    return (
-        <div className={cn(style.contentWrapper, className)}>
-            <TypoBody
-                tag="div"
-                size={16}
-                className={style.contentWrapper__label}
-            >
-                {label}
-            </TypoBody>
-            <div className={style.contentWrapper__content}>
-                {children}
-            </div>
-        </div>
-    )
-}
 
 export default WorkdetailModule

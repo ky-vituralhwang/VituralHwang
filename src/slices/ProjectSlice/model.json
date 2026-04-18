@@ -202,6 +202,28 @@
         }
       },
       "items": {}
+    },
+    {
+      "id": "instagramBlock",
+      "name": "Instagram Block",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "link_blog_instagram": {
+          "type": "Link",
+          "config": {
+            "label": "Link Blog Instagram",
+            "placeholder": "",
+            "select": null,
+            "allowTargetBlank": false,
+            "allowText": false,
+            "repeat": false
+          }
+        }
+      },
+      "items": {}
     }
   ]
 }

@@ -1,21 +1,23 @@
-import { asImageSrc } from "@prismicio/client";
+import { asImageSrc, isFilled } from "@prismicio/client";
+import { Metadata } from "next";
 
 const generateSEO = (data: any) => {
     const { meta_title, meta_image, meta_description } = data?.data;
 
-    const seoData: any = {};
+    const seoData: Metadata = {};
 
-    if (meta_title) {
+    if (isFilled.keyText(meta_title)) {
         seoData.title = meta_title;
     }
 
-    if (meta_description) {
+    if (isFilled.keyText(meta_description)) {
         seoData.description = meta_description;
     }
 
-    if (meta_image) {
-        seoData.openGraph = {}
-        seoData.openGraph.images = [{ url: asImageSrc(meta_image) }];
+    if (isFilled.image(meta_image)) {
+        seoData.openGraph = {
+            images: [{ url: asImageSrc(meta_image) as string }],
+        };
     }
 
     return seoData;

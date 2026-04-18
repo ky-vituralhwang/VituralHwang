@@ -1,0 +1,55 @@
+{
+  "id": "landing_page_body",
+  "type": "SharedSlice",
+  "name": "LandingPageBody",
+  "description": "LandingPageBody",
+  "variations": [
+    {
+      "id": "default",
+      "name": "List Image/Video",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "number_of_columns": {
+          "type": "Number",
+          "config": {
+            "label": "Number of columns",
+            "placeholder": "2"
+          }
+        },
+        "list": {
+          "type": "Group",
+          "config": {
+            "label": "List",
+            "repeat": true,
+            "fields": {
+              "asset": {
+                "type": "Link",
+                "config": {
+                  "label": "Asset",
+                  "placeholder": "",
+                  "select": "media",
+                  "allowText": false
+                }
+              },
+              "link_url": {
+                "type": "Link",
+                "config": {
+                  "label": "Link URL",
+                  "placeholder": "",
+                  "select": null,
+                  "allowTargetBlank": false,
+                  "allowText": false,
+                  "repeat": false
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

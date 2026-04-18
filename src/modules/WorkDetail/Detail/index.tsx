@@ -37,8 +37,6 @@ const WorkDetailSlideDetailModule = ({ slice }: any) => {
 const ListContent = (data: any) => {
     const { title, description } = data.data || {};
 
-
-    console.log(description);
     return (
         <div
             className={
