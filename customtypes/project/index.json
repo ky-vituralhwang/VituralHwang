@@ -94,6 +94,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "landing_page_body": {
+              "type": "SharedSlice"
+            },
             "vituralight_slice": {
               "type": "SharedSlice"
             },
