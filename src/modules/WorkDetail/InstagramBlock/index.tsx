@@ -12,6 +12,17 @@ const RESERVED_PATHS = new Set([
     "about",
 ]);
 
+/**
+ * Instagram does not document dark embeds. Parent `meta color-scheme` alone does not
+ * set `prefers-color-scheme` inside cross-origin iframes; the iframe element’s
+ * `color-scheme` is what browsers propagate (where implemented).
+ */
+function withInstagramDarkTheme(embedUrl: string): string {
+    const u = new URL(embedUrl);
+    u.searchParams.set("theme", "dark");
+    return u.href;
+}
+
 /** Turn a normal Instagram URL into one that works in an iframe (`…/embed/`). */
 function toInstagramEmbedSrc(rawUrl: string): string | null {
     const trimmed = rawUrl.trim();
@@ -79,9 +90,10 @@ type Props = {
 const WorkDetailSliceInstagramBlockModule = ({ slice }: Props) => {
     const { link_blog_instagram } = slice?.primary || {};
 
-    const embedSrc = link_blog_instagram?.url
+    const built = link_blog_instagram?.url
         ? toInstagramEmbedSrc(link_blog_instagram.url)
         : null;
+    const embedSrc = built ? withInstagramDarkTheme(built) : null;
 
     if (!embedSrc) {
         return null;
@@ -101,6 +113,7 @@ const WorkDetailSliceInstagramBlockModule = ({ slice }: Props) => {
                         loading="lazy"
                         allowFullScreen
                         referrerPolicy="strict-origin-when-cross-origin"
+                        style={{ colorScheme: "dark" }}
                     />
                 </div>
             </div>
