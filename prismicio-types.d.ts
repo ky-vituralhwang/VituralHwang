@@ -647,6 +647,7 @@ export type ListingOrderProjectDocument<Lang extends string = string> =
   >;
 
 type ProjectDocumentDataSlicesSlice =
+  | LandingPageBodySlice
   | VituralightSliceSlice
   | SpacingSlice
   | MarqueeSlice
