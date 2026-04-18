@@ -1,0 +1,96 @@
+{
+  "format": "page",
+  "id": "landing_page",
+  "label": "Landing Page",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "type": "UID",
+        "config": {
+          "label": "UID"
+        }
+      },
+      "label_big_text": {
+        "type": "Text",
+        "config": {
+          "label": "Label Big Text",
+          "placeholder": ""
+        }
+      },
+      "image_under_title": {
+        "type": "Image",
+        "config": {
+          "label": "Image Under Title",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "profile_link_url": {
+        "type": "Link",
+        "config": {
+          "label": "Profile Link URL",
+          "placeholder": "",
+          "select": null,
+          "allowTargetBlank": false,
+          "allowText": false,
+          "repeat": false
+        }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "project_slice": {
+              "type": "SharedSlice"
+            },
+            "landing_page_body": {
+              "type": "SharedSlice"
+            },
+            "spacing": {
+              "type": "SharedSlice"
+            },
+            "marquee": {
+              "type": "SharedSlice"
+            },
+            "vituralight_slice": {
+              "type": "SharedSlice"
+            },
+            "vituralight_recognized_potential": {
+              "type": "SharedSlice"
+            }
+          }
+        }
+      }
+    },
+    "SEO & Metadata": {
+      "meta_title": {
+        "config": {
+          "label": "Meta Title",
+          "placeholder": "A title of the page used for social media and search engines"
+        },
+        "type": "Text"
+      },
+      "meta_description": {
+        "config": {
+          "label": "Meta Description",
+          "placeholder": "A brief summary of the page"
+        },
+        "type": "Text"
+      },
+      "meta_image": {
+        "config": {
+          "constraint": {
+            "height": 1260,
+            "width": 2400
+          },
+          "label": "Meta Image",
+          "thumbnails": []
+        },
+        "type": "Image"
+      }
+    }
+  }
+}

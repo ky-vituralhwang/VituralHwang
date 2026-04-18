@@ -35,8 +35,8 @@ const LenisProvider = ({ option, ...restProps }: LenisProviderProps) => {
                 },
                 lerp: 0.11,
                 autoRaf: false,
-                // syncTouch: true,
-                touchMultiplier: 0,
+                syncTouch: true,
+                allowNestedScroll: true,
                 ...option,
             }}
             {...restProps}

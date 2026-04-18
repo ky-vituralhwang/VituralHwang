@@ -485,6 +485,116 @@ export type HomePageDocument<Lang extends string = string> =
     Lang
   >;
 
+type LandingPageDocumentDataSlicesSlice =
+  | ProjectSliceSlice
+  | LandingPageBodySlice
+  | SpacingSlice
+  | MarqueeSlice
+  | VituralightSliceSlice
+  | VituralightRecognizedPotentialSlice;
+
+/**
+ * Content for Landing Page documents
+ */
+interface LandingPageDocumentData {
+  /**
+   * Label Big Text field in *Landing Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: landing_page.label_big_text
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  label_big_text: prismic.KeyTextField;
+
+  /**
+   * Image Under Title field in *Landing Page*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: landing_page.image_under_title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  image_under_title: prismic.ImageField<never>;
+
+  /**
+   * Profile Link URL field in *Landing Page*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: landing_page.profile_link_url
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  profile_link_url: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+
+  /**
+   * Slice Zone field in *Landing Page*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: landing_page.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/slices
+   */
+  slices: prismic.SliceZone<LandingPageDocumentDataSlicesSlice>; /**
+   * Meta Title field in *Landing Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: landing_page.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Landing Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: landing_page.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Landing Page*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: landing_page.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Landing Page document from Prismic
+ *
+ * - **API ID**: `landing_page`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type LandingPageDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<LandingPageDocumentData>,
+    "landing_page",
+    Lang
+  >;
+
 /**
  * Item in *Listing Order Project → List Ortder Projects*
  */
@@ -808,6 +918,7 @@ export type AllDocumentTypes =
   | GlobalSettingDocument
   | HeaderDocument
   | HomePageDocument
+  | LandingPageDocument
   | ListingOrderProjectDocument
   | ProjectDocument
   | VirtuallightPageDocument;
@@ -1148,6 +1259,94 @@ type ImageBlockSliceVariation = ImageBlockSliceDefault;
 export type ImageBlockSlice = prismic.SharedSlice<
   "image_block",
   ImageBlockSliceVariation
+>;
+
+/**
+ * Item in *LandingPageBody → List Image/Video → Primary → List*
+ */
+export interface LandingPageBodySliceDefaultPrimaryListItem {
+  /**
+   * Asset field in *LandingPageBody → List Image/Video → Primary → List*
+   *
+   * - **Field Type**: Link to Media
+   * - **Placeholder**: *None*
+   * - **API ID Path**: landing_page_body.default.primary.list[].asset
+   * - **Documentation**: https://prismic.io/docs/fields/link-to-media
+   */
+  asset: prismic.LinkToMediaField<prismic.FieldState, never>;
+
+  /**
+   * Link URL field in *LandingPageBody → List Image/Video → Primary → List*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: landing_page_body.default.primary.list[].link_url
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  link_url: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+}
+
+/**
+ * Primary content in *LandingPageBody → List Image/Video → Primary*
+ */
+export interface LandingPageBodySliceDefaultPrimary {
+  /**
+   * Number of columns field in *LandingPageBody → List Image/Video → Primary*
+   *
+   * - **Field Type**: Number
+   * - **Placeholder**: 2
+   * - **API ID Path**: landing_page_body.default.primary.number_of_columns
+   * - **Documentation**: https://prismic.io/docs/fields/number
+   */
+  number_of_columns: prismic.NumberField;
+
+  /**
+   * List field in *LandingPageBody → List Image/Video → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: landing_page_body.default.primary.list[]
+   * - **Documentation**: https://prismic.io/docs/fields/repeatable-group
+   */
+  list: prismic.GroupField<
+    Simplify<LandingPageBodySliceDefaultPrimaryListItem>
+  >;
+}
+
+/**
+ * List Image/Video variation for LandingPageBody Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type LandingPageBodySliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<LandingPageBodySliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *LandingPageBody*
+ */
+type LandingPageBodySliceVariation = LandingPageBodySliceDefault;
+
+/**
+ * LandingPageBody Shared Slice
+ *
+ * - **API ID**: `landing_page_body`
+ * - **Description**: LandingPageBody
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type LandingPageBodySlice = prismic.SharedSlice<
+  "landing_page_body",
+  LandingPageBodySliceVariation
 >;
 
 /**
@@ -1574,6 +1773,40 @@ export type ProjectSliceSliceVideoGridLayout = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *ProjectSlice → Instagram Block → Primary*
+ */
+export interface ProjectSliceSliceInstagramBlockPrimary {
+  /**
+   * Link Blog Instagram field in *ProjectSlice → Instagram Block → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_slice.instagramBlock.primary.link_blog_instagram
+   * - **Documentation**: https://prismic.io/docs/fields/link
+   */
+  link_blog_instagram: prismic.LinkField<
+    string,
+    string,
+    unknown,
+    prismic.FieldState,
+    never
+  >;
+}
+
+/**
+ * Instagram Block variation for ProjectSlice Slice
+ *
+ * - **API ID**: `instagramBlock`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ProjectSliceSliceInstagramBlock = prismic.SharedSliceVariation<
+  "instagramBlock",
+  Simplify<ProjectSliceSliceInstagramBlockPrimary>,
+  never
+>;
+
+/**
  * Slice variation for *ProjectSlice*
  */
 type ProjectSliceSliceVariation =
@@ -1583,7 +1816,8 @@ type ProjectSliceSliceVariation =
   | ProjectSliceSliceDetail
   | ProjectSliceSliceEmbedVideo
   | ProjectSliceSliceGridLayout
-  | ProjectSliceSliceVideoGridLayout;
+  | ProjectSliceSliceVideoGridLayout
+  | ProjectSliceSliceInstagramBlock;
 
 /**
  * ProjectSlice Shared Slice
@@ -2155,6 +2389,9 @@ declare module "@prismicio/client" {
       HomePageDocument,
       HomePageDocumentData,
       HomePageDocumentDataSlicesSlice,
+      LandingPageDocument,
+      LandingPageDocumentData,
+      LandingPageDocumentDataSlicesSlice,
       ListingOrderProjectDocument,
       ListingOrderProjectDocumentData,
       ListingOrderProjectDocumentDataListOrtderProjectsItem,
@@ -2187,6 +2424,11 @@ declare module "@prismicio/client" {
       ImageBlockSliceDefaultPrimary,
       ImageBlockSliceVariation,
       ImageBlockSliceDefault,
+      LandingPageBodySlice,
+      LandingPageBodySliceDefaultPrimaryListItem,
+      LandingPageBodySliceDefaultPrimary,
+      LandingPageBodySliceVariation,
+      LandingPageBodySliceDefault,
       MarqueeSlice,
       MarqueeSliceDefaultPrimary,
       MarqueeSliceVariation,
@@ -2208,6 +2450,7 @@ declare module "@prismicio/client" {
       ProjectSliceSliceGridLayoutPrimary,
       ProjectSliceSliceVideoGridLayoutPrimaryListVideoItem,
       ProjectSliceSliceVideoGridLayoutPrimary,
+      ProjectSliceSliceInstagramBlockPrimary,
       ProjectSliceSliceVariation,
       ProjectSliceSliceDefault,
       ProjectSliceSliceSingleImage,
@@ -2216,6 +2459,7 @@ declare module "@prismicio/client" {
       ProjectSliceSliceEmbedVideo,
       ProjectSliceSliceGridLayout,
       ProjectSliceSliceVideoGridLayout,
+      ProjectSliceSliceInstagramBlock,
       SpacingSlice,
       SpacingSliceDefaultPrimary,
       SpacingSliceVariation,

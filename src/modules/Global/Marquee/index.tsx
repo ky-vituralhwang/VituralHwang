@@ -23,7 +23,6 @@ const MarqueeModule = ({ slice }: any) => {
     const directionRef = useRef<Number>(0);
 
     useLenis(({ direction, velocity }) => {
-        // console.log(velocity)
         if (tlRef.current) {
             if (direction === 1) {
                 gsap.set(tlRef.current, {

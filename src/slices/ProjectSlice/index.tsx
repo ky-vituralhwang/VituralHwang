@@ -8,6 +8,7 @@ import WorkDetailSlideDetailModule from "@/modules/WorkDetail/Detail";
 import WorkDetailSliceEmbedModule from "@/modules/WorkDetail/Embed";
 import WorkDetailSliceGridModule from "@/modules/WorkDetail/GridLayout";
 import WorkDetailSliceGridMediaModule from "@/modules/WorkDetail/GridLayoutMedia";
+import WorkDetailSliceInstagramBlockModule from "@/modules/WorkDetail/InstagramBlock";
 
 /**
  * Props for `ProjectSlice`.
@@ -35,6 +36,8 @@ const ProjectSlice: FC<ProjectSliceProps> = ({ slice }) => {
       return <WorkDetailSliceGridModule slice={slice} />;
     case "videoGridLayout":
       return <WorkDetailSliceGridMediaModule slice={slice} />;
+    case "instagramBlock":
+      return <WorkDetailSliceInstagramBlockModule slice={slice} />;
     default:
       console.log(variation)
   }
