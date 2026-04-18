@@ -21,7 +21,7 @@ export const repositoryToken =
  * {@link https://prismic.io/docs/route-resolver#route-resolver}
  */
 // TODO: Update the routes array to match your project's route structure.
-const routes: Route[] = [
+export const routes: Route[] = [
   {
     type: 'home_page',
     path: '/',

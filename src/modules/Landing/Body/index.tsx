@@ -78,9 +78,6 @@ const LandingBodyModule = ({ slice }: LandingBodyModuleProps) => {
                             return null;
                     }
                 } else {
-                    console.log(link_url);
-                    console.log(isLinkValid);
-    
                     const linkType = link_url?.link_type;
                     const isInternalLink = linkType === 'Document';
 
