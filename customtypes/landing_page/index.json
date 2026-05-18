@@ -38,6 +38,20 @@
           "repeat": false
         }
       },
+      "background_color": {
+        "type": "Color",
+        "config": {
+          "label": "Background's Color",
+          "placeholder": ""
+        }
+      },
+      "text_color": {
+        "type": "Color",
+        "config": {
+          "label": "Text's Color",
+          "placeholder": ""
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",

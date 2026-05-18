@@ -19,7 +19,9 @@ const MainLayout = async ({ children, isLandingPage = false }: MainLayoutProps) 
                 data={header?.data}
                 isLandingPage={isLandingPage}
             />
-            {children}
+            <main>
+                {children}
+            </main>
         </>
     )
 }
