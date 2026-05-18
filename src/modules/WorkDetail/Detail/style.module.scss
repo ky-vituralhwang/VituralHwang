@@ -47,7 +47,10 @@
         font-size: max(2.2rem, 20px) !important;
         font-weight: 600 !important;
 
-        opacity: .5;
+        color: var(
+            --secondary-text-color,
+            color-mix(in srgb, currentColor 50%, transparent)
+        );
 
         @include md {
             grid-column: 1/5;
@@ -76,7 +79,11 @@
         }
 
         b {
-            opacity: .5;
+
+            color: var(
+                --secondary-text-color,
+                color-mix(in srgb, currentColor 50%, transparent)
+            );
         }
     }
 }

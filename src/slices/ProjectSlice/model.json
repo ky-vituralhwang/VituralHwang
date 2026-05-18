@@ -224,6 +224,50 @@
         }
       },
       "items": {}
+    },
+    {
+      "id": "split2Col",
+      "name": "Split 2 Col",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "image_in_left_side": {
+          "type": "Boolean",
+          "config": {
+            "label": "Image in Left Side",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": true
+          }
+        },
+        "image": {
+          "type": "Image",
+          "config": {
+            "label": "Image",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Description",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "multi": "paragraph,strong,em,hyperlink"
+          }
+        }
+      },
+      "items": {}
     }
   ]
 }

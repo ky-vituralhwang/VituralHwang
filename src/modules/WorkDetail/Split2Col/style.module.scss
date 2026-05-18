@@ -1,0 +1,108 @@
+
+
+.split2Col {
+    position: relative;
+    contain: paint;
+
+    padding-bottom: 12rem;
+
+    @include md {
+        padding-bottom: 8rem;
+    }
+
+    @include sm {
+        padding-bottom: 6rem;
+    }
+
+
+    &.imgInLeftSide {
+        .split2Col__image {
+            grid-column: 7 / -1;
+            grid-row: 1/2;
+
+            @include md {
+                grid-column: 6 / -1;
+
+                margin-left: unset;
+                margin-right: calc(var(--container-padding) * -1);
+            }
+
+            @include sm {
+                grid-column: 1 / -1;
+                grid-row: 2 / 3;
+            }
+        }
+
+        .split2Col__content {
+            grid-column: 1 / 7;
+            grid-row: 1/2;
+
+            @include md {
+                grid-column: 1 / 6;
+            }
+
+            @include sm {
+                grid-column: 1 / -1;
+                grid-row: 1 / 2;
+            }
+        }
+    }
+
+    &__image {
+        grid-column: 1 / 7;
+
+        @include md {
+            grid-column: 1 / 8;
+
+            margin-left: calc(var(--container-padding) * -1);
+        }
+
+        @include sm {
+            grid-column: 1 / -1;
+            grid-row: 2/3;
+
+            margin-inline: calc(var(--container-padding) * -1) !important;
+        }
+    }
+
+    &__content {
+        grid-column: 7 / -1;
+
+        @include md {
+            grid-column: 8 / -1;
+        }
+
+        @include sm {
+            grid-column: 1 / -1;
+            grid-row: 1/2;
+
+            margin-bottom: 2rem;
+        }
+    }
+
+    &__title {
+        font-weight: 600 !important;
+
+        color: var(
+            --secondary-text-color,
+            color-mix(in srgb, currentColor 50%, transparent)
+        );
+
+
+        @include md {
+            font-size: max(2.2rem, 20px) !important;
+        }
+    }
+
+
+    &__description {
+
+        b {
+            color: var(
+                --secondary-text-color,
+                color-mix(in srgb, currentColor 50%, transparent)
+            );
+        }
+    }
+
+}
