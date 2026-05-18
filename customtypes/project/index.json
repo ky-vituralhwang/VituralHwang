@@ -103,6 +103,13 @@
           "placeholder": ""
         }
       },
+      "secondary_text_color": {
+        "type": "Color",
+        "config": {
+          "label": "Secondary Text's Color",
+          "placeholder": ""
+        }
+      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",

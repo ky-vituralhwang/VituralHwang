@@ -42,15 +42,17 @@ const WorkDetailPage = async ({ params }: { params: Promise<{ uid: any }> }) => 
 
     const nextProject = listProjects[nextIndex].project
 
-    const { background_color, text_color } = page.data;
+    const { background_color, text_color, secondary_text_color } = page.data;
 
     const isBackgroundColorFilled = isFilled.color(background_color)
     const isTextColorFilled = isFilled.color(text_color)
+    const isSecondaryTextColorFilled = isFilled.color(secondary_text_color)
 
     const wrapperStyle = {
         ...(isBackgroundColorFilled && { backgroundColor: background_color }),
         ...(isTextColorFilled && { color: text_color }),
-    } as React.CSSProperties
+        ...(isSecondaryTextColorFilled && { "--secondary-text-color": secondary_text_color }),
+    } as React.CSSProperties;
 
     return (
         <MainLayout>

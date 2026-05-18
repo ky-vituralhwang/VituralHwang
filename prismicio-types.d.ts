@@ -808,6 +808,17 @@ interface ProjectDocumentData {
   text_color: prismic.ColorField;
 
   /**
+   * Secondary Text's Color field in *Project*
+   *
+   * - **Field Type**: Color
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project.secondary_text_color
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/color
+   */
+  secondary_text_color: prismic.ColorField;
+
+  /**
    * Slice Zone field in *Project*
    *
    * - **Field Type**: Slice Zone
@@ -1852,6 +1863,65 @@ export type ProjectSliceSliceInstagramBlock = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *ProjectSlice → Split 2 Col → Primary*
+ */
+export interface ProjectSliceSliceSplit2ColPrimary {
+  /**
+   * Image in Left Side field in *ProjectSlice → Split 2 Col → Primary*
+   *
+   * - **Field Type**: Boolean
+   * - **Placeholder**: *None*
+   * - **Default Value**: true
+   * - **API ID Path**: project_slice.split2Col.primary.image_in_left_side
+   * - **Documentation**: https://prismic.io/docs/fields/boolean
+   */
+  image_in_left_side: prismic.BooleanField;
+
+  /**
+   * Image field in *ProjectSlice → Split 2 Col → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_slice.split2Col.primary.image
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Title field in *ProjectSlice → Split 2 Col → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_slice.split2Col.primary.title
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Description field in *ProjectSlice → Split 2 Col → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_slice.split2Col.primary.description
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  description: prismic.RichTextField;
+}
+
+/**
+ * Split 2 Col variation for ProjectSlice Slice
+ *
+ * - **API ID**: `split2Col`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ProjectSliceSliceSplit2Col = prismic.SharedSliceVariation<
+  "split2Col",
+  Simplify<ProjectSliceSliceSplit2ColPrimary>,
+  never
+>;
+
+/**
  * Slice variation for *ProjectSlice*
  */
 type ProjectSliceSliceVariation =
@@ -1862,7 +1932,8 @@ type ProjectSliceSliceVariation =
   | ProjectSliceSliceEmbedVideo
   | ProjectSliceSliceGridLayout
   | ProjectSliceSliceVideoGridLayout
-  | ProjectSliceSliceInstagramBlock;
+  | ProjectSliceSliceInstagramBlock
+  | ProjectSliceSliceSplit2Col;
 
 /**
  * ProjectSlice Shared Slice
@@ -2496,6 +2567,7 @@ declare module "@prismicio/client" {
       ProjectSliceSliceVideoGridLayoutPrimaryListVideoItem,
       ProjectSliceSliceVideoGridLayoutPrimary,
       ProjectSliceSliceInstagramBlockPrimary,
+      ProjectSliceSliceSplit2ColPrimary,
       ProjectSliceSliceVariation,
       ProjectSliceSliceDefault,
       ProjectSliceSliceSingleImage,
@@ -2505,6 +2577,7 @@ declare module "@prismicio/client" {
       ProjectSliceSliceGridLayout,
       ProjectSliceSliceVideoGridLayout,
       ProjectSliceSliceInstagramBlock,
+      ProjectSliceSliceSplit2Col,
       SpacingSlice,
       SpacingSliceDefaultPrimary,
       SpacingSliceVariation,
