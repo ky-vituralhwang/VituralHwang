@@ -18,11 +18,12 @@
         margin-bottom: 2rem;
         
         -webkit-text-fill-color: transparent;
-        background: linear-gradient(0deg, #ffffff, #878787);
+        background: linear-gradient(
+            0deg,
+            currentColor,
+            color-mix(in srgb, currentColor 30%, transparent)
+        );
         background-clip: text;
-
-        @include md {
-        }
     }
 
 

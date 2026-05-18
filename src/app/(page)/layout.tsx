@@ -10,6 +10,7 @@ import generateSEO from '@/base/SEO';
 
 import { Analytics } from "@vercel/analytics/next"
 import { Viewport } from 'next';
+import GridDebugger from '@/base/GridDebugger';
 
 const be_Vietnam_Pro = Be_Vietnam_Pro({
   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
@@ -41,6 +42,11 @@ const RootLayout = async ({ children }: Readonly<{ children: React.ReactNode }>)
         <ReactTempus patch />
         <ResetScroll />
         <Analytics />
+        {process.env.NODE_ENV !== 'production' && (
+					<>
+						<GridDebugger />
+					</>
+				)}
       </body>
     </html>
   );

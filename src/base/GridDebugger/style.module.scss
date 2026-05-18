@@ -1,0 +1,40 @@
+
+
+.gridDebugger {
+    contain: paint;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    z-index: 9999999999;
+
+    pointer-events: none;
+    user-select: none;
+
+    @include size(100%);
+
+    opacity: .3;
+
+    // mix-blend-mode: difference;
+
+    &.hidden {
+        display: none;
+    }
+
+    &__grid {
+        height: 100% !important;
+    }
+
+    &__item {
+        background-color: skyblue;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__label {
+
+    }
+}

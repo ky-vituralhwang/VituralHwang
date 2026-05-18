@@ -6,6 +6,7 @@ import NextProjectModule from "@/modules/WorkDetail/NextProject";
 import WorkDetailSliceWrapper from "@/modules/WorkDetail/SliceWrapper";
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
+import { isFilled } from "@prismicio/client";
 import { SliceZone } from "@prismicio/react";
 
 import { notFound } from "next/navigation";
@@ -41,13 +42,27 @@ const WorkDetailPage = async ({ params }: { params: Promise<{ uid: any }> }) => 
 
     const nextProject = listProjects[nextIndex].project
 
+    const { background_color, text_color } = page.data;
+
+    const isBackgroundColorFilled = isFilled.color(background_color)
+    const isTextColorFilled = isFilled.color(text_color)
+
+    const wrapperStyle = {
+        ...(isBackgroundColorFilled && { backgroundColor: background_color }),
+        ...(isTextColorFilled && { color: text_color }),
+    } as React.CSSProperties
+
     return (
         <MainLayout>
-            <WorkdetailModule data={page}/>
-            <WorkDetailSliceWrapper>
-                <SliceZone slices={page.data.slices} components={components} />
-            </WorkDetailSliceWrapper>
-            <NextProjectModule data={nextProject}/>
+            <div
+                style={wrapperStyle}
+            >
+                <WorkdetailModule data={page}/>
+                <WorkDetailSliceWrapper>
+                    <SliceZone slices={page.data.slices} components={components} />
+                </WorkDetailSliceWrapper>
+                <NextProjectModule data={nextProject}/>
+            </div>
         </MainLayout>
     )
 }

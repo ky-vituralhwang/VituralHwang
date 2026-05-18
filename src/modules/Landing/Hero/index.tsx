@@ -5,6 +5,7 @@ import style from './style.module.scss';
 import ImagePlaceholder from '@/base/Image';
 import Link from 'next/link';
 import { isEmpty } from 'lodash';
+import { isFilled } from '@prismicio/client';
 
 
 const LandingHeroModule = ({ data }: any) => {
@@ -41,14 +42,16 @@ const LandingHeroModule = ({ data }: any) => {
         <section className={style.landingHero}>
             <div className="container grid">
                 {title}
-                <div className={style.landingHero__image}>
-                    <ImagePlaceholder
-                        src={image_under_title?.url}
-                        alt={image_under_title?.alt}
-                        dimensions={image_under_title?.dimensions}
-                        optimized={false}
-                    />
-                </div>
+                {isFilled.image(image_under_title) && (
+                    <div className={style.landingHero__image}>
+                        <ImagePlaceholder
+                            src={image_under_title.url}
+                            alt={image_under_title.alt ?? undefined}
+                            dimensions={image_under_title.dimensions}
+                            optimized={false}
+                        />
+                    </div>
+                )}
             </div>
         </section>
     )

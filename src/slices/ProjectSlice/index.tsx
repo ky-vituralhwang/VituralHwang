@@ -40,6 +40,7 @@ const ProjectSlice: FC<ProjectSliceProps> = ({ slice }) => {
       return <WorkDetailSliceInstagramBlockModule slice={slice} />;
     default:
       console.log(variation)
+      return null;
   }
 };
 
